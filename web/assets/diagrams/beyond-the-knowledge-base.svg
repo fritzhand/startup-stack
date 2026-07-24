@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1104" width="100%" height="1104" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="beyond-title beyond-desc">
+  <title id="beyond-title">Beyond the knowledge base</title>
+  <desc id="beyond-desc">A left-to-right chain of four numbered cards runs across the top, showing how a folder on your computer becomes a page that anyone can visit. The first card is headed "Your folder" and labelled "the files themselves"; it says the files on your computer are all a knowledge base is — text in folders, and nothing else. An arrow leads to the second card, "A repository", labelled "history, kept online", which is the same folder with its history stored online, where every saved version is kept and access can be shared. A second arrow leads to the third card, "A host", labelled "published as a site", which takes a repository and serves it to the public as a website, rebuilt whenever the repository changes. A third arrow leads to the fourth card, "A domain", labelled "how people arrive", which is the address people type into a browser; it points at the host so your pages answer at a name you chose. Below the third card a dashed line drops downwards and is struck through with a red cross, beside the note that a host is not a database: it serves pages and remembers nothing. Set apart underneath the chain rather than inside it, a second row of three cards explains the database itself. "What it is" describes a place that remembers what people type in — accounts, orders, bookings, messages — and adds that it stores rather than serves. "Where it is not", marked with a red cross, says a host serves pages and keeps nothing, so publishing a site gives you nowhere to put what a visitor typed. "When you need one", marked with a green tick, says only when strangers are typing into your product and what they type has to be kept; until then, you do not. The closing strip states the scope: a knowledge base needs none of this, because it is a folder of text files, and the words are here only so they are not a mystery the first time you meet them.</desc>
+
+  <rect x="0" y="0" width="1200" height="1104" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="60" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">Beyond the knowledge base</text>
+  <text x="48" y="94" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Four words you keep hearing, what each one does, and where a database sits.</text>
+
+  <text x="48" y="146" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">From a folder to a public website</text>
+  <text x="48" y="170" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Each stage takes the one before it and adds exactly one thing.</text>
+  <line x1="48" y1="186" x2="1152" y2="186" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <!-- stage 1 -->
+  <rect x="48" y="210" width="252" height="268" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="86" cy="248" r="18" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="86" y="254" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="700" fill="var(--dg-surface, #FFFFFF)">1</text>
+  <text x="116" y="254" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">the files themselves</text>
+  <text x="68" y="300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Your folder</text>
+  <text x="68" y="332" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The files on your<tspan x="68" dy="26">computer. This is all</tspan><tspan x="68" dy="26">a knowledge base is:</tspan><tspan x="68" dy="26">text in folders, and</tspan><tspan x="68" dy="26">nothing else.</tspan></text>
+
+  <line x1="304" y1="344" x2="328" y2="344" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round"/>
+  <polyline points="321,337 329,344 321,351" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- stage 2 -->
+  <rect x="332" y="210" width="252" height="268" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="370" cy="248" r="18" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="370" y="254" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="700" fill="var(--dg-surface, #FFFFFF)">2</text>
+  <text x="400" y="254" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">history, kept online</text>
+  <text x="352" y="300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">A repository</text>
+  <text x="352" y="332" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The same folder, with<tspan x="352" dy="26">its history, stored</tspan><tspan x="352" dy="26">online. Every saved</tspan><tspan x="352" dy="26">version is kept, and</tspan><tspan x="352" dy="26">you can share access.</tspan></text>
+
+  <line x1="588" y1="344" x2="612" y2="344" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round"/>
+  <polyline points="605,337 613,344 605,351" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- stage 3 -->
+  <rect x="616" y="210" width="252" height="268" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="654" cy="248" r="18" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="654" y="254" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="700" fill="var(--dg-surface, #FFFFFF)">3</text>
+  <text x="684" y="254" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">published as a site</text>
+  <text x="636" y="300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">A host</text>
+  <text x="636" y="332" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Takes a repository<tspan x="636" dy="26">and serves it to the</tspan><tspan x="636" dy="26">public as a website,</tspan><tspan x="636" dy="26">rebuilt whenever the</tspan><tspan x="636" dy="26">repository changes.</tspan></text>
+
+  <line x1="872" y1="344" x2="896" y2="344" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round"/>
+  <polyline points="889,337 897,344 889,351" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- stage 4 -->
+  <rect x="900" y="210" width="252" height="268" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="938" cy="248" r="18" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="938" y="254" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="700" fill="var(--dg-surface, #FFFFFF)">4</text>
+  <text x="968" y="254" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">how people arrive</text>
+  <text x="920" y="300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">A domain</text>
+  <text x="920" y="332" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The address people<tspan x="920" dy="26">type into a browser.</tspan><tspan x="920" dy="26">It points at the host</tspan><tspan x="920" dy="26">so your pages answer</tspan><tspan x="920" dy="26">at a name you chose.</tspan></text>
+
+  <!-- the broken link down to the database -->
+  <line x1="742" y1="490" x2="742" y2="556" stroke="var(--dg-border-strong, #75878F)" stroke-width="2" stroke-dasharray="6 8" stroke-linecap="round"/>
+  <line x1="733" y1="514" x2="751" y2="532" stroke="var(--dg-danger, #C62C49)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="751" y1="514" x2="733" y2="532" stroke="var(--dg-danger, #C62C49)" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="772" y="517" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">A host is not a database.</text>
+  <text x="772" y="543" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">It serves pages; it remembers nothing.</text>
+
+  <line x1="48" y1="592" x2="1152" y2="592" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <text x="48" y="632" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">And a database, which is not in that chain</text>
+  <text x="48" y="656" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">A separate service. It is the one founders most often assume a host already includes.</text>
+
+  <!-- what a database is -->
+  <rect x="48" y="680" width="348" height="220" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <ellipse cx="96" cy="696" rx="20" ry="7" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <line x1="76" y1="696" x2="76" y2="716" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <line x1="116" y1="696" x2="116" y2="716" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <path d="M 76 716 A 20 7 0 0 0 116 716" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="76" y="756" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">What it is</text>
+  <text x="76" y="788" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A place that remembers what<tspan x="76" dy="26">people type in: accounts,</tspan><tspan x="76" dy="26">orders, bookings, messages.</tspan><tspan x="76" dy="26">It stores; it does not serve.</tspan></text>
+
+  <!-- where it is not -->
+  <rect x="426" y="680" width="348" height="220" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <line x1="454" y1="694" x2="474" y2="714" stroke="var(--dg-danger, #C62C49)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="474" y1="694" x2="454" y2="714" stroke="var(--dg-danger, #C62C49)" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="454" y="756" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Where it is not</text>
+  <text x="454" y="788" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A host serves pages and keeps<tspan x="454" dy="26">nothing. Publishing a site</tspan><tspan x="454" dy="26">gives you nowhere to put</tspan><tspan x="454" dy="26">what a visitor typed.</tspan></text>
+
+  <!-- when you need one -->
+  <rect x="804" y="680" width="348" height="220" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <polyline points="832,706 840,714 856,694" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="832" y="756" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">When you need one</text>
+  <text x="832" y="788" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Only when strangers are typing<tspan x="832" dy="26">into your product and what</tspan><tspan x="832" dy="26">they type has to be kept.</tspan><tspan x="832" dy="26">Until then, you do not.</tspan></text>
+
+  <!-- scope note -->
+  <rect x="48" y="930" width="1104" height="124" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="600" y="976" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A knowledge base needs none of this. It is a folder of text files.</text>
+  <text x="600" y="1006" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The words are here so they are not a mystery the first time you meet them.</text>
+</svg>
