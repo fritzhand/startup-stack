@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="720" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="idx-title idx-desc">
+  <title id="idx-title">Reading the index instead of reading everything</title>
+  <desc id="idx-desc">The top half shows the route a question takes. A question arrives — what does one unit cost us to make. The AI reads the index, which is one line per file, a small router rather than the whole base. It opens the two sections it needs, in this case money and then operations, and nothing else is opened. It answers with the cost plus a line saying which two files it came from. The bottom half compares how much gets read on every question. A short, thin bar labelled "one index + two sections" sits inside an empty track, and barely grows as the base grows. Below it, a long, thick bar labelled "everything you own, again" fills the whole track, and gets bigger every month. A note at the foot says one line per file in the index is the whole trick, and that the base gets cheaper and sharper as it grows rather than slower.</desc>
+
+  <rect x="0" y="0" width="1200" height="720" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="58" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">Read the index, not everything</text>
+  <text x="48" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">How the AI decides what to open before it answers.</text>
+
+  <!-- node 1 -->
+  <rect x="48" y="126" width="246" height="170" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="78" cy="156" r="7" fill="var(--dg-secondary, #0C7A63)"/>
+  <text x="68" y="196" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Question</text>
+  <text x="68" y="230" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">What does one unit<tspan x="68" dy="24">cost us to make?</tspan></text>
+
+  <path d="M 300,211 H 322" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 330,211 L 320,205 L 320,217 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- node 2 -->
+  <rect x="334" y="126" width="246" height="170" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="364" cy="156" r="7" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="354" y="196" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Read the index</text>
+  <text x="354" y="230" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">One line per file.<tspan x="354" dy="24">A small router, not</tspan><tspan x="354" dy="24">the whole base.</tspan></text>
+
+  <path d="M 586,211 H 608" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 616,211 L 606,205 L 606,217 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- node 3 -->
+  <rect x="620" y="126" width="246" height="170" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="650" cy="156" r="7" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="640" y="196" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Open two sections</text>
+  <text x="640" y="230" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Money, then<tspan x="640" dy="24">operations. Nothing</tspan><tspan x="640" dy="24">else is opened.</tspan></text>
+
+  <path d="M 872,211 H 894" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 902,211 L 892,205 L 892,217 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- node 4 -->
+  <rect x="906" y="126" width="246" height="170" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="936" cy="156" r="7" fill="var(--dg-secondary, #0C7A63)"/>
+  <text x="926" y="196" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Answer</text>
+  <text x="926" y="230" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The cost, plus a line<tspan x="926" dy="24">saying which two files</tspan><tspan x="926" dy="24">it came from.</tspan></text>
+
+  <line x1="48" y1="340" x2="1152" y2="340" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <text x="48" y="376" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">How much gets read, on every question</text>
+
+  <!-- thin bar -->
+  <rect x="380" y="400" width="772" height="28" rx="8" fill="none" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="380" y="400" width="180" height="28" rx="8" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="48" y="420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">One index + two sections</text>
+  <text x="380" y="450" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Barely grows as the base grows.</text>
+
+  <!-- fat bar -->
+  <rect x="380" y="474" width="772" height="72" rx="8" fill="var(--dg-accent, #C62C49)"/>
+  <text x="48" y="516" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">Everything you own, again</text>
+  <text x="380" y="568" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Every question. Bigger every month.</text>
+
+  <!-- footer -->
+  <rect x="48" y="600" width="1104" height="76" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="600" y="632" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">One line per file in the index. That is the whole trick.</text>
+  <text x="600" y="656" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The base gets cheaper and sharper as it grows, not slower.</text>
+</svg>

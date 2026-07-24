@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 768" width="100%" height="768" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="blind-title blind-desc">
+  <title id="blind-title">Five things an AI pointed at your folder still cannot see</title>
+  <desc id="blind-desc">Six cards in a grid. The first five are blind spots, each with a one-line fix. One: numbers that are only pixels in a chart — it reads text, and a chart is a picture to it, not a table; the fix is to export the chart as an image and ask it to read the picture. Two: the formula behind a spreadsheet cell — it sees the answer in the cell but not the sum behind it; the fix is to paste in the formula, not just the answer. Three: anything behind a login — your bank, your dashboard and your mail are all shut to it; the fix is to save the page yourself, then put the file in the folder. Four: a file that is not in the folder — if it sits on your desktop or in a mail thread it is not there; the fix is to move the file into the folder. Five: what you know but never wrote down, such as the supplier's real terms or why a customer actually left; the fix is to say it out loud and let it write it down for you. The sixth card gives the test for all five: ask which files it opened before you trust the answer, and if the answer has no source, treat it as a guess.</desc>
+
+  <rect x="0" y="0" width="1200" height="768" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="58" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">What it cannot see</text>
+  <text x="48" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Five blind spots, and the fix for each one.</text>
+
+  <!-- card 1 -->
+  <rect x="48" y="132" width="346" height="278" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="85" cy="169" r="14" fill="none" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <text x="85" y="174" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-accent, #C62C49)">1</text>
+  <text x="72" y="214" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Numbers that are only<tspan x="72" dy="24">pixels in a chart</tspan></text>
+  <line x1="72" y1="258" x2="370" y2="258" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="72" y="288" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">It reads text. A chart is a<tspan x="72" dy="24">picture to it, not a table.</tspan></text>
+  <rect x="64" y="330" width="314" height="62" rx="8" fill="var(--dg-bg, #EEF4F6)"/>
+  <text x="80" y="356" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-primary, #0B5A86)">Fix — export the chart as an image<tspan x="80" dy="22">and ask it to read the picture.</tspan></text>
+
+  <!-- card 2 -->
+  <rect x="427" y="132" width="346" height="278" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="464" cy="169" r="14" fill="none" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <text x="464" y="174" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-accent, #C62C49)">2</text>
+  <text x="451" y="214" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The formula behind a<tspan x="451" dy="24">spreadsheet cell</tspan></text>
+  <line x1="451" y1="258" x2="749" y2="258" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="451" y="288" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">It sees the answer in the<tspan x="451" dy="24">cell, not the sum behind it.</tspan></text>
+  <rect x="443" y="330" width="314" height="62" rx="8" fill="var(--dg-bg, #EEF4F6)"/>
+  <text x="459" y="356" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-primary, #0B5A86)">Fix — paste in the formula, not<tspan x="459" dy="22">just the answer it produced.</tspan></text>
+
+  <!-- card 3 -->
+  <rect x="806" y="132" width="346" height="278" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="843" cy="169" r="14" fill="none" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <text x="843" y="174" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-accent, #C62C49)">3</text>
+  <text x="830" y="214" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Anything behind a<tspan x="830" dy="24">login</tspan></text>
+  <line x1="830" y1="258" x2="1128" y2="258" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="830" y="288" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Your bank, your dashboard,<tspan x="830" dy="24">your mail — all shut to it.</tspan></text>
+  <rect x="822" y="330" width="314" height="62" rx="8" fill="var(--dg-bg, #EEF4F6)"/>
+  <text x="838" y="356" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-primary, #0B5A86)">Fix — save the page yourself, then<tspan x="838" dy="22">put the file in the folder.</tspan></text>
+
+  <!-- card 4 -->
+  <rect x="48" y="442" width="346" height="278" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="85" cy="479" r="14" fill="none" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <text x="85" y="484" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-accent, #C62C49)">4</text>
+  <text x="72" y="524" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">A file that is not in<tspan x="72" dy="24">the folder</tspan></text>
+  <line x1="72" y1="568" x2="370" y2="568" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="72" y="598" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">If it sits on your desktop or<tspan x="72" dy="24">in a mail thread, it is not.</tspan></text>
+  <rect x="64" y="640" width="314" height="62" rx="8" fill="var(--dg-bg, #EEF4F6)"/>
+  <text x="80" y="666" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-primary, #0B5A86)">Fix — move the file into the<tspan x="80" dy="22">folder. That is the whole fix.</tspan></text>
+
+  <!-- card 5 -->
+  <rect x="427" y="442" width="346" height="278" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="464" cy="479" r="14" fill="none" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <text x="464" y="484" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-accent, #C62C49)">5</text>
+  <text x="451" y="524" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">What you know but<tspan x="451" dy="24">never wrote down</tspan></text>
+  <line x1="451" y1="568" x2="749" y2="568" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="451" y="598" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The supplier's real terms.<tspan x="451" dy="24">Why that customer left.</tspan></text>
+  <rect x="443" y="640" width="314" height="62" rx="8" fill="var(--dg-bg, #EEF4F6)"/>
+  <text x="459" y="666" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-primary, #0B5A86)">Fix — say it out loud and let it<tspan x="459" dy="22">write it down for you.</tspan></text>
+
+  <!-- card 6: the test -->
+  <rect x="806" y="442" width="346" height="278" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="843" cy="479" r="14" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <polyline points="836,479 841,485 850,473" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="830" y="524" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The test for all five<tspan x="830" dy="24">is the same</tspan></text>
+  <line x1="830" y1="568" x2="1128" y2="568" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="830" y="598" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Ask which files it opened<tspan x="830" dy="24">before you trust the answer.</tspan></text>
+  <rect x="822" y="640" width="314" height="62" rx="8" fill="var(--dg-bg, #EEF4F6)"/>
+  <text x="838" y="666" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-primary, #0B5A86)">It will name them. If the answer<tspan x="838" dy="22">has no source, treat it as a guess.</tspan></text>
+</svg>

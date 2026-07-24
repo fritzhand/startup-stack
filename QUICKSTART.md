@@ -38,6 +38,12 @@ The commands are chained with `&&` so that if the clone fails, nothing after it 
 
 If `git` is not part of your life, downloading the ZIP and unzipping it to your Desktop is genuinely fine. You lose the ability to undo a bad AI edit cleanly, so back the folder up before Step 3.
 
+Two folders in the copy belong to this project rather than to your company — `web/`, which builds this project's own website, and `.github/`, which publishes it. Delete both. `tools/` is optional and worth keeping: one script that turns a website into material for your inbox.
+
+```bash
+rm -rf web .github
+```
+
 ## Step 2 — Fill the inbox (20 min)
 
 Put everything that describes the business into `_inbox/`. Do not sort it. Do not clean it. Sorting is the AI's job.
@@ -51,7 +57,7 @@ Good raw material, roughly in order of how much it is worth:
 - **Competitive intelligence** — screenshots, price lists, competitor sites, that WhatsApp message where someone told you about a new entrant
 - **Customer conversations** — emails, WhatsApp exports, support threads, interview notes
 - **Supplier quotes, invoices, purchase orders, rate cards**
-- **Your website**, exported or just its URL
+- **Your website**, exported or just its URL — and your competitors'. [`tools/scrape-site.mjs`](tools/) will fetch a site into `_inbox/` as citable markdown if you would rather not copy pages by hand; see [docs/scraping.md](docs/scraping.md).
 - **Brand and design references** — logo files, colour codes, a screenshot of a page you like
 - **Registration documents** — incorporation certificate, GST, trademark filings, shareholding
 

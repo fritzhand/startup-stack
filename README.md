@@ -8,8 +8,9 @@ Drop your pitch deck, market research, business plan, competitor notes and call 
 
 > Every company, customer, metric and transcript used as an example in this repo is invented. Nothing here is drawn from any real client engagement.
 
-[**The method**](docs/method.md) · [**Build the knowledge base**](docs/knowledge-base.md) · [**Prompt library**](prompts/INDEX.md) · [**For coaches**](docs/for-coaches.md) · [**Quickstart**](QUICKSTART.md)
+[**New to working with AI**](docs/ai-basics.md) · [**The method**](docs/method.md) · [**Build the knowledge base**](docs/knowledge-base.md) · [**Prompt library**](prompts/INDEX.md) · [**For coaches**](docs/for-coaches.md) · [**Quickstart**](QUICKSTART.md)
 
+[![Read it as a site](https://img.shields.io/badge/read%20it%20as%20a%20site-fritzhand.github.io%2Fstartup--stack-0b5a86?style=flat-square)](https://fritzhand.github.io/startup-stack/)
 ![No code required](https://img.shields.io/badge/code%20required-none-0E6B63?style=flat-square)
 ![Plain markdown](https://img.shields.io/badge/format-plain%20markdown-44518F?style=flat-square)
 ![Works with any AI](https://img.shields.io/badge/works%20with-any%20file--aware%20AI-B4562B?style=flat-square)
@@ -58,14 +59,18 @@ Meanwhile the advice they need is not exotic. It is the same twenty things, aske
 | Folder | What it is |
 | --- | --- |
 | [`stack/`](stack/) | **The templates.** Ten numbered sections — company, customer, market, product, GTM, operations, money, capital, brand, pulse — one markdown file each, with front matter. This *becomes* your knowledge base; you fill it in, you do not copy it out. |
-| [`prompts/`](prompts/INDEX.md) | **The prompt library.** 15 prompts that run on top of a filled-in stack: bootstrap, gap scan, competitive intelligence, unit economics, list of 100, pitch deck, fundraise readiness, weekly recap, and the adversarial review that tells you what an investor will attack. |
+| [`prompts/`](prompts/INDEX.md) | **The prompt library.** 16 prompts that run on top of a filled-in stack: bootstrap, gap scan, competitive intelligence, unit economics, list of 100, pitch deck, fundraise readiness, weekly recap, and the adversarial review that tells you what an investor will attack. |
 | [`worksheets/`](worksheets/) | **The repeatable artifacts.** Fill-in files you produce over and over: startup-prep, customer interview, competitor profile, two-week experiment, SOP entry, trade/order sheet, advisor scope letter, one-pager, list of 100, weekly recap. |
-| [`docs/`](docs/) | **The method.** Why front matter and an index make the base cheap to run; how to build it in your first hour; how a coach runs this with a cohort; and the safety rules for giving an AI access to your files. |
+| [`docs/`](docs/) | **The method.** Why front matter and an index make the base cheap to run; how to build it in your first hour; how a coach runs this with a cohort; the safety rules for giving an AI access to your files; and [AI basics](docs/ai-basics.md) for anyone who has only ever used a chat window. |
 | [`_inbox/`](_inbox/) | Where raw material lands before it is processed. Git-ignored by default. |
+| [`tools/`](tools/) | **Optional.** One script that turns a website into citable markdown in `_inbox/`. You never need it — it saves an hour of copy-and-paste. See [docs/scraping.md](docs/scraping.md). |
+| [`web/`](web/) | **This project's own site**, generated from the markdown in this repo. Not part of your stack — delete it when you fork. |
 
 ## Quickstart
 
 Requirements: a **paid** AI subscription and a tool that can see your file system — the Claude desktop app, Claude Code, ChatGPT's Codex app, or any equivalent. Free chat tiers cannot do this work; they cannot read your folder.
+
+If that sentence already lost you, read [docs/ai-basics.md](docs/ai-basics.md) first. It explains what "a tool that can see your file system" means, what the terminal is, what the AI genuinely cannot see, and the one rule that never bends — in one sitting, with no code.
 
 ```bash
 # 1. Take a copy. This is a template, not a dependency — you own what you make.
@@ -100,6 +105,20 @@ Nobody should tell you this is free. The AI drafts; you validate. A stack you ha
 5. **One index, one summary line per file.** This is what keeps the base cheap: the AI reads a small router and opens one section, instead of re-reading everything you own on every question.
 6. **Private master, shared derived.** Every file declares a sensitivity. What you share with a coach, an investor or a customer is carved from the master — never the master itself.
 7. **Scope the AI to one folder.** Start narrow. Widen only as fast as your confidence. See [docs/safety.md](docs/safety.md).
+
+## Reading it as a site
+
+Everything in this repo is also published at **[fritzhand.github.io/startup-stack](https://fritzhand.github.io/startup-stack/)** — the same markdown, with search, a filterable prompt library, and light and dark themes.
+
+The site is generated *from these files*, so it cannot drift from the repo: edit the markdown, and the page changes. There is no second copy of the prose anywhere.
+
+```bash
+node web/build.mjs      # markdown + web/assets → _site/   (zero dependencies, Node 18+)
+```
+
+`.github/workflows/pages.yml` runs that on every push to `main` and publishes the result. The build fails loudly on a broken internal link or a missing diagram rather than shipping a quietly wrong page.
+
+**When you fork this as your own company's stack, delete `web/` and `.github/`.** They belong to this project, not to yours.
 
 ## Where this came from
 

@@ -1,0 +1,206 @@
+/* ============================================================
+   tokens.css — the skin. Deep-ocean primary, teal secondary,
+   amber highlight, coral reserved for the one action that
+   matters on a page. Type is Instrument Sans + Instrument Serif.
+
+   The engine (site.css) consumes ONLY these custom properties —
+   zero colour, font or radius literals live outside this file.
+   Values are tuned to WCAG AA on their own surfaces, in both themes.
+   ============================================================ */
+
+:root {
+  /* ---- brand anchors ---- */
+  --brand-navy: #0b5a86;        /* deep ocean — primary nav, headings, hero */
+  --brand-navy-deep: #0a3d5c;   /* hero gradient floor */
+  --brand-teal: #12a594;        /* teal secondary */
+  --brand-sun: #f5b301;         /* amber highlight */
+  --brand-saffron: #d98218;     /* warm highlight */
+  --brand-green: #0c7a63;       /* teal-green, used for confirmed facts */
+  --brand-blue: #1466a3;        /* hyperlink blue */
+  --brand-coral: #ff3a61;       /* the one strong action colour */
+  --brand-coral-deep: #cc2e4d;  /* its hover state */
+
+  /* ---- typography ---- */
+  --font-display: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ---- shape ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* ---- elevation ---- */
+  --shadow-1: 0 1px 2px rgb(11 61 92 / 0.06), 0 1px 3px rgb(11 61 92 / 0.10);
+  --shadow-2: 0 4px 8px -2px rgb(11 61 92 / 0.10), 0 2px 4px -2px rgb(11 61 92 / 0.06);
+  --shadow-3: 0 14px 28px -8px rgb(11 61 92 / 0.18), 0 4px 10px -4px rgb(11 61 92 / 0.10);
+
+  /* ---- glass ---- */
+  --glass-blur: 14px;
+
+  /* ---- motion ---- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --speed: 180ms;
+}
+
+/* ============ LIGHT (default) ============ */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f8fbfc;
+  --surface: #ffffff;
+  --surface-alt: #eef4f6;
+  --surface-sunken: #e4edf0;
+  --border: #dbe6ea;
+  --border-strong: #c1d1d8;
+
+  --text: #10222c;              /* 16.3:1 on --surface */
+  --text-muted: #3f5560;        /* 7.8:1 on --surface */
+  --text-faint: #5a6f7a;        /* 5.3:1 on --surface, 4.7:1 on --surface-alt */
+
+  --primary: #0b5a86;           /* 7.4:1 on --surface */
+  --primary-contrast: #ffffff;
+  --accent: #c62c49;            /* 5.4:1 on --surface */
+  --accent-strong: #a8203c;
+  --accent-contrast: #ffffff;
+  --accent-tint: #fdeef1;
+  --link: #1466a3;              /* 6.1:1 on --surface */
+  --link-hover: #0f4f80;
+  --success: #0c7a63;           /* 5.3:1 on --surface */
+  --success-tint: #e2f5f0;
+  --warning: #92610a;           /* 5.3:1 on --surface */
+  --warning-tint: #fff5df;
+  --danger: #c62c49;
+
+  --hero-bg: linear-gradient(135deg, #0a3d5c 0%, #0b5a86 52%, #0c5f6b 100%);
+  --hero-text: #eef8fb;         /* 6.8:1 on the gradient's lightest stop */
+  --hero-muted: #b7d6e2;        /* 4.8:1 on the gradient's lightest stop */
+
+  --sidebar-bg: #f2f8fa;
+  --topbar-bg: rgb(248 251 252 / 0.82);
+  --code-bg: #eef4f6;
+  --kbd-bg: #ffffff;
+  --scrim: rgb(10 34 44 / 0.55);
+
+  /* glass */
+  --glass-bg: rgb(255 255 255 / 0.62);
+  --glass-border: rgb(255 255 255 / 0.55);
+  --glass-shadow: 0 10px 34px -10px rgb(11 90 134 / 0.22);
+
+  /* ---- the four fact tags — this repo's quality system ---- */
+  --tag-sot: #0c7a63;           --tag-sot-tint: #e2f5f0;      /* confirmed by the founder */
+  --tag-nv: #92610a;            --tag-nv-tint: #fff5df;       /* extracted, not confirmed */
+  --tag-tbd: #5b6474;           --tag-tbd-tint: #eef1f3;      /* missing */
+  --tag-conflict: #c62c49;      --tag-conflict-tint: #fdeef1; /* sources disagree */
+
+  /* ---- the three loops (home page) ---- */
+  --loop-build: #0b5a86;
+  --loop-enrich: #0c7a63;
+  --loop-pulse: #a8203c;
+
+  /* ---- diagram contract ----
+     The SVGs in web/assets/diagrams/ reference these with literal
+     fallbacks, so the same file renders light as a plain image on
+     GitHub and re-skins itself when inlined into a page here. */
+  --dg-bg: #eef4f6;
+  --dg-surface: #ffffff;
+  --dg-border: #c1d1d8;
+  --dg-border-strong: #75878f;  /* 3.7:1 on --dg-surface, 3.4:1 on --dg-bg — arrows carry meaning */
+  --dg-text: #10222c;
+  --dg-muted: #3f5560;
+  --dg-primary: #0b5a86;
+  --dg-secondary: #0c7a63;
+  --dg-accent: #c62c49;
+  --dg-success: #0c7a63;
+  --dg-danger: #c62c49;
+
+  /* legacy hue slots the engine still resolves */
+  --cat-grant: #0c7a63;         --cat-grant-tint: #e2f5f0;
+  --cat-equity: #6d4fc4;        --cat-equity-tint: #f0ecfb;
+  --cat-loan: #a5670f;          --cat-loan-tint: #fdf1df;
+  --cat-incubation: #0e7d8f;    --cat-incubation-tint: #e2f2f5;
+  --cat-market: #1466a3;        --cat-market-tint: #e7f0f8;
+  --cat-mixed: #c62c49;         --cat-mixed-tint: #fdeef1;
+  --cat-other: #5b6474;         --cat-other-tint: #eef1f3;
+}
+
+/* ============ DARK ============ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #071620;
+  --surface: #0e2230;
+  --surface-alt: #143040;
+  --surface-sunken: #050f17;
+  --border: #22404f;
+  --border-strong: #315466;
+
+  --text: #e4eff4;              /* 13.9:1 on --surface */
+  --text-muted: #a6bcc7;        /* 8.2:1 on --surface */
+  --text-faint: #83a0ac;        /* 5.9:1 on --surface, 5.0:1 on --surface-alt */
+
+  --primary: #6fc3e0;           /* 8.2:1 on --surface */
+  --primary-contrast: #071620;
+  --accent: #ff6d84;            /* 6.0:1 on --surface */
+  --accent-strong: #ff8398;
+  --accent-contrast: #1a0509;
+  --accent-tint: #35141b;
+  --link: #6bb9e6;              /* 7.5:1 on --surface */
+  --link-hover: #98d0f2;
+  --success: #4ec9a9;           /* 7.9:1 on --surface */
+  --success-tint: #0b2f28;
+  --warning: #e0b24a;           /* 8.2:1 on --surface */
+  --warning-tint: #33280d;
+  --danger: #ff6d84;
+
+  --hero-bg: linear-gradient(135deg, #0a2c40 0%, #0b3d54 55%, #0c4f5a 100%);
+  --hero-text: #eef8fb;         /* 8.5:1 on the gradient's lightest stop */
+  --hero-muted: #a5c6d4;        /* 5.1:1 on the gradient's lightest stop */
+
+  --sidebar-bg: #0a1c28;
+  --topbar-bg: rgb(7 22 32 / 0.82);
+  --code-bg: #143040;
+  --kbd-bg: #143040;
+  --scrim: rgb(2 9 14 / 0.72);
+
+  /* glass */
+  --glass-bg: rgb(14 34 48 / 0.58);
+  --glass-border: rgb(120 170 190 / 0.18);
+  --glass-shadow: 0 12px 34px -10px rgb(0 0 0 / 0.55);
+
+  --tag-sot: #4ec9a9;           --tag-sot-tint: #0b2f28;
+  --tag-nv: #e0b24a;            --tag-nv-tint: #33280d;
+  --tag-tbd: #9aa8b6;           --tag-tbd-tint: #18242f;
+  --tag-conflict: #ff7d92;      --tag-conflict-tint: #35141b;
+
+  --loop-build: #6fc3e0;
+  --loop-enrich: #4ec9a9;
+  --loop-pulse: #ff7d92;
+
+  --dg-bg: #0b1f2b;
+  --dg-surface: #12293a;
+  --dg-border: #2c4f61;
+  --dg-border-strong: #6c93a6;  /* 4.5:1 on --dg-surface, 5.1:1 on --dg-bg */
+  --dg-text: #e4eff4;
+  --dg-muted: #a6bcc7;
+  --dg-primary: #6fc3e0;
+  --dg-secondary: #4ec9a9;
+  --dg-accent: #ff7d92;
+  --dg-success: #4ec9a9;
+  --dg-danger: #ff7d92;
+
+  --cat-grant: #4ec9a9;         --cat-grant-tint: #0b2f28;
+  --cat-equity: #a68cf0;        --cat-equity-tint: #241d3f;
+  --cat-loan: #e0a24a;          --cat-loan-tint: #33280d;
+  --cat-incubation: #47c2d6;    --cat-incubation-tint: #0a2c36;
+  --cat-market: #6bb9e6;        --cat-market-tint: #0d2739;
+  --cat-mixed: #ff7d92;         --cat-mixed-tint: #35141b;
+  --cat-other: #9aa8b6;         --cat-other-tint: #18242f;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-2: 0 4px 8px -2px rgb(0 0 0 / 0.5);
+  --shadow-3: 0 14px 28px -8px rgb(0 0 0 / 0.6);
+}

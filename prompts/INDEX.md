@@ -36,6 +36,7 @@ Numbers in the *Reads* column below are `stack/` sections, not prompt numbers �
 | 11 | [fundraise-readiness](11-fundraise-readiness.md) | Staged funding roadmap, dilution map, non-dilutive options, data-room checklist, investor CRM. | 01, 03, 04, 07 |
 | 12 | [weekly-recap](12-weekly-recap.md) | **The pulse.** Thirty minutes, every week. Reads the stack, writes the recap, updates the metrics. | 10, last recap |
 | 14 | [meeting-to-actions](14-meeting-to-actions.md) | Transcript → summary, minutes, owned actions with dates, and stack updates. **Run after every call.** | CONTEXT |
+| 15 | [scrape-a-site](15-scrape-a-site.md) | A website — yours or a competitor's — turned into cited, tagged stack material. Surfaces where the site and the stack disagree. | 01, 03, 04, 05, 09 |
 
 ## Get told what is wrong
 
@@ -51,7 +52,7 @@ Numbers in the *Reads* column below are `stack/` sections, not prompt numbers �
 
 **Weeks 2–4** — the two or three sections the gap scan flagged. Usually `07` unit economics and `05` competition. Keep running `12` weekly and `14` after every meeting.
 
-**Month 2** — `08` and `09` if you are selling; `03` and `04` if you are still finding the customer.
+**Month 2** — `08` and `09` if you are selling; `03` and `04` if you are still finding the customer. Run `15` on your own site and on the competitor you actually lose to, then `05`.
 
 **Before you raise or present** — `13` mentor review, then fix what it finds, then `10` and `11`.
 

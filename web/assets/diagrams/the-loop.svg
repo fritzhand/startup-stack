@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="100%" height="640" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="loop-title loop-desc">
+  <title id="loop-title">The four-step working loop: brief, plan, build, review</title>
+  <desc id="loop-desc">Four numbered steps run left to right, with a bar above each showing who owns it. Step one, brief, is yours: say what you want, what done looks like, and point at the files. Step two, plan, is the AI's: it writes the steps back to you first, and you change them or say go. Step three, build, is also the AI's: it does the work and shows what changed, file by file. Step four, review, is yours again: you read it, check the numbers, and either keep it or send it back. An arrow runs from review all the way back to brief, because what you learn in review becomes the next brief. A note along the bottom says you approve every step — the AI stops between steps and waits, and nothing is published, sent or committed without you.</desc>
+
+  <rect x="0" y="0" width="1200" height="640" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="58" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">The working loop</text>
+  <text x="48" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Four steps, in order. You open it and you close it.</text>
+
+  <!-- owner bars -->
+  <rect x="48" y="126" width="246" height="34" rx="8" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <text x="171" y="148" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-secondary, #0C7A63)">You write it</text>
+
+  <rect x="334" y="126" width="532" height="34" rx="8" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="600" y="148" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">The AI does it</text>
+
+  <rect x="906" y="126" width="246" height="34" rx="8" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <text x="1029" y="148" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-secondary, #0C7A63)">You check it</text>
+
+  <line x1="171" y1="160" x2="171" y2="190" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="457" y1="160" x2="457" y2="190" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="743" y1="160" x2="743" y2="190" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="1029" y1="160" x2="1029" y2="190" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <!-- step 1 -->
+  <rect x="48" y="190" width="246" height="182" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="86" cy="232" r="18" fill="none" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <text x="86" y="238" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="700" fill="var(--dg-secondary, #0C7A63)">1</text>
+  <text x="118" y="240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Brief</text>
+  <line x1="68" y1="270" x2="274" y2="270" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="68" y="302" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Say what you want and<tspan x="68" dy="24">what done looks like.</tspan><tspan x="68" dy="24">Point at the files.</tspan></text>
+
+  <path d="M 300,281 H 322" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 330,281 L 320,275 L 320,287 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- step 2 -->
+  <rect x="334" y="190" width="246" height="182" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="372" cy="232" r="18" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="372" y="238" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="700" fill="var(--dg-primary, #0B5A86)">2</text>
+  <text x="404" y="240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Plan</text>
+  <line x1="354" y1="270" x2="560" y2="270" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="354" y="302" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">It writes the steps<tspan x="354" dy="24">back to you first. You</tspan><tspan x="354" dy="24">change them, or say go.</tspan></text>
+
+  <path d="M 586,281 H 608" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 616,281 L 606,275 L 606,287 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- step 3 -->
+  <rect x="620" y="190" width="246" height="182" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="658" cy="232" r="18" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="658" y="238" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="700" fill="var(--dg-primary, #0B5A86)">3</text>
+  <text x="690" y="240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Build</text>
+  <line x1="640" y1="270" x2="846" y2="270" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="640" y="302" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">It does the work and<tspan x="640" dy="24">shows what changed,</tspan><tspan x="640" dy="24">file by file.</tspan></text>
+
+  <path d="M 872,281 H 894" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 902,281 L 892,275 L 892,287 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- step 4 -->
+  <rect x="906" y="190" width="246" height="182" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="944" cy="232" r="18" fill="none" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <text x="944" y="238" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="700" fill="var(--dg-secondary, #0C7A63)">4</text>
+  <text x="976" y="240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Review</text>
+  <line x1="926" y1="270" x2="1132" y2="270" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="926" y="302" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">You read it, check the<tspan x="926" dy="24">numbers, keep it or</tspan><tspan x="926" dy="24">send it back.</tspan></text>
+
+  <!-- return arrow -->
+  <path d="M 1029,372 V 436 Q 1029,452 1013,452 H 187 Q 171,452 171,436 V 386" fill="none" stroke="var(--dg-secondary, #0C7A63)" stroke-width="2"/>
+  <path d="M 171,372 L 165,386 L 177,386 Z" fill="var(--dg-secondary, #0C7A63)"/>
+  <text x="600" y="482" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">What you learn in review becomes the next brief.</text>
+
+  <!-- callout -->
+  <rect x="48" y="512" width="1104" height="80" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="92" cy="552" r="18" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="1.5"/>
+  <polyline points="84,552 90,559 101,545" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="132" y="546" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">You approve every step.</text>
+  <text x="132" y="574" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The AI stops between steps and waits. Nothing is published, sent or committed without you.</text>
+</svg>

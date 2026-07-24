@@ -47,6 +47,8 @@ You may never promote something to `[SOURCE OF TRUTH]`. You may only propose it:
 
 When you write a fact into the stack, note its origin: `(src: _inbox/pitch-deck-v4.pdf p7)`, `(src: call transcript 2026-03-10)`, `(src: founder, 2026-07-24)`. This is what makes the base auditable later, when the number is being questioned in a room you are not in.
 
+Anything under `_inbox/websites/` was fetched from a live site and carries its URL and fetch date in its front matter — cite both: `(src: https://example.com/pricing, fetched 2026-07-24)`. A website is a company's public claim about itself, **including your own**, so it is `[NEEDS VERIFICATION]` and never `[SOURCE OF TRUTH]`. When it contradicts something already in the stack, that is a `[CONFLICT]` to surface, not a discrepancy to quietly resolve — a founder's own site is out of date more often than not.
+
 ### 4. Update front matter when you edit a file
 
 Change `updated:` to today. Re-check whether `status:` and `confidence:` still hold. Rewrite `summary:` if the file's substance changed — the index is built from those summary lines and a stale summary breaks routing for every future request.
