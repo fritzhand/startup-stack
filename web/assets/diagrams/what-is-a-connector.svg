@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1278" width="100%" height="1278" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="connector-title connector-desc">
+  <title id="connector-title">What a connector is: one standard between an AI tool and the systems a founder already runs</title>
+  <desc id="connector-desc">Two panels stand side by side, showing the same five systems reached in two different ways. The narrow left panel is headed "Without a standard" and subtitled "Custom wiring, tool by tool". A box marked "The AI" sits at the top of it, and five separate lines leave the bottom of that box and run down to five small blank blocks in a row. Those lines are drawn in the warning colour and they cross one another repeatedly, because each one goes to a different block in no particular order: a tangle rather than a pattern. A note under the blocks says these are the same five systems, and the caption reads that there are five tools and five different ways in, and each one has to be built and kept working. The wide right panel is headed "With one standard" and subtitled "One adapter shape, and every system plugs into it". On the left of that panel sits a card marked "The AI", pointed at your folder and now at these systems too. A single arrow runs from it into a tall block in the middle marked "One standard", which explains that it is the same shape for every system, with no custom wiring per tool. That block is the Model Context Protocol, described without leaning on the acronym. From one point on the right edge of the block, five clean lines fan out, none of them crossing, to five labelled cards. Each card carries a small drawn mark and one line saying what it holds. Mail holds threads and replies. A document drive holds decks and contracts. A calendar holds who you met and when. A task tracker holds open items and owners. A repository holds your files and their history. None of the five carries a company name or a logo, because the shape is the same whichever product you happen to use. Below the two panels, a strip of three numbered cards sets out the habits that keep this safe, because this is where the risk sits. One, read-only first: grant reading before you grant writing or sending, since a misfired email is a bad first week. Two, scoped: connect the one mailbox or folder the task needs, not the whole account. Three, with permission: yours and your company's, with personal data and anything under a confidentiality obligation staying out. The closing line says that the AI reaches exactly as far as you let it and no further, and that a connector is an offer of access in which you choose which one, and how much of it.</desc>
+
+  <rect x="0" y="0" width="1200" height="1278" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="60" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">What a connector is</text>
+  <text x="48" y="94" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The Model Context Protocol, in plain terms: one standard for plugging your own systems into an AI tool.</text>
+  <text x="48" y="120" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">In practice it is something you switch on, authorise once, then refer to in plain English.</text>
+
+  <text x="48" y="164" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Two ways in</text>
+  <text x="48" y="188" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">The same five systems, wired by hand or reached through one adapter.</text>
+  <line x1="48" y1="204" x2="1152" y2="204" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <!-- ============ left panel: without a standard ============ -->
+  <rect x="48" y="224" width="300" height="538" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+
+  <text x="68" y="266" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Without a standard</text>
+  <text x="68" y="290" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Custom wiring, tool by tool.</text>
+
+  <rect x="118" y="340" width="160" height="64" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <text x="198" y="379" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">The AI</text>
+
+  <!-- the tangle: five separate wires, each built for one tool, crossing -->
+  <line x1="138" y1="404" x2="306" y2="542" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <line x1="168" y1="404" x2="198" y2="542" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <line x1="198" y1="404" x2="90" y2="542" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <line x1="228" y1="404" x2="252" y2="542" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <line x1="258" y1="404" x2="144" y2="542" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+
+  <rect x="70" y="542" width="40" height="36" rx="8" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="124" y="542" width="40" height="36" rx="8" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="178" y="542" width="40" height="36" rx="8" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="232" y="542" width="40" height="36" rx="8" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="286" y="542" width="40" height="36" rx="8" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+
+  <text x="198" y="606" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">The same five systems</text>
+
+  <text x="68" y="654" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Five tools, five different<tspan x="68" dy="24">ways in. Each one has to be</tspan><tspan x="68" dy="24">built and kept working.</tspan></text>
+
+  <!-- ============ right panel: with one standard ============ -->
+  <rect x="372" y="224" width="780" height="538" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+
+  <text x="396" y="266" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">With one standard</text>
+  <text x="396" y="290" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">One adapter shape, and every system plugs into it.</text>
+
+  <!-- the AI -->
+  <rect x="396" y="446" width="160" height="160" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="412" y="488" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The AI</text>
+  <text x="412" y="518" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Pointed at<tspan x="412" dy="22">your folder,</tspan><tspan x="412" dy="22">and now at</tspan><tspan x="412" dy="22">these too.</tspan></text>
+
+  <line x1="556" y1="526" x2="588" y2="526" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 600,526 L 588,520 L 588,532 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- the adapter: one shape, and it is the same shape every time -->
+  <rect x="600" y="431" width="204" height="190" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-secondary, #0C7A63)" stroke-width="2"/>
+  <text x="618" y="475" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">One standard</text>
+  <text x="618" y="507" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">The same shape<tspan x="618" dy="22">for every system.</tspan><tspan x="618" dy="22">No custom wiring</tspan><tspan x="618" dy="22">per tool.</tspan></text>
+
+  <!-- one origin, five lines, no crossings -->
+  <line x1="804" y1="526" x2="850" y2="350" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <line x1="804" y1="526" x2="850" y2="438" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <line x1="804" y1="526" x2="850" y2="526" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <line x1="804" y1="526" x2="850" y2="614" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <line x1="804" y1="526" x2="850" y2="702" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <circle cx="804" cy="526" r="6" fill="var(--dg-secondary, #0C7A63)"/>
+  <circle cx="850" cy="350" r="4" fill="var(--dg-secondary, #0C7A63)"/>
+  <circle cx="850" cy="438" r="4" fill="var(--dg-secondary, #0C7A63)"/>
+  <circle cx="850" cy="526" r="4" fill="var(--dg-secondary, #0C7A63)"/>
+  <circle cx="850" cy="614" r="4" fill="var(--dg-secondary, #0C7A63)"/>
+  <circle cx="850" cy="702" r="4" fill="var(--dg-secondary, #0C7A63)"/>
+
+  <!-- system: mail -->
+  <rect x="850" y="314" width="278" height="72" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="866" y="338" width="34" height="24" rx="4" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <polyline points="866,340 883,352 900,340" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="912" y="346" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">Mail</text>
+  <text x="912" y="370" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Threads and replies.</text>
+
+  <!-- system: document drive -->
+  <rect x="850" y="402" width="278" height="72" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <path d="M 868 424 h 18 l 8 8 v 20 h -26 z" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M 886 424 v 8 h 8" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="912" y="434" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">Document drive</text>
+  <text x="912" y="458" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Decks and contracts.</text>
+
+  <!-- system: calendar -->
+  <rect x="850" y="490" width="278" height="72" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="866" y="512" width="34" height="28" rx="4" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <line x1="866" y1="522" x2="900" y2="522" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <line x1="875" y1="506" x2="875" y2="514" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="891" y1="506" x2="891" y2="514" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="912" y="522" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">Calendar</text>
+  <text x="912" y="546" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Who you met, and when.</text>
+
+  <!-- system: task tracker -->
+  <rect x="850" y="578" width="278" height="72" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="866" y="595" width="16" height="16" rx="4" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <polyline points="869,603 873,607 880,598" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="888" y1="603" x2="904" y2="603" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="866" y="617" width="16" height="16" rx="4" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <line x1="888" y1="625" x2="904" y2="625" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="912" y="610" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">Task tracker</text>
+  <text x="912" y="634" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Open items and owners.</text>
+
+  <!-- system: repository -->
+  <rect x="850" y="666" width="278" height="72" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <line x1="874" y1="690" x2="874" y2="714" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <path d="M 874 702 h 12 v 12" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5" stroke-linejoin="round"/>
+  <circle cx="874" cy="690" r="5" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <circle cx="874" cy="714" r="5" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <circle cx="886" cy="714" r="5" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="912" y="698" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">Repository</text>
+  <text x="912" y="722" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Your files and history.</text>
+
+  <!-- ============ the three habits ============ -->
+  <line x1="48" y1="800" x2="1152" y2="800" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <text x="48" y="840" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Three habits</text>
+  <text x="48" y="864" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">This is where the risk is. They are not optional.</text>
+
+  <rect x="48" y="886" width="352" height="232" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="92" cy="928" r="16" fill="none" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <text x="92" y="933" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-secondary, #0C7A63)">1</text>
+  <text x="68" y="982" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Read-only first</text>
+  <text x="68" y="1012" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Grant reading before you grant<tspan x="68" dy="26">writing or sending. A misfired</tspan><tspan x="68" dy="26">email is a bad first week.</tspan></text>
+
+  <rect x="424" y="886" width="352" height="232" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="468" cy="928" r="16" fill="none" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <text x="468" y="933" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-secondary, #0C7A63)">2</text>
+  <text x="444" y="982" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Scoped</text>
+  <text x="444" y="1012" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Connect the one mailbox or<tspan x="444" dy="26">folder the task needs, not the</tspan><tspan x="444" dy="26">whole account.</tspan></text>
+
+  <rect x="800" y="886" width="352" height="232" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="844" cy="928" r="16" fill="none" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <text x="844" y="933" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-secondary, #0C7A63)">3</text>
+  <text x="820" y="982" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">With permission</text>
+  <text x="820" y="1012" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Yours, and your company's.<tspan x="820" dy="26">Personal data, and anything</tspan><tspan x="820" dy="26">under a confidentiality</tspan><tspan x="820" dy="26">obligation, stays out.</tspan></text>
+
+  <!-- ============ foot ============ -->
+  <rect x="48" y="1150" width="1104" height="88" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="600" y="1186" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">The AI reaches exactly as far as you let it, and no further.</text>
+  <text x="600" y="1212" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A connector is an offer of access. You choose which one, and how much of it.</text>
+</svg>

@@ -331,9 +331,16 @@ img, svg, video { max-width: 100%; height: auto; }
 }
 .prose pre code { background: none; padding: 0; font-size: inherit; }
 
+/* A copyable block is wrapped so the button has something to sit against that
+   does not scroll: the <pre> itself scrolls sideways, and an absolutely
+   positioned child of it slides off with the code. */
+.codeblock { position: relative; }
+.codeblock > pre { padding-top: 40px; }
+
 /* copy-to-clipboard button, injected by the script into every pre[data-copy] */
 .copy-btn {
   position: absolute; top: 8px; right: 8px; z-index: 1;
+  user-select: none; -webkit-user-select: none;
   display: inline-flex; align-items: center; gap: 6px;
   padding: 4px 10px; border-radius: var(--radius-sm);
   font-size: 0.72rem; font-weight: 600; line-height: 1.5;
@@ -345,7 +352,7 @@ img, svg, video { max-width: 100%; height: auto; }
 .copy-btn:hover { color: var(--text); border-color: var(--border-strong); }
 .copy-btn.is-done { color: var(--success); border-color: var(--success); opacity: 1; }
 .copy-btn.is-failed { color: var(--danger); border-color: var(--danger); opacity: 1; }
-pre:hover > .copy-btn, .copy-btn:focus-visible { opacity: 1; }
+pre:hover > .copy-btn, .codeblock:hover > .copy-btn, .copy-btn:focus-visible { opacity: 1; }
 @media (hover: none) { .copy-btn { opacity: 1; } }
 
 /* ---------- fact tags ----------
@@ -373,8 +380,11 @@ pre:hover > .copy-btn, .copy-btn:focus-visible { opacity: 1; }
   overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
 .figure > svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
-/* a diagram too detailed to shrink: let it keep its size and scroll instead */
-.figure.figure-wide > svg { max-width: none; min-width: 620px; }
+/* A diagram too detailed to shrink: it scrolls rather than scaling down.
+   The floor is set from legibility, not taste — the smallest label in these
+   drawings is 15px in a 1200-wide viewBox, so at 880px it still paints at
+   about 11px. 620px would have rendered it at under 8px. */
+.figure.figure-wide > svg { max-width: none; min-width: 880px; }
 .figure-cap {
   margin-top: 12px; font-size: 0.8rem; line-height: 1.5;
   color: var(--text-faint); text-align: center;

@@ -68,8 +68,13 @@ function frontmatter(src) {
     const kv = line.match(/^([A-Za-z_][\w-]*):\s?(.*)$/);
     if (kv) {
       key = kv[1];
-      let v = kv[2].trim().replace(/^"(.*)"$/, "$1");
-      if (/^\[.*\]$/.test(v)) {
+      const raw = kv[2].trim();
+      /* A quoted value is a string, always. Stripping the quotes first turned
+         owner: "[TBD]" into the one-item list ["TBD"], which is a different
+         type and silently broke every check that read it as text. */
+      const quoted = /^".*"$/.test(raw) || /^'.*'$/.test(raw);
+      const v = quoted ? raw.slice(1, -1) : raw;
+      if (!quoted && /^\[.*\]$/.test(v)) {
         fm[key] = v.slice(1, -1).split(",").map((x) => x.trim()).filter(Boolean);
         key = null;
       } else fm[key] = v;
@@ -267,7 +272,10 @@ function mdToHtml(src, ctx) {
       /* the first block on a prompt page is the prompt itself — make it copyable */
       const copyable = ctx.kind === "Prompt" && firstFence;
       firstFence = false;
-      out.push(`<pre${copyable ? ' data-copy="this prompt"' : ""}${lang ? ` class="lang-${esc(lang)}"` : ""}><code>${esc(body.join("\n"))}</code></pre>`);
+      const pre = `<pre${copyable ? ' data-copy="this prompt"' : ""}${lang ? ` class="lang-${esc(lang)}"` : ""}><code>${esc(body.join("\n"))}</code></pre>`;
+      /* the copy button is positioned against this wrapper, not against the
+         <pre> — the <pre> scrolls sideways, and the button must not go with it */
+      out.push(copyable ? `<div class="codeblock">${pre}</div>` : pre);
       continue;
     }
 
@@ -438,7 +446,7 @@ ${toc.map((t) => `<a href="#${esc(t.id)}" class="l${t.level}">${esc(t.text)}</a>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${root}assets/tokens.css">
 <link rel="stylesheet" href="${root}assets/site.css">
-<script>try{var t=localStorage.getItem("ss-theme");if(t)document.documentElement.setAttribute("data-theme",t);else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var d=document.documentElement,t=localStorage.getItem("ss-theme");if(t)d.setAttribute("data-theme",t);else if(matchMedia("(prefers-color-scheme: dark)").matches)d.setAttribute("data-theme","dark");if(localStorage.getItem("ss-rail-collapsed")==="1")d.classList.add("rail-collapsed");}catch(e){}</script>
 <script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org", "@type": "WebSite",
     name: SITE_NAME, url: SITE_BASE, description: TAGLINE,
@@ -682,6 +690,33 @@ ${grid}
   }));
 }
 
+/* ============================================================
+   THE CARVE RULE, IN CODE
+   AGENTS.md rule 5: pull from `public` freely, from `internal` only on an
+   explicit instruction, and never from `restricted`. A `summary:` line is
+   exactly where a founder is told to put the routing facts — the margin, the
+   runway, the customer name — so publishing every one of them onto a public
+   web page would break that rule the moment anyone forks this repo and keeps
+   web/. The README says to delete web/ when you fork; this does not depend on
+   their having read it.
+
+   A summary is published only when it is safe on its own terms: the file is
+   declared public, or it is still the shipped template — status `tbd` with no
+   owner named — in which case the line documents the template rather than
+   describing anybody's company.
+   ============================================================ */
+const withheld = new Set();
+const isUntouchedTemplate = (fm) => {
+  const owner = Array.isArray(fm.owner) ? fm.owner.join(",") : String(fm.owner || "");
+  return (fm.status || "").trim() === "tbd" && /^\s*\[?TBD\]?\s*$/.test(owner.trim());
+};
+function publishableSummary(rel, fm) {
+  if ((fm.sensitivity || "").trim() === "public") return fm.summary || "";
+  if (isUntouchedTemplate(fm)) return fm.summary || "";
+  withheld.add(`${rel} (${fm.sensitivity || "no sensitivity"})`);
+  return "";
+}
+
 /* the ten sections — the router, plus what each template declares about itself */
 {
   const page = PAGES.find((p) => p.url === "stack.html");
@@ -693,11 +728,12 @@ ${grid}
     const rel = `stack/${dir}/${files[0]}`;
     const [fm] = frontmatter(read(rel));
     if (!fm.summary) fail(`${rel} has no summary in its front matter`);
+    const summary = publishableSummary(rel, fm);
     return `<tr>
       <td class="cell-tight"><a href="${BLOB}${rel}" target="_blank" rel="noopener"><code>${esc(dir)}</code></a></td>
-      <td>${esc(fm.title || "")}</td>
+      <td id="${esc(slugify(dir))}">${esc(fm.title || "")}</td>
       <td class="cell-tight"><span class="badge b-plain">${esc(fm.sensitivity || "—")}</span></td>
-      <td class="cell-wide">${esc(fm.summary || "")}</td>
+      <td class="cell-wide">${summary ? esc(summary) : `<span class="muted">Not published — this section is marked <code>${esc(fm.sensitivity || "internal")}</code> and has been filled in.</span>`}</td>
     </tr>`;
   }).join("\n");
   const table = `<div class="table-wrap"><table class="data">
@@ -804,8 +840,14 @@ const searchIndex = PAGES.map((p) => ({
 for (const dir of stackSections) {
   const files = readdirSync(join(ROOT, "stack", dir)).filter((f) => f.endsWith(".md"));
   if (!files.length) continue;
-  const [fm] = frontmatter(read(`stack/${dir}/${files[0]}`));
-  searchIndex.push({ t: fm.title || dir, s: dir, d: truncate(fm.summary || "", 120), k: "section", u: "stack.html" });
+  const rel = `stack/${dir}/${files[0]}`;
+  const [fm] = frontmatter(read(rel));
+  searchIndex.push({
+    t: fm.title || dir, s: dir,
+    d: truncate(publishableSummary(rel, fm), 120),   /* same carve rule as the table */
+    k: "section",
+    u: `stack.html#${slugify(dir)}`,                 /* land on the row, not the page top */
+  });
 }
 
 cpSync(ASSETS, join(OUT, "assets"), { recursive: true, filter: (src) => !src.includes("diagrams") });
@@ -825,6 +867,11 @@ if (errors.length) {
   for (const e of errors) console.error(`  · ${e}`);
   console.error("");
   process.exit(1);
+}
+if (withheld.size) {
+  console.log(`\nWithheld ${withheld.size} summary line${withheld.size === 1 ? "" : "s"} from the site — not public, and filled in:`);
+  for (const w of withheld) console.log(`  · ${w}`);
+  console.log("  The section still appears; only the summary is held back. See AGENTS.md rule 5.\n");
 }
 console.log(`Built ${written.length} pages into _site/`);
 console.log(`  ${PAGES.filter((p) => p.kind === "Prompt").length} prompts · ${PAGES.filter((p) => p.kind === "Worksheet").length} worksheets · ${searchIndex.length} search entries`);

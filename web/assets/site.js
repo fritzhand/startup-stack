@@ -183,7 +183,9 @@
       btn.className = "copy-btn";
       btn.textContent = "Copy";
       btn.setAttribute("aria-label", pre.dataset.copy ? `Copy ${pre.dataset.copy}` : "Copy to clipboard");
-      pre.appendChild(btn);
+      /* prefer the non-scrolling wrapper; fall back to the pre itself */
+      const host = pre.parentElement && pre.parentElement.classList.contains("codeblock") ? pre.parentElement : pre;
+      host.appendChild(btn);
 
       let timer = null;
       btn.addEventListener("click", async () => {
