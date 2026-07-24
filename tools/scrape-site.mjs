@@ -242,7 +242,11 @@ function attrs(text) {
 }
 
 const dropBlocks = (s, tags) => tags.reduce((acc, t) => acc.replace(new RegExp(`<${t}\\b[^>]*>[\\s\\S]*?</${t}>`, "gi"), " "), s);
-const stripTags = (s) => clean(decode(String(s).replace(/<[^>]*>/g, " ")));
+/* A tag must start with a letter and its '>' must sit outside quotes — a bare
+   "<" in prose or code, or a ">" inside an attribute value, is not a tag end.
+   The naive /<[^>]*>/ ate half a sentence either way. */
+const TAG_RE = /<\/?[a-zA-Z][^>"']*(?:"[^"]*"[^>"']*|'[^']*'[^>"']*)*>/g;
+const stripTags = (s) => clean(decode(String(s).replace(TAG_RE, " ")));
 const stripNoise = (html) => dropBlocks(html.replace(/<!--[\s\S]*?-->/g, " "), ["script", "style", "noscript", "svg", "template", "iframe", "canvas"]);
 
 /* <main> is the author telling us where the content is. Trust it, then
@@ -302,12 +306,20 @@ function htmlToMarkdown(html, base) {
 
     if (!close && (tag === "pre" || tag === "table")) {           /* taken whole, not walked */
       const closer = tag === "pre" ? "</pre>" : "</table>";
-      const at = lower(html).indexOf(closer, re.lastIndex);
-      const end = at < 0 ? html.length : at;
+      /* the matching close, not the first one — tables nest */
+      const low = lower(html);
+      let depth = 1, scan = re.lastIndex, end = html.length;
+      while (depth > 0) {
+        const nc = low.indexOf(closer, scan);
+        if (nc < 0) break;
+        const no = low.indexOf(`<${tag}`, scan);
+        if (no >= 0 && no < nc) { depth++; scan = no + tag.length + 1; }
+        else { depth--; scan = nc + closer.length; if (depth === 0) end = nc; }
+      }
       const raw = html.slice(re.lastIndex, end);
       flush();
       if (tag === "table") for (const l of tableToLines(raw)) push(l);
-      else { push(""); push("```"); for (const l of decode(raw.replace(/<[^>]*>/g, "")).split("\n")) push(l.replace(/\s+$/, "")); push("```"); push(""); }
+      else { push(""); push("```"); for (const l of decode(raw.replace(TAG_RE, "")).split("\n")) push(l.replace(/\s+$/, "")); push("```"); push(""); }
       re.lastIndex = Math.min(end + closer.length, html.length);
       last = re.lastIndex;
       continue;
@@ -396,7 +408,7 @@ function flattenLd(node, acc = []) {
 
 /* Everything gathered here is mechanical: it is what the markup says, with no
    interpretation added. Reading it is the founder's job. */
-function pageSignals(rawHtml, contentHtml, markdown, pageUrl) {
+function pageSignals(rawHtml, contentHtml, pageUrl) {
   const s = { url: pageUrl, meta: readMeta(rawHtml), jsonld: readJsonLd(rawHtml),
     emails: [], phones: [], addresses: [], social: [], prices: [] };
   const canonical = rawHtml.match(/<link\b[^>]*rel=["']?canonical["']?[^>]*>/i);
@@ -404,14 +416,20 @@ function pageSignals(rawHtml, contentHtml, markdown, pageUrl) {
   const htmlTag = rawHtml.match(/<html\b([^>]*)>/i);
   s.lang = htmlTag ? clean(attrs(htmlTag[1]).lang || "") : "";
 
-  for (const m of rawHtml.matchAll(/<a\b([^>]*)>/gi)) {
+  for (const m of rawHtml.matchAll(/<a\b((?:"[^"]*"|'[^']*'|[^'">])*)>/gi)) {
     const h = (attrs(m[1]).href || "").trim();
     if (/^mailto:/i.test(h)) s.emails.push(clean(h.slice(7).split("?")[0]));
     else if (/^tel:/i.test(h)) s.phones.push(clean(h.slice(4)));
     else if (h && SOCIAL.test(h)) { const u = normalise(h, pageUrl); if (u) s.social.push(u); }
   }
 
-  const text = markdown.replace(/!\[[^\]]*\]\([^)]*\)/g, " ").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").replace(/^#+\s*/gm, "");
+  /* The whole document, headers and footers included — the footer is where
+     the registered address and the switchboard number live. Block boundaries
+     become sentence breaks so the quoted context stays readable. */
+  const text = clean(decode(String(contentHtml)
+    .replace(/<(?:br|\/p|\/div|\/li|\/td|\/th|\/h[1-6]|\/section|\/footer|\/header|\/address)\b[^>]*>/gi, " . ")
+    .replace(TAG_RE, " ")))
+    .replace(/(\s\.\s*)+/g, ". ");
   for (const m of text.matchAll(EMAIL)) if (!ASSET_EXT.test(m[0])) s.emails.push(m[0]);
   /* Loose digit runs also match dates and order numbers, so a bare number only
      counts as a phone when the page itself says that is what it is. */
@@ -567,7 +585,7 @@ async function main() {
     say("        Delete the folder first if you want only what is on the site today.");
   }
 
-  const queue = [{ url: start, depth: 0 }], seen = new Set([start]), taken = new Set();
+  const queue = [{ url: start, depth: 0 }], seen = new Set([start]), taken = new Set(), written = new Set();
   const pages = [], signals = [], skipped = new Map(), failed = new Map();
   const brand = { colours: new Map(), fonts: new Map(), icons: new Map(), logos: new Map(), sheets: new Set(), read: [] };
   const noteSkip = (url, why) => { if (!skipped.has(url) && !seen.has(url)) skipped.set(url, why); };
@@ -586,36 +604,44 @@ async function main() {
     /* robots was checked against the URL we asked for; a redirect can land
        somewhere it forbids, so it is checked again against where we arrived */
     if (landed !== url && !allowed(landed)) { skipped.set(url, `redirected to ${res.finalUrl}, which robots.txt disallows`); continue; }
+    /* a legacy URL that redirects to a page also linked directly must not
+       file the same content twice or spend two of --max-pages on it */
+    if (written.has(landed)) { skipped.set(url, `redirects to ${res.finalUrl || landed}, already fetched`); continue; }
+    written.add(landed);
     /* Relative links resolve against the address the server actually served,
        trailing slash and all — normalise() strips that slash, and resolving
        "post.html" against "/blog" instead of "/blog/" climbs a level. */
-    const resolveBase = res.finalUrl || url;
+    let resolveBase = res.finalUrl || url;
     if (landed !== url) seen.add(landed);
 
     const raw = res.body, cleaned = stripNoise(raw), content = pickContent(cleaned);
+    /* a <base href> re-points every relative link on the page */
+    const baseTag = raw.match(/<base\b((?:"[^"]*"|'[^']*'|[^'">])*)>/i);
+    const baseHref = baseTag ? (attrs(baseTag[1]).href || "").trim() : "";
+    if (baseHref) { try { resolveBase = new URL(baseHref, resolveBase).toString(); } catch { /* bad base: ignore it */ } }
     const markdown = htmlToMarkdown(content, resolveBase);
     const titleTag = raw.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i);
     const h1 = content.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i);
     const title = (titleTag && stripTags(titleTag[1])) || (h1 && stripTags(h1[1])) || new URL(url).pathname;
     const description = clean((readMeta(raw).find(([k]) => k === "description") || [])[1] || "");
     const words = markdown.split(/\s+/).filter(Boolean).length;
-    const name = slugFor(url, taken);
+    const name = slugFor(landed, taken);
 
-    signals.push(pageSignals(raw, content, markdown, url));
+    signals.push(pageSignals(raw, cleaned, landed));
     pageBrand(raw, url, brand);
     const head = frontMatter({
-      doc: `web-${name}`, section: "_inbox/websites", title, description, source_url: url, source_host: host,
+      doc: `web-${name}`, section: "_inbox/websites", title, description, source_url: landed, source_host: host,
       fetched: TODAY, updated: TODAY, status: "needs-verification", confidence: "low", sensitivity: "public",
       crawl_depth: String(depth), word_count: String(words),
       summary: `Page scraped from ${url} on ${TODAY}. ${description || `${words} words of published copy.`}`,
     });
-    writeFileSync(safePath(outDir, name), `${head}\n\n# ${title}\n\n> Fetched from ${url} on ${TODAY} by tools/scrape-site.mjs.\n> This is what the site published, not confirmed fact. [NEEDS VERIFICATION]\n\n${markdown}\n`, "utf8");
-    pages.push({ url, name, title, words, depth });
+    writeFileSync(safePath(outDir, name), `${head}\n\n# ${title}\n\n> Fetched from ${landed} on ${TODAY} by tools/scrape-site.mjs.\n> This is what the site published, not confirmed fact. [NEEDS VERIFICATION]\n\n${markdown}\n`, "utf8");
+    pages.push({ url: landed, name, title, words, depth });
     say(`  [${String(pages.length).padStart(3)}/${opts.maxPages}] ${res.status}  ${new URL(url).pathname}  ${words} words  -> ${name}.md`);
 
     /* Links come from the whole document, not just the content block — the
        navigation is usually where the rest of the site is. */
-    for (const m of cleaned.matchAll(/<a\b([^>]*)>/gi)) {
+    for (const m of cleaned.matchAll(/<a\b((?:"[^"]*"|'[^']*'|[^'">])*)>/gi)) {
       const href = (attrs(m[1]).href || "").trim();
       if (!href) continue;
       if (/^(mailto|tel|javascript|sms|whatsapp):/i.test(href)) { noteSkip(href, "not a web page (mailto:, tel: or similar)"); continue; }
