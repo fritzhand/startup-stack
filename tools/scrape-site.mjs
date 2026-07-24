@@ -26,7 +26,7 @@
    user agent this tool presents, requests are serial with a delay between
    them, and a Crawl-delay longer than --delay wins. No flag turns that off.
    ============================================================ */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import { dirname, join, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { setTimeout as sleep } from "node:timers/promises";
@@ -102,10 +102,12 @@ function normalise(href, base) {
   u.hash = "";
   for (const k of [...u.searchParams.keys()]) if (TRACKING.test(k)) u.searchParams.delete(k);
   u.hostname = lower(u.hostname);
-  if (u.pathname.length > 1) u.pathname = u.pathname.replace(/\/+$/, "");
   /* /index.html and / are the same page on almost every server, and a site
-     that links to both would otherwise be fetched — and filed — twice */
+     that links to both would otherwise be fetched — and filed — twice. The
+     index rewrite has to happen BEFORE the trailing slash is stripped, or
+     /a/ and /a/index.html normalise to two different URLs. */
   u.pathname = u.pathname.replace(/\/(index|default)\.(html?|php|aspx?)$/i, "/");
+  if (u.pathname.length > 1) u.pathname = u.pathname.replace(/\/+$/, "");
   if (u.pathname === "") u.pathname = "/";
   if ((u.protocol === "http:" && u.port === "80") || (u.protocol === "https:" && u.port === "443")) u.port = "";
   return u.toString();
@@ -153,12 +155,15 @@ function parseRobots(txt, userAgent) {
       else if (field === "crawl-delay" && Number(value) > 0) cur.delay = Number(value);
     }
   }
-  let best = null, bestLen = -1, star = null;
+  /* Records sharing a user-agent are one group, so every "*" block has to be
+     merged — keeping only the first would drop the rules in the others. */
+  let best = null, bestLen = -1;
+  const star = { rules: [], delay: null };
   for (const g of groups) for (const a of g.agents) {
-    if (a === "*") star = star || g;
+    if (a === "*") { star.rules.push(...g.rules); star.delay = Math.max(star.delay || 0, g.delay || 0) || null; }
     else if (a && ua.includes(a) && a.length > bestLen) { best = g; bestLen = a.length; }
   }
-  const g = best || star || { rules: [], delay: null };
+  const g = best || star;
   return {
     crawlDelayMs: g.delay ? Math.round(g.delay * 1000) : 0,
     allows(pathAndQuery) {
@@ -226,7 +231,7 @@ const decode = (s) => String(s ?? "").replace(/&(#x?[0-9a-f]+|[a-z][a-z0-9]*);/g
     const n = /^#x/i.test(e) ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
     return Number.isFinite(n) && n > 0 && n <= 0x10ffff ? String.fromCodePoint(n) : m;
   }
-  return lower(e) in ENTITIES ? ENTITIES[lower(e)] : m;
+  return Object.prototype.hasOwnProperty.call(ENTITIES, lower(e)) ? ENTITIES[lower(e)] : m;
 });
 
 function attrs(text) {
@@ -307,7 +312,10 @@ function htmlToMarkdown(html, base) {
       last = re.lastIndex;
       continue;
     }
+    /* heading state is cleared by any block that follows, not only by the
+       closing tag — one unclosed <h2> would otherwise swallow the whole page */
     if (/^h[1-6]$/.test(tag)) { flush(); heading = close ? 0 : Number(tag[1]); }
+    else if (!close && /^(p|div|section|article|ul|ol|li|table|pre|blockquote|main|footer|header)$/.test(tag) && heading) { flush(); heading = 0; }
     else if (tag === "ul" || tag === "ol") {
       flush();
       if (close) { lists.pop(); if (!lists.length) push(""); }
@@ -475,7 +483,9 @@ const hash = (s) => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0
 
 function slugFor(url, taken) {
   const u = new URL(url);
-  const path = decodeURIComponent(u.pathname).replace(/^\/+|\/+$/g, "");
+  let decoded = u.pathname;
+  try { decoded = decodeURIComponent(u.pathname); } catch { /* malformed escape: use it raw */ }
+  const path = decoded.replace(/^\/+|\/+$/g, "");
   let base = lower(path).replace(/\.(html?|php|aspx?)$/i, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
   if (u.search) base += `-${hash(u.search)}`;
   if (!base) base = "index-home";
@@ -544,13 +554,25 @@ async function main() {
   const first = await get(start, opts, "text/html,application/xhtml+xml", MAX_HTML_BYTES);
   if (first.error) die(`could not fetch ${start} — ${first.error}`);
   if (!HTML_TYPE.test(first.type)) die(`${start} is ${first.type || "of unknown type"}, not HTML`);
+  /* Nothing is deleted here — the folder may hold pages saved by hand, and a
+     tool that quietly removes a founder's evidence is worse than one that
+     leaves a stale file behind. Say what is there and let them decide. */
+  const priorPages = existsSync(outDir)
+    ? readdirSync(outDir).filter((f) => f.endsWith(".md") && f !== "index.md")
+    : [];
   mkdirSync(outDir, { recursive: true });
+  if (priorPages.length) {
+    say(`  note: ${priorPages.length} markdown file${priorPages.length === 1 ? "" : "s"} already in this folder.`);
+    say("        Files this crawl fetches are overwritten; the rest stay as they are.");
+    say("        Delete the folder first if you want only what is on the site today.");
+  }
 
   const queue = [{ url: start, depth: 0 }], seen = new Set([start]), taken = new Set();
   const pages = [], signals = [], skipped = new Map(), failed = new Map();
   const brand = { colours: new Map(), fonts: new Map(), icons: new Map(), logos: new Map(), sheets: new Set(), read: [] };
   const noteSkip = (url, why) => { if (!skipped.has(url) && !seen.has(url)) skipped.set(url, why); };
-  let depthCapped = 0, prefetched = first;
+  const depthCapped = new Set();
+  let prefetched = first;
 
   while (queue.length && pages.length < opts.maxPages) {
     const { url, depth } = queue.shift();
@@ -561,9 +583,17 @@ async function main() {
     if (!HTML_TYPE.test(res.type)) { skipped.set(url, `not HTML (${res.type || "no content-type"})`); continue; }
     const landed = normalise(res.finalUrl, url) || url;
     if (!inScope(landed, start, opts)) { skipped.set(url, `redirected off this site to ${res.finalUrl}`); continue; }
+    /* robots was checked against the URL we asked for; a redirect can land
+       somewhere it forbids, so it is checked again against where we arrived */
+    if (landed !== url && !allowed(landed)) { skipped.set(url, `redirected to ${res.finalUrl}, which robots.txt disallows`); continue; }
+    /* Relative links resolve against the address the server actually served,
+       trailing slash and all — normalise() strips that slash, and resolving
+       "post.html" against "/blog" instead of "/blog/" climbs a level. */
+    const resolveBase = res.finalUrl || url;
+    if (landed !== url) seen.add(landed);
 
     const raw = res.body, cleaned = stripNoise(raw), content = pickContent(cleaned);
-    const markdown = htmlToMarkdown(content, landed);
+    const markdown = htmlToMarkdown(content, resolveBase);
     const titleTag = raw.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i);
     const h1 = content.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i);
     const title = (titleTag && stripTags(titleTag[1])) || (h1 && stripTags(h1[1])) || new URL(url).pathname;
@@ -589,14 +619,14 @@ async function main() {
       const href = (attrs(m[1]).href || "").trim();
       if (!href) continue;
       if (/^(mailto|tel|javascript|sms|whatsapp):/i.test(href)) { noteSkip(href, "not a web page (mailto:, tel: or similar)"); continue; }
-      const next = normalise(href, landed);
+      const next = normalise(href, resolveBase);
       if (!next || seen.has(next)) continue;
       const ext = new URL(next).pathname.match(ASSET_EXT);
       if (ext) { noteSkip(next, `asset file (${ext[0]}), not a page`); continue; }
       const offPath = opts.samePathOnly && new URL(next).hostname === new URL(start).hostname;
       if (!inScope(next, start, opts)) { noteSkip(next, offPath ? "outside the start URL's path (--same-path-only)" : "off this site"); continue; }
       if (!allowed(next)) { noteSkip(next, "disallowed by robots.txt"); continue; }
-      if (depth + 1 > opts.depth) { noteSkip(next, `deeper than --depth ${opts.depth}`); depthCapped += 1; continue; }
+      if (depth + 1 > opts.depth) { noteSkip(next, `deeper than --depth ${opts.depth}`); depthCapped.add(next); continue; }
       seen.add(next);
       queue.push({ url: next, depth: depth + 1 });
     }
@@ -641,9 +671,9 @@ function writeIndex(outDir, r) {
     `Every page fetched from ${r.host}, with what was skipped or failed and why.`,
     `Crawl log for ${r.host}: ${r.pages.length} pages fetched, ${r.skipped.size} skipped, ${r.failed.size} failed on ${TODAY}.`),
     "", `# Website scrape — ${r.host}`, ""];
-  if (r.capped || r.depthCapped) lines.push("## This crawl is incomplete", "");
+  if (r.capped || r.depthCapped.size) lines.push("## This crawl is incomplete", "");
   if (r.capped) lines.push(`The page limit stopped it. \`--max-pages\` was ${r.opts.maxPages} and the queue still had pages in it, so this site has more pages than this file lists. Every URL that was never fetched is in the skipped table below, marked as such. Re-run with a higher \`--max-pages\` if the rest matters.`, "");
-  if (r.depthCapped) lines.push(`${r.depthCapped} link${r.depthCapped === 1 ? " was" : "s were"} not followed because \`--depth\` was ${r.opts.depth}. Those URLs are in the skipped table too.`, "");
+  if (r.depthCapped.size) lines.push(`${r.depthCapped.size} link${r.depthCapped.size === 1 ? " was" : "s were"} not followed because \`--depth\` was ${r.opts.depth}. Those URLs are in the skipped table too.`, "");
   section(lines, "Pages fetched", r.pages.length ? table(["Title", "File", "URL", "Words", "Fetched"],
     r.pages.map((p) => [p.title, `[${p.name}.md](${p.name}.md)`, p.url, String(p.words), TODAY])) : "None.");
   section(lines, "The run", table(["Setting", "Value"], [

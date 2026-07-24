@@ -46,7 +46,9 @@ The flags worth knowing:
 
 ## Where the output goes
 
-`_inbox/websites/<hostname>/` — one folder per site, so a second run on the same site replaces a folder rather than mixing two crawls together.
+`_inbox/websites/<hostname>/` — one folder per site, so two different sites never mix.
+
+A second run on the *same* site overwrites the files it fetches this time and leaves the rest where they are, so a page that has since been deleted stays in the folder from the earlier crawl. The tool says so when it finds files already there. If you want a clean picture, delete the folder before you re-run it.
 
 `_inbox/` is git-ignored, deliberately. It fills up with customer names, prices, contracts and things people told you in confidence, and none of that belongs in a repository you might later share, fork or publish. The scraped pages sit there as evidence: `stack/` cites them, they never get committed, and nothing writes back to them. See [`_inbox/README.md`](../_inbox/README.md).
 
@@ -56,7 +58,7 @@ Forty pages of a website is more than you or an AI should read, and reading all 
 
 1. **`index.md` first.** How many pages came back. Whether the crawl hit its limit. What was skipped and why. If there is no pricing page in the list, you know something before you have read a word of copy.
 2. **`signals.md` second.** Ten minutes here is worth an hour of reading marketing pages.
-3. **Two or three pages, chosen deliberately.** Pricing, the product page, the about page. Pick them by title from `index.md`. Leave the other thirty-five alone.
+3. **Two or three pages, chosen deliberately.** Pricing, the product page, the about page. Pick them by title from `index.md`. Leave the rest alone.
 
 [`prompts/15-scrape-a-site.md`](../prompts/15-scrape-a-site.md) makes an AI work in that order rather than opening everything.
 
@@ -74,7 +76,7 @@ This section is the one that matters. The tool is polite by design, but politene
 
 **Pages the site's `robots.txt` disallows.** The tool reads `robots.txt`, obeys it, and refuses to fetch what it forbids. **That refusal is not a bug to work around.** There is no flag to disable it, and if you find yourself editing the tool to ignore it, stop — you have left research and gone somewhere else.
 
-**Anything you would be uncomfortable explaining to the site's owner.** This is the test that catches the cases the four rules above miss. Say it out loud: *"I fetched your twenty public product pages to compare them with mine."* Fine. *"I pulled every profile in your member area overnight."* Not fine, and you knew before you finished the sentence.
+**Anything you would be uncomfortable explaining to the site's owner.** This is the test that catches whatever the rules above miss. Say it out loud: *"I fetched your twenty public product pages to compare them with mine."* Fine. *"I pulled every profile in your member area overnight."* Not fine, and you knew before you finished the sentence.
 
 Public marketing pages of a company you are researching are ordinary competitive research; every advisor and every analyst does it. Harvesting people is not the same thing and never becomes the same thing because the tool made it easy.
 

@@ -209,7 +209,7 @@ corrected this week.
 
 **You never need the tool.** It saves an hour of copy-and-paste and nothing else. Option C in Step 2 — the founder saving pages from the browser — produces exactly the same stack material, more slowly. [`docs/scraping.md`](../docs/scraping.md) covers the tool in full: the flags, what breaks, and what not to scrape.
 
-**Run it on your own site first.** Most founders find three things out of date within ten minutes: a price, a team member who left, and a product claim they stopped making a year ago. That is the point of the conflict step.
+**Run it on your own site first.** The things that turn out to be out of date are usually the same kinds of thing: a price, someone who has left, a claim about the product you stopped making a while ago. Finding them is the point of the conflict step.
 
 **Gathering is not analysis.** This prompt fills `_inbox/` and updates a couple of sections. The competitive judgement — who wins where, who to worry about in two years — is [`05-competitive-intelligence.md`](05-competitive-intelligence.md), and it reads better with this material already in place.
 
