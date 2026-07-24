@@ -99,8 +99,10 @@ const addPage = (p) => { PAGES.push(p); if (p.src) PAGE_BY_SRC.set(p.src, p.url)
 const DOC_PAGES = [
   { src: "QUICKSTART.md", url: "quickstart.html", nav: "Start here", short: "Your first hour" },
   { src: "docs/ai-basics.md", url: "ai-basics.html", nav: "Start here", short: "New to working with AI" },
+  { src: "docs/what-things-are.md", url: "what-things-are.html", nav: "Start here", short: "What the words mean" },
   { src: "docs/method.md", url: "method.html", nav: "The method", short: "The method" },
   { src: "docs/knowledge-base.md", url: "knowledge-base.html", nav: "The method", short: "Build the knowledge base" },
+  { src: "docs/getting-material-in.md", url: "getting-material-in.html", nav: "The method", short: "Getting your material in" },
   { src: "docs/front-matter.md", url: "front-matter.html", nav: "The method", short: "Front matter schema" },
   { src: "AGENTS.md", url: "rules.html", nav: "The method", short: "Rules for the AI" },
   { src: "docs/scraping.md", url: "scraping.html", nav: "Tools", short: "Website to inbox" },
@@ -770,7 +772,19 @@ ${table}
   </div>
 </section>
 
-<div class="stats">
+<div class="prose section-gap">
+<h2 id="how-it-works">How it works — the five things you actually do</h2>
+<p>This is a template repository, not a product. There is nothing to sign up for and nothing to install beyond an AI tool that can see a folder.</p>
+</div>
+<div class="grid grid-3 steps">
+  <a class="card step-card" href="quickstart.html"><span class="n">1</span><h3>Take a copy</h3><p>Copy this repository. It becomes your company's folder — ten empty sections, front matter and prompts in place.</p></a>
+  <a class="card step-card" href="getting-material-in.html"><span class="n">2</span><h3>Fill the inbox</h3><p>Export what you already have — the deck, the plan, email threads, drive documents, call transcripts — into <code>_inbox/</code>. This page shows how, source by source.</p></a>
+  <a class="card step-card" href="prompts/00-bootstrap-the-stack.html"><span class="n">3</span><h3>Run the bootstrap prompt</h3><p>Point a file-aware AI at the folder and paste one prompt. It reads the inbox and writes the stack, tagging every fact as confirmed, unverified or missing.</p></a>
+  <a class="card step-card" href="method.html"><span class="n">4</span><h3>Correct it</h3><p>Read the one-pager it wrote. Fix what is wrong, confirm what is right. The gaps it left visible are your task list — that is the design, not a failure.</p></a>
+  <a class="card step-card" href="prompts/index.html"><span class="n">5</span><h3>Run the work</h3><p>The recap every week, meeting-to-actions after every call, and the rest of the library — unit economics, the list of 100, the deck — when you need them.</p></a>
+</div>
+
+<div class="stats section-gap">
   <a class="stat" href="stack.html"><div class="n">${counts.sections}</div><div class="l">sections in the stack</div></a>
   <a class="stat" href="prompts/index.html"><div class="n">${counts.prompts}</div><div class="l">prompts in the library</div></a>
   <a class="stat" href="worksheets/index.html"><div class="n">${counts.worksheets}</div><div class="l">repeatable worksheets</div></a>

@@ -809,3 +809,17 @@ hr.rule { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 @media (min-width: 1280px) {
   .toc a.l3 { padding-left: 24px; font-size: 0.95em; color: var(--text-faint); }
 }
+
+/* five equal columns on a desktop, so the last step does not orphan */
+@media (min-width: 1100px) { .grid.steps { grid-template-columns: repeat(5, 1fr); } }
+.grid.steps .card { padding: 16px; }
+.grid.steps .card h3 { font-size: 0.95rem; }
+.grid.steps .card p { font-size: 0.83rem; }
+
+/* ---------- home: the five steps ----------
+   Numbered cards, because "what do I actually do" is the first question the
+   page has to answer and prose was not answering it. */
+.step-card .n {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 800;
+  line-height: 1; color: var(--accent); display: block; margin-bottom: 10px;
+}
