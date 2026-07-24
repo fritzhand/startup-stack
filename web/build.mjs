@@ -148,7 +148,8 @@ function inline(text, ctx) {
     const ext = /^https?:/.test(to);
     return `<a href="${esc(to)}"${ext ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`;
   });
-  s = s.replace(/&lt;(https?:\/\/[^\s&]+)&gt;/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+  /* runs after esc(), so the URL may contain &amp; — stop at the closing &gt; */
+  s = s.replace(/&lt;(https?:\/\/(?:(?!&gt;)\S)+)&gt;/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
   s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   s = s.replace(/(^|[\s(])\*([^*\s][^*]*?)\*(?=$|[\s).,;:!?])/g, "$1<em>$2</em>");
   s = s.replace(/(^|[\s(])_([^_\s][^_]*?)_(?=$|[\s).,;:!?])/g, "$1<em>$2</em>");
@@ -257,8 +258,11 @@ function mdToHtml(src, ctx) {
     if (fence) {
       const [, , mark, lang] = fence;
       const body = [];
+      const closer = new RegExp(`^\\s*${mark[0]}{${mark.length},}\\s*$`);
       i++;
-      while (i < lines.length && !lines[i].trim().startsWith(mark[0].repeat(3))) body.push(lines[i++]);
+      /* only a line that is nothing but fence characters closes the block, so a
+         block demonstrating markdown can contain a fence of its own */
+      while (i < lines.length && !closer.test(lines[i])) body.push(lines[i++]);
       i++;
       /* the first block on a prompt page is the prompt itself — make it copyable */
       const copyable = ctx.kind === "Prompt" && firstFence;
@@ -284,7 +288,9 @@ function mdToHtml(src, ctx) {
       continue;
     }
 
-    /* horizontal rule */
+    /* Horizontal rule. Setext headings are deliberately not supported: every
+       `---` in this repo follows a paragraph and means a rule, so reading them
+       as underlines would silently turn those rules into headings. */
     if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(line)) { out.push("<hr>"); i++; continue; }
 
     /* table */
