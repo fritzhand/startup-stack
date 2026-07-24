@@ -22,3 +22,6 @@ Thumbs.db
 exports/
 *.pdf
 !docs/**/*.pdf
+
+# The generated site. Rebuild it with `node web/build.mjs`.
+_site/

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="100%" height="1200" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="fits-title fits-desc">
+  <title id="fits-title">How the four layers fit together, from you down to your files</title>
+  <desc id="fits-desc">Four layers are stacked top to bottom, with your instruction travelling down the left and the result travelling back up the right. The top layer is you: you write the instruction in plain English, say what you want and what done means, point at the folder it may work in, then read what it proposes and approve or refuse it. Directly below you is the approval gate, drawn as a checkpoint that both directions must pass through: every step stops here and waits for you, and nothing crosses this line without your yes. Below the gate is the AI tool: it reads the files in the folder you scoped, works out what to do and in what order, and writes the commands that would do it, proposing each one before it runs and explaining afterwards what changed, file by file. Below that is the command line: a plain text window where one line goes in, something happens, and the result prints back underneath. You will not memorise commands and will rarely type one; it is drawn here so the screen is not a mystery. The bottom layer is your computer: your own folder of documents, notes and data, where files are created, edited and saved for real, so you should keep an undo before you start and open the files the ordinary way to check. The takeaway at the foot is that you direct the top layer, and the tool works the rest, reading, deciding and running, stopping at the gate.</desc>
+
+  <rect x="0" y="0" width="1200" height="1200" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="58" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">How it fits together</text>
+  <text x="48" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Four layers. Your instruction travels down; the result comes back up.</text>
+
+  <!-- layer 1: you -->
+  <rect x="48" y="128" width="1104" height="164" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="64" y="148" width="6" height="124" rx="3" fill="var(--dg-secondary, #0C7A63)"/>
+  <text x="88" y="172" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">You</text>
+  <rect x="920" y="148" width="200" height="32" rx="8" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <text x="1020" y="170" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-secondary, #0C7A63)">You drive this</text>
+  <line x1="88" y1="194" x2="1120" y2="194" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="88" y="224" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Write the instruction in plain English.<tspan x="88" dy="24">Say what you want, and what done means.</tspan><tspan x="88" dy="24">Point at the folder it may work in.</tspan></text>
+  <text x="624" y="224" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Read what it proposes, then approve or<tspan x="624" dy="24">refuse it. Read the result when it comes</tspan><tspan x="624" dy="24">back. Nothing runs while you decide.</tspan></text>
+
+  <!-- gap 1: you to the gate -->
+  <path d="M 340,296 V 316" stroke="var(--dg-primary, #0B5A86)" stroke-width="2" fill="none"/>
+  <path d="M 340,330 L 332,316 L 348,316 Z" fill="var(--dg-primary, #0B5A86)"/>
+  <path d="M 860,328 V 308" stroke="var(--dg-secondary, #0C7A63)" stroke-width="2" fill="none"/>
+  <path d="M 860,294 L 852,308 L 868,308 Z" fill="var(--dg-secondary, #0C7A63)"/>
+  <text x="356" y="317" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Your request travels down</text>
+  <text x="844" y="317" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">The result travels back up</text>
+
+  <!-- the approval gate -->
+  <rect x="48" y="332" width="1104" height="96" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="88" y="388" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The approval gate</text>
+  <circle cx="340" cy="380" r="18" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="1.5"/>
+  <polyline points="332,380 338,387 349,373" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="860" cy="380" r="18" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="1.5"/>
+  <polyline points="852,380 858,387 869,373" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="420" y="373" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Every step stops here and waits for you.<tspan x="420" dy="27">Nothing crosses this line without your yes.</tspan></text>
+
+  <!-- gap 2: the gate to the tool -->
+  <path d="M 340,432 V 452" stroke="var(--dg-primary, #0B5A86)" stroke-width="2" fill="none"/>
+  <path d="M 340,466 L 332,452 L 348,452 Z" fill="var(--dg-primary, #0B5A86)"/>
+  <path d="M 860,464 V 444" stroke="var(--dg-secondary, #0C7A63)" stroke-width="2" fill="none"/>
+  <path d="M 860,430 L 852,444 L 868,444 Z" fill="var(--dg-secondary, #0C7A63)"/>
+
+  <!-- layer 2: the AI tool -->
+  <rect x="48" y="468" width="1104" height="164" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="64" y="488" width="6" height="124" rx="3" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="88" y="512" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The AI tool</text>
+  <rect x="920" y="488" width="200" height="32" rx="8" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="1020" y="510" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">The tool drives this</text>
+  <line x1="88" y1="534" x2="1120" y2="534" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="88" y="564" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Reads the files in the folder you scoped.<tspan x="88" dy="24">Works out what to do, and in what order.</tspan><tspan x="88" dy="24">Writes the commands that would do it.</tspan></text>
+  <text x="624" y="564" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">It proposes; it does not proceed. Each<tspan x="624" dy="24">command is shown to you before it runs,</tspan><tspan x="624" dy="24">and it explains what changed, file by file.</tspan></text>
+
+  <!-- gap 3: the tool to the command line -->
+  <path d="M 340,636 V 656" stroke="var(--dg-primary, #0B5A86)" stroke-width="2" fill="none"/>
+  <path d="M 340,670 L 332,656 L 348,656 Z" fill="var(--dg-primary, #0B5A86)"/>
+  <path d="M 860,668 V 648" stroke="var(--dg-secondary, #0C7A63)" stroke-width="2" fill="none"/>
+  <path d="M 860,634 L 852,648 L 868,648 Z" fill="var(--dg-secondary, #0C7A63)"/>
+
+  <!-- layer 3: the command line -->
+  <rect x="48" y="672" width="1104" height="164" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="64" y="692" width="6" height="124" rx="3" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="88" y="716" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The command line</text>
+  <rect x="920" y="692" width="200" height="32" rx="8" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="1020" y="714" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">The tool works here</text>
+  <line x1="88" y1="738" x2="1120" y2="738" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="88" y="768" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A plain text window. One line goes in,<tspan x="88" dy="24">something happens, and the result prints</tspan><tspan x="88" dy="24">back underneath. That is the whole idea.</tspan></text>
+  <text x="624" y="768" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">You will not memorise commands, and you<tspan x="624" dy="24">will rarely type one. It is drawn here</tspan><tspan x="624" dy="24">so the screen is not a mystery to you.</tspan></text>
+
+  <!-- gap 4: the command line to your computer -->
+  <path d="M 340,840 V 860" stroke="var(--dg-primary, #0B5A86)" stroke-width="2" fill="none"/>
+  <path d="M 340,874 L 332,860 L 348,860 Z" fill="var(--dg-primary, #0B5A86)"/>
+  <path d="M 860,872 V 852" stroke="var(--dg-secondary, #0C7A63)" stroke-width="2" fill="none"/>
+  <path d="M 860,838 L 852,852 L 868,852 Z" fill="var(--dg-secondary, #0C7A63)"/>
+
+  <!-- layer 4: your computer -->
+  <rect x="48" y="876" width="1104" height="164" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <rect x="64" y="896" width="6" height="124" rx="3" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="88" y="920" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Your computer</text>
+  <rect x="920" y="896" width="200" height="32" rx="8" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="1020" y="918" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">The tool works here</text>
+  <line x1="88" y1="942" x2="1120" y2="942" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="88" y="972" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Your own folder: the documents, notes<tspan x="88" dy="24">and data you already recognise. Files</tspan><tspan x="88" dy="24">are created, edited and saved for real.</tspan></text>
+  <text x="624" y="972" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Nothing here is a preview. Keep an undo<tspan x="624" dy="24">before you start, and open the files the</tspan><tspan x="624" dy="24">ordinary way to check what changed.</tspan></text>
+
+  <!-- takeaway -->
+  <rect x="48" y="1080" width="1104" height="88" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="92" cy="1124" r="18" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="1.5"/>
+  <polyline points="84,1124 90,1131 101,1117" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="132" y="1118" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">You direct the top layer.</text>
+  <text x="132" y="1146" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The tool works the rest: reading, deciding, running. It stops at the gate.</text>
+</svg>

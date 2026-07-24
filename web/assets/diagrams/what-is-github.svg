@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1312" width="100%" height="1312" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="github-title github-desc">
+  <title id="github-title">Git and GitHub are not the same thing</title>
+  <desc id="github-desc">Two columns stand side by side, showing the same history kept in two places. The left column is headed Git, labelled "on your computer", and described as the history of your folder. It contains a drawing of a laptop: a screen with a base bar beneath it, and inside the screen a folder called company, the caption "every saved version, in order", and a vertical line threaded through three dots. The dots are labelled, from newest to oldest, "now", "the change before that" and "where you started". Three notes under the laptop say that Git works with no internet, needs no account and no sign-up, and that nothing leaves your machine. The right column is headed GitHub, labelled "online, in your account", and described as a copy of that history kept online. It contains a drawing of a window with a title bar reading "your account / company", and inside it the caption "the same history, copied here" above the identical vertical line and three identically labelled dots, because it is the same history rather than a different one. There is no laptop base under this window, because it is not your machine. Three notes under it say that GitHub needs an account and internet, that it is kept on someone else's computer, and that you choose who can see it. Between the two columns run two arrows, one each way. The upper arrow points from Git to GitHub and is labelled "push", meaning send your history up. The lower arrow points from GitHub back to Git and is labelled "clone or pull", meaning bring the copy down. A short connector drops from the GitHub column into a row of three cards headed "what the online copy gets you", each marked with a tick. The first, "survives a lost laptop", says the folder and its history are already elsewhere, so you take a copy down and carry on. The second, "let one person in", says a coach or co-founder can be given access to the copy, so you stop emailing files about. The third, "it can publish a page", says a repository can serve a page on the web, the same files read as a site instead. Below them sits a warning card outlined in red, headed "check which one you made", which states that a private repository is private and a public one is public, and that because a knowledge base holds customer names, prices and contracts, you should check which kind you made before you push. The closing line reads: Git is the history; GitHub is the copy of it that lives somewhere else.</desc>
+
+  <rect x="0" y="0" width="1200" height="1312" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="60" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">Git and GitHub are not the same thing</text>
+  <text x="48" y="94" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">One is the history on your computer. The other is a copy of it that lives online.</text>
+
+  <text x="48" y="146" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Where each one lives</text>
+  <text x="48" y="170" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">The same history in two places, and the two moves that connect them.</text>
+  <line x1="48" y1="186" x2="1152" y2="186" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <!-- left column: git -->
+  <rect x="48" y="210" width="436" height="454" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="76" y="244" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">On your computer</text>
+  <text x="76" y="278" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Git</text>
+  <text x="76" y="306" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The history of your folder.</text>
+
+  <rect x="76" y="326" width="380" height="196" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 100 366 V 350 H 110 L 114 355 H 124 V 366 Z" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="136" y="366" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">company</text>
+  <text x="100" y="392" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">every saved version, in order</text>
+
+  <line x1="112" y1="420" x2="112" y2="490" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="112" cy="420" r="6" fill="var(--dg-primary, #0B5A86)"/>
+  <circle cx="112" cy="455" r="6" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="112" cy="490" r="6" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="134" y="426" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">now</text>
+  <text x="134" y="461" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">the change before that</text>
+  <text x="134" y="496" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">where you started</text>
+
+  <rect x="60" y="530" width="412" height="10" rx="5" fill="var(--dg-border-strong, #75878F)"/>
+
+  <circle cx="84" cy="570" r="4" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="100" y="575" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Works with no internet.</text>
+  <circle cx="84" cy="602" r="4" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="100" y="607" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">No account, no sign-up.</text>
+  <circle cx="84" cy="634" r="4" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="100" y="639" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Nothing leaves your machine.</text>
+
+  <!-- right column: github -->
+  <rect x="716" y="210" width="436" height="454" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="744" y="244" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">Online, in your account</text>
+  <text x="744" y="278" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">GitHub</text>
+  <text x="744" y="306" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A copy of that history, kept online.</text>
+
+  <rect x="744" y="326" width="380" height="196" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <circle cx="768" cy="350" r="5" fill="var(--dg-border, #C1D1D8)"/>
+  <circle cx="786" cy="350" r="5" fill="var(--dg-border, #C1D1D8)"/>
+  <circle cx="804" cy="350" r="5" fill="var(--dg-border, #C1D1D8)"/>
+  <text x="826" y="355" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">your account / company</text>
+  <line x1="744" y1="370" x2="1124" y2="370" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="768" y="396" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">the same history, copied here</text>
+
+  <line x1="780" y1="420" x2="780" y2="490" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="780" cy="420" r="6" fill="var(--dg-primary, #0B5A86)"/>
+  <circle cx="780" cy="455" r="6" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="780" cy="490" r="6" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="802" y="426" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">now</text>
+  <text x="802" y="461" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">the change before that</text>
+  <text x="802" y="496" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">where you started</text>
+
+  <circle cx="752" cy="570" r="4" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="768" y="575" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Needs an account and internet.</text>
+  <circle cx="752" cy="602" r="4" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="768" y="607" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Kept on someone else's computer.</text>
+  <circle cx="752" cy="634" r="4" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="768" y="639" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">You choose who can see it.</text>
+
+  <!-- the two moves between them -->
+  <text x="600" y="396" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-primary, #0B5A86)">push</text>
+  <line x1="500" y1="416" x2="690" y2="416" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round"/>
+  <polyline points="682,409 692,416 682,423" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="442" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">send your history up</text>
+
+  <text x="600" y="490" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-primary, #0B5A86)">clone or pull</text>
+  <line x1="692" y1="510" x2="502" y2="510" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round"/>
+  <polyline points="510,503 500,510 510,517" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="536" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">bring the copy down</text>
+
+  <!-- connector down from github -->
+  <line x1="934" y1="664" x2="934" y2="688" stroke="var(--dg-border-strong, #75878F)" stroke-width="2" stroke-linecap="round"/>
+  <polyline points="927,681 934,690 941,681" fill="none" stroke="var(--dg-border-strong, #75878F)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <line x1="48" y1="712" x2="1152" y2="712" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <text x="48" y="752" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">What the online copy gets you</text>
+  <text x="48" y="776" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Three things that only work because a second copy exists.</text>
+
+  <rect x="48" y="798" width="352" height="196" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <polyline points="76,838 84,846 100,830" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="76" y="882" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Survives a lost laptop</text>
+  <text x="76" y="910" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The folder and its history are<tspan x="76" dy="26">already elsewhere. You take a</tspan><tspan x="76" dy="26">copy down and carry on.</tspan></text>
+
+  <rect x="424" y="798" width="352" height="196" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <polyline points="452,838 460,846 476,830" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="452" y="882" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Let one person in</text>
+  <text x="452" y="910" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A coach or co-founder can be<tspan x="452" dy="26">given access to the copy, so</tspan><tspan x="452" dy="26">you stop emailing files about.</tspan></text>
+
+  <rect x="800" y="798" width="352" height="196" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <polyline points="828,838 836,846 852,830" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="828" y="882" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">It can publish a page</text>
+  <text x="828" y="910" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A repository can serve a page<tspan x="828" dy="26">on the web — the same files,</tspan><tspan x="828" dy="26">read as a site instead.</tspan></text>
+
+  <!-- the warning -->
+  <rect x="48" y="1026" width="1104" height="124" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-accent, #C62C49)" stroke-width="2"/>
+  <circle cx="96" cy="1062" r="18" fill="none" stroke="var(--dg-accent, #C62C49)" stroke-width="2"/>
+  <line x1="96" y1="1052" x2="96" y2="1064" stroke="var(--dg-accent, #C62C49)" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="96" cy="1071" r="2" fill="var(--dg-accent, #C62C49)"/>
+  <text x="130" y="1068" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Check which one you made</text>
+  <text x="130" y="1098" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A private repository is private. A public one is public. A knowledge base holds<tspan x="130" dy="26">customer names, prices and contracts — check which one you made before you push.</tspan></text>
+
+  <!-- footer -->
+  <rect x="48" y="1182" width="1104" height="76" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="600" y="1226" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">Git is the history; GitHub is the copy of it that lives somewhere else.</text>
+</svg>

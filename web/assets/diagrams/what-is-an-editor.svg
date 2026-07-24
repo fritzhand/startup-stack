@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1264" width="100%" height="1264" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="editor-title editor-desc">
+  <title id="editor-title">What an editor is, and the four capabilities that make one agentic</title>
+  <desc id="editor-desc">A stylised editor window sits at the top, drawn as a rounded frame with three small dots along its title bar and the label "company — context.md". Inside it are three panes. The left pane, labelled "file tree", shows a folder called company holding four files: context.md, notes.md, quotes.pdf and numbers.csv. The row for context.md is highlighted, marking it as the file currently open. The centre pane, labelled "file contents", shows that same file: its name at the top, and beneath it six grey bars of varying length standing in for two short paragraphs of ordinary prose, ragged at the right-hand edge because this is writing rather than code. The right pane, labelled "chat panel", shows a short instruction from you, "Read context.md and list what is missing", then what the tool proposes to do about it, "Edit context.md, add a gaps section", and under that a pair of buttons marked Approve, with a tick, and Reject, with a cross. Three captions beneath the window say what each pane is for. The left pane is every file in the folder listed in one place, with the file being shown marked, and you never paste any of it in. The centre pane is what is actually in the file you opened, usually ordinary prose such as notes, a plan or a draft, and rarely code. The right pane is where you give the instruction and where you approve or refuse what it proposes, before anything happens. Below the window, a row of four numbered cards sets out the capabilities that separate an agentic editor from a chat window with an upload button, which has only the first of them. One, it reads: it opens every file in the folder itself, so you paste nothing in. Two, it writes: it creates and edits files back in the folder, not just in a reply. Three, it runs: it runs commands and shows you the output, so you can see what happened. Four, it explains: it tells you what changed, file by file, before you decide to keep it. The closing line says that if a tool does all four it will run this method, and that if it only does the first you will spend your evenings copying text back and forth.</desc>
+
+  <rect x="0" y="0" width="1200" height="1264" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="60" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">What an editor is, and what makes one agentic</text>
+  <text x="48" y="94" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Three panes, and four things a chat window with an upload button cannot do.</text>
+
+  <text x="48" y="146" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The window</text>
+  <text x="48" y="170" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">One window, three panes, each doing one job.</text>
+  <line x1="48" y1="186" x2="1152" y2="186" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <!-- editor window frame -->
+  <rect x="48" y="206" width="1104" height="440" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <circle cx="78" cy="240" r="6" fill="var(--dg-border, #C1D1D8)"/>
+  <circle cx="102" cy="240" r="6" fill="var(--dg-border, #C1D1D8)"/>
+  <circle cx="126" cy="240" r="6" fill="var(--dg-border, #C1D1D8)"/>
+  <text x="158" y="246" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">company — context.md</text>
+  <line x1="48" y1="270" x2="1152" y2="270" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+
+  <!-- left pane: file tree -->
+  <rect x="68" y="286" width="300" height="340" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="84" y="316" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">File tree</text>
+  <line x1="84" y1="330" x2="352" y2="330" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+
+  <path d="M 84 370 V 357 H 92 L 95 361 H 104 V 370 Z" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="112" y="372" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">company</text>
+
+  <rect x="84" y="394" width="268" height="34" rx="8" fill="var(--dg-surface, #FFFFFF)"/>
+  <path d="M 104 400 h 9 l 5 5 v 13 h -14 z" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="132" y="414" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-primary, #0B5A86)">context.md</text>
+
+  <path d="M 104 442 h 9 l 5 5 v 13 h -14 z" fill="none" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="132" y="456" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">notes.md</text>
+
+  <path d="M 104 484 h 9 l 5 5 v 13 h -14 z" fill="none" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="132" y="498" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">quotes.pdf</text>
+
+  <path d="M 104 526 h 9 l 5 5 v 13 h -14 z" fill="none" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="132" y="540" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">numbers.csv</text>
+
+  <!-- centre pane: file contents -->
+  <rect x="384" y="286" width="400" height="340" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="400" y="316" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">File contents</text>
+  <line x1="400" y1="330" x2="768" y2="330" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+
+  <text x="400" y="366" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">context.md</text>
+
+  <rect x="400" y="390" width="368" height="12" rx="6" fill="var(--dg-border-strong, #75878F)"/>
+  <rect x="400" y="418" width="352" height="12" rx="6" fill="var(--dg-border-strong, #75878F)"/>
+  <rect x="400" y="446" width="364" height="12" rx="6" fill="var(--dg-border-strong, #75878F)"/>
+  <rect x="400" y="474" width="232" height="12" rx="6" fill="var(--dg-border-strong, #75878F)"/>
+  <rect x="400" y="512" width="368" height="12" rx="6" fill="var(--dg-border-strong, #75878F)"/>
+  <rect x="400" y="540" width="308" height="12" rx="6" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- right pane: chat panel -->
+  <rect x="800" y="286" width="332" height="340" rx="12" fill="var(--dg-bg, #EEF4F6)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="816" y="316" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">Chat panel</text>
+  <line x1="816" y1="330" x2="1116" y2="330" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+
+  <text x="816" y="356" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">You</text>
+  <rect x="816" y="366" width="300" height="84" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="836" y="398" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">Read context.md and list<tspan x="836" dy="26">what is missing.</tspan></text>
+
+  <text x="816" y="480" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">It proposes</text>
+  <rect x="816" y="492" width="300" height="60" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="836" y="516" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">Edit context.md</text>
+  <text x="836" y="538" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Add a gaps section</text>
+
+  <rect x="816" y="566" width="142" height="44" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-secondary, #0C7A63)" stroke-width="1.5"/>
+  <polyline points="832,588 838,594 850,580" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="862" y="593" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-text, #10222C)">Approve</text>
+
+  <rect x="974" y="566" width="142" height="44" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-accent, #C62C49)" stroke-width="1.5"/>
+  <line x1="990" y1="580" x2="1006" y2="596" stroke="var(--dg-danger, #C62C49)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="1006" y1="580" x2="990" y2="596" stroke="var(--dg-danger, #C62C49)" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="1020" y="593" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-text, #10222C)">Reject</text>
+
+  <!-- captions under the window -->
+  <text x="68" y="690" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Left: the file tree</text>
+  <text x="68" y="718" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Every file in the folder, in one<tspan x="68" dy="26">list. You never paste them in.</tspan><tspan x="68" dy="26">The one being shown is marked.</tspan></text>
+
+  <text x="384" y="690" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Centre: the file itself</text>
+  <text x="384" y="718" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">What is actually in the file you opened.<tspan x="384" dy="26">Usually ordinary prose: notes, a plan, a</tspan><tspan x="384" dy="26">draft. Rarely code.</tspan></text>
+
+  <text x="800" y="690" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Right: the chat panel</text>
+  <text x="800" y="718" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Where you give the instruction, and<tspan x="800" dy="26">where you approve or refuse what it</tspan><tspan x="800" dy="26">proposes before anything happens.</tspan></text>
+
+  <!-- capabilities -->
+  <line x1="48" y1="810" x2="1152" y2="810" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <text x="48" y="850" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">What makes it agentic</text>
+  <text x="48" y="874" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Four capabilities. A chat window with an upload button has only the first.</text>
+
+  <rect x="48" y="896" width="264" height="200" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="92" cy="938" r="16" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="92" y="943" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-primary, #0B5A86)">1</text>
+  <text x="68" y="990" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">It reads</text>
+  <text x="68" y="1018" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Opens every file in the<tspan x="68" dy="26">folder itself. You paste</tspan><tspan x="68" dy="26">nothing in.</tspan></text>
+
+  <rect x="328" y="896" width="264" height="200" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="372" cy="938" r="16" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="372" y="943" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-primary, #0B5A86)">2</text>
+  <text x="348" y="990" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">It writes</text>
+  <text x="348" y="1018" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Creates and edits files<tspan x="348" dy="26">back in the folder, not</tspan><tspan x="348" dy="26">just in a reply.</tspan></text>
+
+  <rect x="608" y="896" width="264" height="200" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="652" cy="938" r="16" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="652" y="943" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-primary, #0B5A86)">3</text>
+  <text x="628" y="990" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">It runs</text>
+  <text x="628" y="1018" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Runs commands and shows<tspan x="628" dy="26">you the output, so you</tspan><tspan x="628" dy="26">can see what happened.</tspan></text>
+
+  <rect x="888" y="896" width="264" height="200" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="932" cy="938" r="16" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="932" y="943" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-primary, #0B5A86)">4</text>
+  <text x="908" y="990" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">It explains</text>
+  <text x="908" y="1018" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Tells you what changed,<tspan x="908" dy="26">file by file, before you</tspan><tspan x="908" dy="26">decide to keep it.</tspan></text>
+
+  <!-- footer -->
+  <rect x="48" y="1128" width="1104" height="88" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="600" y="1164" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">If a tool does all four, it will run this method.</text>
+  <text x="600" y="1190" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">If it only does the first, you will spend your evenings copying text back and forth.</text>
+</svg>

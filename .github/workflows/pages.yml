@@ -1,0 +1,62 @@
+name: Build the site, and publish it from main
+
+# The build runs on every branch and every pull request, so a broken link or a
+# missing diagram fails here rather than after a merge. Only main publishes.
+#
+# One-time setup by a repo admin: Settings → Pages → Source → "GitHub Actions".
+# The Actions token cannot enable Pages itself, so the first deploy fails
+# without it.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# one deploy at a time; the newest push wins
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # web/build.mjs exits non-zero on a broken internal link, a missing
+      # diagram, a page with no title, a prompt that is not routed to a group,
+      # or a diagram whose colours have drifted from the design tokens.
+      - name: Build the site
+        run: node web/build.mjs
+
+      # The tool ships in the repo, so it has to at least parse and answer.
+      - name: Check the scraper runs
+        run: |
+          node --check tools/scrape-site.mjs
+          node tools/scrape-site.mjs --help > /dev/null
+
+      - uses: actions/configure-pages@v5
+        if: github.ref == 'refs/heads/main'
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

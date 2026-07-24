@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 776" width="100%" height="776" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="kit-title kit-desc">
+  <title id="kit-title">The folder at the centre, and the five parts around it</title>
+  <desc id="kit-desc">A hub and spoke layout. At the centre is the folder itself — ten sections, one index, plain markdown — which is the knowledge base everything else serves. Five parts connect to it. A paid subscription, because free tiers cannot open a folder on your own computer. An app with file access, meaning a desktop app or a terminal pointed at one folder. Version history, so that every change is recorded and any step can be undone. Connectors, so mail and drive get pulled in without you copying files by hand. And the prompt library, the tasks you run again and again, written down once. The two parts drawn with a solid edge — a paid subscription and an app with file access — are enough to start; the other three come later. A note at the foot repeats that you do not need all five on day one.</desc>
+
+  <rect x="0" y="0" width="1200" height="776" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="58" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">What you actually need</text>
+  <text x="48" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">One folder at the centre. Five parts around it.</text>
+  <text x="48" y="118" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">The two drawn with a solid edge are enough to start. The other three come later.</text>
+
+  <!-- spokes -->
+  <line x1="392" y1="214" x2="440" y2="258" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="392" y1="386" x2="440" y2="326" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="808" y1="214" x2="760" y2="258" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="808" y1="386" x2="760" y2="326" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="600" y1="386" x2="600" y2="486" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <circle cx="440" cy="258" r="4" fill="var(--dg-border-strong, #75878F)"/>
+  <circle cx="440" cy="326" r="4" fill="var(--dg-border-strong, #75878F)"/>
+  <circle cx="760" cy="258" r="4" fill="var(--dg-border-strong, #75878F)"/>
+  <circle cx="760" cy="326" r="4" fill="var(--dg-border-strong, #75878F)"/>
+  <circle cx="600" cy="386" r="4" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- hub -->
+  <rect x="440" y="186" width="320" height="200" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <path d="M 546,218 h 40 l 12 14 h -52 z" fill="var(--dg-primary, #0B5A86)"/>
+  <rect x="546" y="230" width="108" height="52" rx="6" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="600" y="316" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The folder itself</text>
+  <text x="600" y="344" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Ten sections, one index,<tspan x="600" dy="24">plain markdown.</tspan></text>
+
+  <!-- part: paid subscription -->
+  <rect x="48" y="140" width="344" height="148" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="78" cy="195" r="7" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="100" y="202" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">A paid subscription</text>
+  <text x="72" y="240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Free tiers cannot open a folder<tspan x="72" dy="24">on your own computer.</tspan></text>
+
+  <!-- part: app with file access -->
+  <rect x="48" y="312" width="344" height="148" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <circle cx="78" cy="367" r="7" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="100" y="374" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">An app with file access</text>
+  <text x="72" y="412" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A desktop app or a terminal,<tspan x="72" dy="24">pointed at one folder.</tspan></text>
+
+  <!-- part: version history -->
+  <rect x="808" y="140" width="344" height="148" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="838" cy="195" r="7" fill="none" stroke="var(--dg-muted, #3F5560)" stroke-width="1.5"/>
+  <text x="860" y="202" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Version history</text>
+  <text x="832" y="240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Every change recorded, so any<tspan x="832" dy="24">step can be undone.</tspan></text>
+
+  <!-- part: connectors -->
+  <rect x="808" y="312" width="344" height="148" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="838" cy="367" r="7" fill="none" stroke="var(--dg-muted, #3F5560)" stroke-width="1.5"/>
+  <text x="860" y="374" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Connectors</text>
+  <text x="832" y="412" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Mail and drive, pulled in without<tspan x="832" dy="24">copying files by hand.</tspan></text>
+
+  <!-- part: prompt library -->
+  <rect x="428" y="486" width="344" height="148" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="458" cy="541" r="7" fill="none" stroke="var(--dg-muted, #3F5560)" stroke-width="1.5"/>
+  <text x="480" y="548" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The prompt library</text>
+  <text x="452" y="586" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The tasks you run again and<tspan x="452" dy="24">again, written down once.</tspan></text>
+
+  <!-- footer -->
+  <rect x="48" y="662" width="1104" height="72" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="600" y="694" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="var(--dg-text, #10222C)">You do not need all five on day one.</text>
+  <text x="600" y="718" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A paid subscription and an app that can see your files is enough to start.</text>
+</svg>
