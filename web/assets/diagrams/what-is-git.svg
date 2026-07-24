@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1488" width="100%" height="1488" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="git-title git-desc">
+  <title id="git-title">What Git is: a save point for a whole folder, and the habit that makes AI edits safe</title>
+  <desc id="git-desc">The diagram explains Git as a save point for a folder, the way a save game is a save point for a game. Across the top runs a timeline reading left to right, with an arrow at the right-hand end marked "time". Four dots sit on that line, and each dot is one commit. Above each dot is a small card drawn as a folder, labelled "the whole folder", holding a few short bars that stand for the files inside it. In the first card, headed "empty stack", the bars are pale and short, because the files exist but hold nothing yet. In the second, "after bootstrap", all three bars are long and drawn in the accent colour, because everything in the folder changed at that point. In the third, "corrected the one-pager", only the top bar is in the accent colour and the other two are grey, showing that a single file moved while the rest stayed as they were. In the fourth, "after unit economics", the three earlier bars are grey and a new fourth bar appears in the accent colour. A key beside the heading says the accent colour marks what changed at that point and grey marks what did not. The line under the timeline states that each dot holds the whole folder, every file as it stood, and not one file's history. Below that, three cards define the only three words needed. A commit saves the folder as it stands now, with a line saying what changed. A diff is the view of what is different between two save points. A clone takes your own copy of a folder that already has a history behind it. The lower half of the diagram has two columns. The left column, "what that gives you", lists three things, each with a tick. First, you can see exactly what changed, line by line, between any two save points, and that view is called a diff. Second, you can go back to any point, because nothing is overwritten for good and any earlier state of the folder can be brought back. Third, you can know when a number changed, because every save point carries a date and a note saying why, so you can find the moment a figure moved and what moved it. The right column, "the habit this repo asks for", is a three-step strip with arrows running downwards. Step one, commit before you run it: save the folder as it stands, before the prompt touches anything. Step two, run the prompt: let it read, write and change files, because it cannot lose what you already saved. Step three, look before you keep it: read the diff file by file, then keep it, or go back to the save point and run the prompt again with a better brief. A band beneath the two columns says that this is the undo, and it is what makes it safe to let an AI edit your files. The closing line says it is local, it is free, and it is the difference between a bad afternoon and a lost file.</desc>
+
+  <rect x="0" y="0" width="1200" height="1488" rx="16" fill="var(--dg-bg, #EEF4F6)"/>
+
+  <text x="48" y="60" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="var(--dg-text, #10222C)">What Git is</text>
+  <text x="48" y="92" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">A save point for a folder, the way a save game is a save point for a game.</text>
+
+  <!-- section A: the timeline -->
+  <text x="48" y="144" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Four save points, in order</text>
+  <text x="48" y="168" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Each dot is one commit — the whole folder, kept exactly as it was.</text>
+
+  <rect x="790" y="160" width="26" height="8" rx="4" fill="var(--dg-primary, #0B5A86)"/>
+  <text x="826" y="168" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">changed at this point</text>
+  <rect x="1000" y="160" width="26" height="8" rx="4" fill="var(--dg-border-strong, #75878F)"/>
+  <text x="1036" y="168" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">unchanged</text>
+
+  <line x1="48" y1="184" x2="1152" y2="184" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <!-- folder card 1 -->
+  <rect x="48" y="204" width="240" height="136" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <path d="M 72 246 V 224 H 84 L 88 229 H 104 V 246 Z" fill="none" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="120" y="241" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">the whole folder</text>
+  <rect x="72" y="256" width="112" height="8" rx="4" fill="var(--dg-border, #C1D1D8)"/>
+  <rect x="72" y="276" width="88" height="8" rx="4" fill="var(--dg-border, #C1D1D8)"/>
+  <rect x="72" y="296" width="100" height="8" rx="4" fill="var(--dg-border, #C1D1D8)"/>
+
+  <!-- folder card 2 -->
+  <rect x="336" y="204" width="240" height="136" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <path d="M 360 246 V 224 H 372 L 376 229 H 392 V 246 Z" fill="none" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="408" y="241" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">the whole folder</text>
+  <rect x="360" y="256" width="192" height="8" rx="4" fill="var(--dg-primary, #0B5A86)"/>
+  <rect x="360" y="276" width="156" height="8" rx="4" fill="var(--dg-primary, #0B5A86)"/>
+  <rect x="360" y="296" width="172" height="8" rx="4" fill="var(--dg-primary, #0B5A86)"/>
+
+  <!-- folder card 3 -->
+  <rect x="624" y="204" width="240" height="136" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <path d="M 648 246 V 224 H 660 L 664 229 H 680 V 246 Z" fill="none" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="696" y="241" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">the whole folder</text>
+  <rect x="648" y="256" width="192" height="8" rx="4" fill="var(--dg-primary, #0B5A86)"/>
+  <rect x="648" y="276" width="156" height="8" rx="4" fill="var(--dg-border-strong, #75878F)"/>
+  <rect x="648" y="296" width="172" height="8" rx="4" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- folder card 4 -->
+  <rect x="912" y="204" width="240" height="136" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <path d="M 936 246 V 224 H 948 L 952 229 H 968 V 246 Z" fill="none" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="984" y="241" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">the whole folder</text>
+  <rect x="936" y="256" width="192" height="8" rx="4" fill="var(--dg-border-strong, #75878F)"/>
+  <rect x="936" y="276" width="156" height="8" rx="4" fill="var(--dg-border-strong, #75878F)"/>
+  <rect x="936" y="296" width="172" height="8" rx="4" fill="var(--dg-border-strong, #75878F)"/>
+  <rect x="936" y="316" width="132" height="8" rx="4" fill="var(--dg-primary, #0B5A86)"/>
+
+  <!-- connectors down to the timeline -->
+  <line x1="168" y1="340" x2="168" y2="365" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="456" y1="340" x2="456" y2="365" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="744" y1="340" x2="744" y2="365" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+  <line x1="1032" y1="340" x2="1032" y2="365" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <!-- the timeline itself -->
+  <text x="1152" y="358" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">time</text>
+  <line x1="48" y1="378" x2="1134" y2="378" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 1134 370 L 1152 378 L 1134 386 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <circle cx="168" cy="378" r="13" fill="var(--dg-primary, #0B5A86)"/>
+  <circle cx="168" cy="378" r="5" fill="var(--dg-surface, #FFFFFF)"/>
+  <circle cx="456" cy="378" r="13" fill="var(--dg-primary, #0B5A86)"/>
+  <circle cx="456" cy="378" r="5" fill="var(--dg-surface, #FFFFFF)"/>
+  <circle cx="744" cy="378" r="13" fill="var(--dg-primary, #0B5A86)"/>
+  <circle cx="744" cy="378" r="5" fill="var(--dg-surface, #FFFFFF)"/>
+  <circle cx="1032" cy="378" r="13" fill="var(--dg-primary, #0B5A86)"/>
+  <circle cx="1032" cy="378" r="5" fill="var(--dg-surface, #FFFFFF)"/>
+
+  <text x="168" y="412" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">commit</text>
+  <text x="168" y="438" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">empty stack</text>
+
+  <text x="456" y="412" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">commit</text>
+  <text x="456" y="438" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">after bootstrap</text>
+
+  <text x="744" y="412" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">commit</text>
+  <text x="744" y="438" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">corrected the one-pager</text>
+
+  <text x="1032" y="412" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="var(--dg-primary, #0B5A86)">commit</text>
+  <text x="1032" y="438" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">after unit economics</text>
+
+  <text x="48" y="486" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Each dot holds the whole folder — every file as it stood — not one file's history.</text>
+
+  <!-- section B: the three words -->
+  <text x="48" y="540" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The only three words you need</text>
+  <line x1="48" y1="556" x2="1152" y2="556" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <rect x="48" y="576" width="352" height="118" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="76" y="618" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-primary, #0B5A86)">commit</text>
+  <text x="76" y="648" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Save the folder as it stands<tspan x="76" dy="24">now, with a line saying why.</tspan></text>
+
+  <rect x="424" y="576" width="352" height="118" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="452" y="618" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-primary, #0B5A86)">diff</text>
+  <text x="452" y="648" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">The view of what is different<tspan x="452" dy="24">between two save points.</tspan></text>
+
+  <rect x="800" y="576" width="352" height="118" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <text x="828" y="618" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-primary, #0B5A86)">clone</text>
+  <text x="828" y="648" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Take your own copy of a folder<tspan x="828" dy="24">that already has a history.</tspan></text>
+
+  <!-- section C: two columns -->
+  <text x="48" y="746" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">What that gives you</text>
+  <text x="48" y="770" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Three things you only get from having save points.</text>
+  <line x1="48" y1="786" x2="592" y2="786" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <text x="608" y="746" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">The habit this repo asks for</text>
+  <text x="608" y="770" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="var(--dg-muted, #3F5560)">Three steps, every time you run a prompt.</text>
+  <line x1="608" y1="786" x2="1152" y2="786" stroke="var(--dg-border-strong, #75878F)" stroke-width="1.5"/>
+
+  <!-- left card 1 -->
+  <rect x="48" y="806" width="544" height="124" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <polyline points="78,848 84,855 96,838" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="118" y="846" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">See exactly what changed</text>
+  <text x="118" y="876" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Line by line, between any two save points.<tspan x="118" dy="24">That view is the diff.</tspan></text>
+
+  <!-- left card 2 -->
+  <rect x="48" y="962" width="544" height="124" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <polyline points="78,1004 84,1011 96,994" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="118" y="1002" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Go back to any point</text>
+  <text x="118" y="1032" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Nothing is overwritten for good. Any earlier<tspan x="118" dy="24">state of the folder can be brought back.</tspan></text>
+
+  <!-- left card 3 -->
+  <rect x="48" y="1118" width="544" height="146" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <polyline points="78,1160 84,1167 96,1150" fill="none" stroke="var(--dg-success, #0C7A63)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="118" y="1158" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Know when a number changed</text>
+  <text x="118" y="1188" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Every save point carries a date and a note<tspan x="118" dy="24">saying why. So you can find the moment a</tspan><tspan x="118" dy="24">figure moved, and what moved it.</tspan></text>
+
+  <!-- right step 1 -->
+  <rect x="608" y="806" width="544" height="124" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="650" cy="850" r="16" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="650" y="855" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-primary, #0B5A86)">1</text>
+  <text x="688" y="846" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Commit before you run it</text>
+  <text x="688" y="876" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Save the folder as it stands, before the<tspan x="688" dy="24">prompt touches anything.</tspan></text>
+
+  <line x1="880" y1="934" x2="880" y2="950" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 872 950 L 880 958 L 888 950 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- right step 2 -->
+  <rect x="608" y="962" width="544" height="124" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="650" cy="1006" r="16" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="650" y="1011" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-primary, #0B5A86)">2</text>
+  <text x="688" y="1002" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Run the prompt</text>
+  <text x="688" y="1032" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Let it read, write and change files. It<tspan x="688" dy="24">cannot lose what you already saved.</tspan></text>
+
+  <line x1="880" y1="1090" x2="880" y2="1106" stroke="var(--dg-border-strong, #75878F)" stroke-width="2"/>
+  <path d="M 872 1106 L 880 1114 L 888 1106 Z" fill="var(--dg-border-strong, #75878F)"/>
+
+  <!-- right step 3 -->
+  <rect x="608" y="1118" width="544" height="146" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-border, #C1D1D8)" stroke-width="1.5"/>
+  <circle cx="650" cy="1162" r="16" fill="none" stroke="var(--dg-primary, #0B5A86)" stroke-width="1.5"/>
+  <text x="650" y="1167" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="var(--dg-primary, #0B5A86)">3</text>
+  <text x="688" y="1158" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="21" font-weight="600" fill="var(--dg-text, #10222C)">Look before you keep it</text>
+  <text x="688" y="1188" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-muted, #3F5560)">Read the diff, file by file. Keep it, or<tspan x="688" dy="24">go back to the save point and run the</tspan><tspan x="688" dy="24">prompt again with a better brief.</tspan></text>
+
+  <!-- the undo band -->
+  <rect x="48" y="1288" width="1104" height="64" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-secondary, #0C7A63)" stroke-width="2"/>
+  <text x="600" y="1326" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">This is the undo. It is what makes it safe to let an AI edit your files.</text>
+
+  <!-- footer -->
+  <rect x="48" y="1376" width="1104" height="64" rx="12" fill="var(--dg-surface, #FFFFFF)" stroke="var(--dg-primary, #0B5A86)" stroke-width="2"/>
+  <text x="600" y="1414" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="var(--dg-text, #10222C)">It is local, it is free, and it is the difference between a bad afternoon and a lost file.</text>
+</svg>
