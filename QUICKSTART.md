@@ -46,7 +46,7 @@ rm -rf web .github
 
 ## Step 2 — Fill the inbox (20 min)
 
-Put everything that describes the business into `_inbox/`. Do not sort it. Do not clean it. Sorting is the AI's job.
+Put everything that describes the business into `_inbox/`. Do not sort it. Do not clean it. Sorting is the AI's job. If you are not sure how to get something out of your mail, your drive or a chat app, [docs/getting-material-in.md](docs/getting-material-in.md) covers it source by source.
 
 Good raw material, roughly in order of how much it is worth:
 

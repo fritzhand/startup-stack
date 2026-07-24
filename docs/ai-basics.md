@@ -97,6 +97,8 @@ Three habits, and they are not optional:
 - **Scoped.** Connect the mailbox or the drive folder the task needs, not the whole account.
 - **With permission.** Yours, and your company's. Personal data, and anything under a confidentiality obligation, stays out until the policy question has an answer — see [safety.md](safety.md).
 
+Setting one up, and the rule that keeps connector-found material citable, is covered in [getting-material-in.md](getting-material-in.md).
+
 Put together, the pieces you are assembling are few.
 
 <!-- DIAGRAM: your-toolkit -->
