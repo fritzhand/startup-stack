@@ -99,6 +99,7 @@ const addPage = (p) => { PAGES.push(p); if (p.src) PAGE_BY_SRC.set(p.src, p.url)
 const DOC_PAGES = [
   { src: "QUICKSTART.md", url: "quickstart.html", nav: "Start here", short: "Your first hour" },
   { src: "docs/ai-basics.md", url: "ai-basics.html", nav: "Start here", short: "New to working with AI" },
+  { src: "docs/what-things-are.md", url: "what-things-are.html", nav: "Start here", short: "What the words mean" },
   { src: "docs/method.md", url: "method.html", nav: "The method", short: "The method" },
   { src: "docs/knowledge-base.md", url: "knowledge-base.html", nav: "The method", short: "Build the knowledge base" },
   { src: "docs/front-matter.md", url: "front-matter.html", nav: "The method", short: "Front matter schema" },

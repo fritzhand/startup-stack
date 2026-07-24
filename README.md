@@ -8,7 +8,7 @@ Drop your pitch deck, market research, business plan, competitor notes and call 
 
 > Every company, customer, metric and transcript used as an example in this repo is invented. Nothing here is drawn from any real client engagement.
 
-[**New to working with AI**](docs/ai-basics.md) · [**The method**](docs/method.md) · [**Build the knowledge base**](docs/knowledge-base.md) · [**Prompt library**](prompts/INDEX.md) · [**For coaches**](docs/for-coaches.md) · [**Quickstart**](QUICKSTART.md)
+[**New to working with AI**](docs/ai-basics.md) · [**What the words mean**](docs/what-things-are.md) · [**The method**](docs/method.md) · [**Build the knowledge base**](docs/knowledge-base.md) · [**Prompt library**](prompts/INDEX.md) · [**For coaches**](docs/for-coaches.md) · [**Quickstart**](QUICKSTART.md)
 
 [![Read it as a site](https://img.shields.io/badge/read%20it%20as%20a%20site-fritzhand.github.io%2Fstartup--stack-0b5a86?style=flat-square)](https://fritzhand.github.io/startup-stack/)
 ![No code required](https://img.shields.io/badge/code%20required-none-0E6B63?style=flat-square)
@@ -61,7 +61,7 @@ Meanwhile the advice they need is not exotic. It is the same twenty things, aske
 | [`stack/`](stack/) | **The templates.** Ten numbered sections — company, customer, market, product, GTM, operations, money, capital, brand, pulse — one markdown file each, with front matter. This *becomes* your knowledge base; you fill it in, you do not copy it out. |
 | [`prompts/`](prompts/INDEX.md) | **The prompt library.** 16 prompts that run on top of a filled-in stack: bootstrap, gap scan, competitive intelligence, unit economics, list of 100, pitch deck, fundraise readiness, weekly recap, and the adversarial review that tells you what an investor will attack. |
 | [`worksheets/`](worksheets/) | **The repeatable artifacts.** Fill-in files you produce over and over: startup-prep, customer interview, competitor profile, two-week experiment, SOP entry, trade/order sheet, advisor scope letter, one-pager, list of 100, weekly recap. |
-| [`docs/`](docs/) | **The method.** Why front matter and an index make the base cheap to run; how to build it in your first hour; how a coach runs this with a cohort; the safety rules for giving an AI access to your files; and [AI basics](docs/ai-basics.md) for anyone who has only ever used a chat window. |
+| [`docs/`](docs/) | **The method.** Why front matter and an index make the base cheap to run; how to build it in your first hour; how a coach runs this with a cohort; the safety rules for giving an AI access to your files; plus [AI basics](docs/ai-basics.md) for anyone who has only ever used a chat window, and [what the words mean](docs/what-things-are.md) — the terminal, an editor, Git, GitHub, connectors, model tiers — each answered in plain language with a diagram. |
 | [`_inbox/`](_inbox/) | Where raw material lands before it is processed. Git-ignored by default. |
 | [`tools/`](tools/) | **Optional.** One script that turns a website into citable markdown in `_inbox/`. You never need it — it saves an hour of copy-and-paste. See [docs/scraping.md](docs/scraping.md). |
 | [`web/`](web/) | **This project's own site**, generated from the markdown in this repo. Not part of your stack — delete it when you fork. |
@@ -70,7 +70,7 @@ Meanwhile the advice they need is not exotic. It is the same twenty things, aske
 
 Requirements: a **paid** AI subscription and a tool that can see your file system — the Claude desktop app, Claude Code, ChatGPT's Codex app, or any equivalent. Free chat tiers cannot do this work; they cannot read your folder.
 
-If that sentence already lost you, read [docs/ai-basics.md](docs/ai-basics.md) first. It explains what "a tool that can see your file system" means, what the terminal is, what the AI genuinely cannot see, and the one rule that never bends — in one sitting, with no code.
+If that sentence already lost you, read [docs/ai-basics.md](docs/ai-basics.md) first, and keep [docs/what-things-are.md](docs/what-things-are.md) open beside it for anything it assumes you know. Between them they explain what "a tool that can see your file system" means, what the terminal is, what Git and GitHub are, what the AI genuinely cannot see, and the one rule that never bends — with no code.
 
 ```bash
 # 1. Take a copy. This is a template, not a dependency — you own what you make.
