@@ -1,0 +1,24 @@
+# Raw material. Lands here, gets processed into stack/, does not get committed.
+# Often contains customer names, pricing, contracts and personal data.
+_inbox/*
+!_inbox/README.md
+
+# Anything you have marked restricted. See docs/safety.md.
+**/restricted/
+*.restricted.md
+
+# Working files
+.DS_Store
+Thumbs.db
+*.tmp
+~$*
+
+# Local AI tool state
+.claude/
+.cursor/
+.aider*
+
+# Exports — regenerate them, don't commit them
+exports/
+*.pdf
+!docs/**/*.pdf
