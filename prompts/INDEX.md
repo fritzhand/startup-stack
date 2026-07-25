@@ -44,6 +44,16 @@ Numbers in the *Reads* column below are `stack/` sections, not prompt numbers �
 | --- | --- | --- |
 | 13 | [mentor-review](13-mentor-review.md) | An adversarial pass. What an experienced coach or investor would attack, in the order they would attack it. **Uncomfortable on purpose.** |
 
+## Run a portfolio
+
+For a programme running the method across many companies — an incubator, accelerator, studio or university venture programme. **A founder building their own stack will never need these three.** They read and write [`portfolio/`](../portfolio/), never a founder's stack. The method is in [docs/for-portfolios.md](../docs/for-portfolios.md).
+
+| | Prompt | What it does | Reads | Writes |
+| --- | --- | --- | --- | --- |
+| 16 | [session-to-record](16-session-to-record.md) | One session → the factual record the founder gets, your attributed read, and the updated company record. **Run after every session.** | transcript, `record.md` | `sessions/`, `reads/`, `record.md` |
+| 17 | [pre-session-brief](17-pre-session-brief.md) | Half a page before you walk in — including what the last three coaches advised, so you do not contradict them. **The shortest prompt here.** | `record.md`, recent sessions | nothing |
+| 18 | [portfolio-scan](18-portfolio-scan.md) | What is going wrong in enough companies to be worth teaching, who needs attention, and what actually moved. Monthly. | every `record.md` | `themes.md`, `INDEX.md` |
+
 ---
 
 ## Suggested order
@@ -57,6 +67,8 @@ Numbers in the *Reads* column below are `stack/` sections, not prompt numbers �
 **Before you raise or present** — `13` mentor review, then fix what it finds, then `10` and `11`.
 
 **Forever** — `12` every week. `14` after every meeting. `01` monthly. `02` quarterly.
+
+**If you run a programme** — `17` before every session, `16` after every one, `18` monthly. Nothing else on this page changes; the founders still run their own.
 
 ---
 

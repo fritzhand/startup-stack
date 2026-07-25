@@ -108,7 +108,12 @@ const DOC_PAGES = [
   { src: "docs/scraping.md", url: "scraping.html", nav: "Tools", short: "Website to inbox" },
   { src: "docs/for-coaches.md", url: "for-coaches.html", nav: "Running it", short: "For coaches" },
   { src: "docs/weekly-recap.md", url: "weekly-recap.html", nav: "Running it", short: "The weekly recap" },
+  { src: "docs/automation.md", url: "automation.html", nav: "Running it", short: "Running it on a schedule" },
   { src: "docs/safety.md", url: "safety.html", nav: "Running it", short: "Safety rules" },
+  { src: "docs/for-portfolios.md", url: "for-portfolios.html", nav: "Run a portfolio", short: "For programmes" },
+  { src: "docs/exchange.md", url: "exchange.html", nav: "Run a portfolio", short: "The exchange folder" },
+  { src: "portfolio/README.md", url: "portfolio.html", nav: "Run a portfolio", short: "The templates" },
+  { src: "portfolio/rubric.md", url: "rubric.html", nav: "Run a portfolio", short: "The maturity rubric" },
 ];
 
 /* ---- prompts: the library, grouped the way prompts/INDEX.md groups them ---- */
@@ -120,8 +125,9 @@ const PROMPT_GROUPS = {
   "10": "Produce something", "11": "Produce something", "12": "Produce something",
   "14": "Produce something", "15": "Produce something",
   "13": "Get told what is wrong",
+  "16": "Run a portfolio", "17": "Run a portfolio", "18": "Run a portfolio",
 };
-const GROUP_ORDER = ["Build and maintain", "Sharpen a section", "Produce something", "Get told what is wrong"];
+const GROUP_ORDER = ["Build and maintain", "Sharpen a section", "Produce something", "Get told what is wrong", "Run a portfolio"];
 
 /* ============================================================
    MARKDOWN → HTML
@@ -398,6 +404,7 @@ const NAV = [
   { group: "Do the work", items: [] },
   { group: "Tools", items: [] },
   { group: "Running it", items: [] },
+  { group: "Run a portfolio", items: [] },
 ];
 const navPush = (group, url, title) => {
   const g = NAV.find((x) => x.group === group);

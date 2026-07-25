@@ -115,6 +115,10 @@ Ask whether I want a version to send. If yes:
   TEAM             — everything except individual compensation
   INVESTORS        — numbers, moved, learned, the ask. Trim internal churn.
                      Monthly, as a roll-up of four recaps.
+  PROGRAMME        — for an incubator or accelerator I am a member of. As COACH,
+                     plus what I want help with this week and who I need
+                     introduced to. Save it into the shared folder they gave me,
+                     under from-founder/, as YYYY-MM-DD-recap.md.
 
 Respect the sensitivity rules in AGENTS.md. State what you excluded.
 ```
