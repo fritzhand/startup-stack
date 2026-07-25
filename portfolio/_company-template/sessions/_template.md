@@ -80,4 +80,4 @@ Flag explicitly: an equity or commission promise, a supplier commitment, a partn
 
 ---
 
-**Nothing in this file is a judgement about the founder.** If a sentence here describes how they are doing rather than what happened, it is in the wrong file.
+**Nothing in this file is a judgement the founder did not hear.** If a sentence describes how they are doing rather than what happened, it is in the wrong file — with one exception. A judgement a coach said out loud in the room is part of what happened, and recording it, attributed, is what makes the next session continuous. What a coach thought and did not say belongs in `../reads/`.

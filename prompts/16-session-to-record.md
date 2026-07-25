@@ -46,6 +46,10 @@ Two rules specific to this file:
   rather than about what happened, it belongs in Step 4 — including the softened
   kind. "The founder seemed unsure about the costing" is an assessment wearing a
   fact's clothes. "The founder could not say what the unit cost was" is a fact.
+  The exception is a judgement the coach said out loud: the founder heard it, so
+  recording it is what makes the next session continuous. Said in the room goes
+  in the record, attributed to whoever said it. Thought and not said goes in
+  Step 4.
 - Record the advice specifically, and who gave it. The next coach reads this
   line to avoid contradicting it, which is the most common failure in a
   multi-coach programme.

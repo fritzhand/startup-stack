@@ -815,8 +815,11 @@ ${table}
 <div class="grid grid-2">
 ${card("ai-basics.html", "You have never pointed an AI at your own files", "What actually changed, what the terminal is, what the AI cannot see, and the one rule that never bends. Read this first if the rest of the site assumes something you have not done.")}
 ${card("quickstart.html", "You are ready to build", "The honest first hour: take a copy, fill the inbox, run the bootstrap prompt, and correct the one-pager by hand.")}
-${card("prompts/index.html", "You have a stack and want the work done", "Sixteen prompts — unit economics, the list of 100, competitive intelligence, the deck, the weekly recap, and the adversarial review that tells you what an investor will attack.")}
+${card("prompts/index.html", "You have a stack and want the work done", `${counts.prompts} prompts — unit economics, the list of 100, competitive intelligence, the deck, the weekly recap, and the adversarial review that tells you what an investor will attack.`)}
 ${card("for-coaches.html", "You are running this with a cohort", "How the method works with a group, what to expect in week one, and where founders get stuck.")}
+</div>
+<div class="prose section-gap">
+<p>Running a portfolio rather than a cohort — many companies, several coaches, and an institutional memory that has to survive any one of them leaving? <a href="for-portfolios.html">That is a deeper layer</a>: what the programme keeps for itself, why every session splits into a factual record and an attributed read, and how a maturity level routes a company to the right specialist.</p>
 </div>
 
 <div class="prose section-gap">
