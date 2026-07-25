@@ -221,9 +221,11 @@ img, svg, video { max-width: 100%; height: auto; }
 }
 .sidebar-group { margin-bottom: 6px; }
 .sidebar-title {
+  display: flex; align-items: center; gap: 7px;
   font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
   color: var(--text-faint); padding: 14px 10px 6px;
 }
+.sidebar-title svg { width: 14px; height: 14px; flex: none; opacity: 0.8; }
 .sidebar a.nav-link {
   display: flex; align-items: center; gap: 8px;
   padding: 6px 10px; border-radius: var(--radius-sm);
@@ -392,6 +394,16 @@ pre:hover > .copy-btn, .codeblock:hover > .copy-btn, .copy-btn:focus-visible { o
    drawings is 15px in a 1200-wide viewBox, so at 880px it still paints at
    about 11px. 620px would have rendered it at under 8px. */
 .figure.figure-wide > svg { max-width: none; min-width: 880px; }
+/* A raster infographic behaves the other way round to an inlined SVG: it has a
+   fixed pixel size, so it fits the column and the click opens it at full
+   resolution. Scrolling a 2000px image sideways inside a 700px column would be
+   a worse way to read it than opening it. */
+.figure > .figure-zoom { display: block; }
+.figure > .figure-zoom > img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--radius-sm); background: #fff;
+}
+.figure > .figure-zoom:hover { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--radius-sm); }
 .figure-cap {
   margin-top: 12px; font-size: 0.8rem; line-height: 1.5;
   color: var(--text-faint); text-align: center;
