@@ -4,6 +4,8 @@ How an incubator, accelerator, studio or university venture programme runs this 
 
 This is the deeper end of [for-coaches.md](for-coaches.md). That page is about running the method *with* founders. This one is about what the programme keeps for itself.
 
+![Three zones — the founder's stack, a two-door shared folder, and the programme's record — with the note that neither side's master lives in the middle.](../web/infographics/running-this-across-a-portfolio.webp)
+
 ---
 
 ## The problem you already have

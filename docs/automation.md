@@ -4,6 +4,8 @@ How to stop copying and pasting: getting a transcript into a prompt without fetc
 
 Written for whichever platform you already run. Nothing here needs a developer, and none of it is required — the method works entirely by hand, which is exactly how it should start.
 
+![Connector setup, a weekly pull cycle landing in the inbox folder, the daily versus weekly trade, and the monthly audit.](../web/infographics/putting-the-pull-on-schedule.webp)
+
 ---
 
 ## Do it by hand first

@@ -4,6 +4,8 @@ The connection between a founder's stack and a programme's record is a shared fo
 
 Read [for-portfolios.md](for-portfolios.md) first if you have not — this page is the contract, not the reasoning.
 
+![One coaching session forking into a factual record for the founder and an attributed read for the coach team, with the divider test between them.](../web/infographics/every-session-becomes-two-files.webp)
+
 ---
 
 ## Why a folder and not an integration

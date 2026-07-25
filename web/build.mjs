@@ -841,6 +841,8 @@ function readmeParagraph(prefix, { raw = false } = {}) {
     prompts: promptFiles.length,
     worksheets: worksheetFiles.length,
     docs: DOC_PAGES.length,
+    /* counted, not written down, so the home page cannot drift from the folder */
+    infographics: readdirSync(INFOGRAPHIC_DIR).filter((f) => f.endsWith(".webp")).length,
   };
   const card = (href, title, text) => `<a class="card" href="${href}"><h3>${esc(title)}</h3><p>${esc(text)}</p></a>`;
 
@@ -894,6 +896,15 @@ ${readmeSection("The problem this solves")}
 <div class="grid grid-3">
 ${loopCards}
 </div>
+
+<div class="prose section-gap">
+<h2 id="infographics">The whole thing, drawn</h2>
+<p>Thirty infographics across four pages — what AI actually is, the tools you will hear named, this method, and the layer a programme runs on top of it. They are free to take for a workshop, a course or an onboarding pack.</p>
+</div>
+<figure class="figure figure-wide">
+  <a href="infographics-method.html" class="figure-zoom"><img src="infographics/the-startup-stack-method.webp" alt="Scattered company files becoming a ten-section knowledge base, and the work that comes out of it — with the three loops: build, enrich, pulse." loading="lazy" decoding="async"></a>
+  <figcaption class="figure-cap">The method on one page. <b>${counts.infographics - 1} more</b> — <a href="infographics.html">see all of them</a>.</figcaption>
+</figure>
 
 <div class="prose section-gap"><h2 id="start">Where to start</h2></div>
 <div class="grid grid-2">

@@ -4,6 +4,8 @@ Handing an AI the keys to your folders is powerful, and it is exactly where thin
 
 Read this before you run the bootstrap prompt.
 
+![A stack in three sensitivity bands feeding four different outputs, with the restricted band drawn outside the boundary entirely.](../web/infographics/private-master-shared-derived.webp)
+
 ---
 
 ## The four rules
