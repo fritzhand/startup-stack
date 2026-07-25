@@ -457,7 +457,11 @@
      Everything below is an upgrade on that, never a prerequisite.
      ---------------------------------------------------------- */
   (() => {
-    const zooms = $$("a.figure-zoom");
+    /* Only ever point the modal at something that is actually an image. A
+       figure whose link goes to a page still works — it just navigates, the
+       way an ordinary link does — instead of loading HTML into an <img> and
+       showing a broken-image glyph over the page. */
+    const zooms = $$("a.figure-zoom").filter((a) => /\.(webp|png|jpe?g|gif|avif|svg)(\?|#|$)/i.test(a.getAttribute("href") || ""));
     if (!zooms.length) return;
 
     let box, img, cap, opener;

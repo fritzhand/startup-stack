@@ -219,8 +219,13 @@ img, svg, video { max-width: 100%; height: auto; }
   padding: 20px 12px 40px;
   scrollbar-width: thin;
 }
-.sidebar-group { margin-bottom: 6px; }
-.sidebar-head { display: flex; align-items: center; gap: 2px; padding: 14px 4px 6px 0; }
+.sidebar-group { margin-bottom: 1px; }
+/* A collapsed rail is a list of seven headings, so the gap between them is the
+   whole rhythm of it — 14px of lead-in per group turned that list into a
+   column of islands. */
+.sidebar-head { display: flex; align-items: center; gap: 2px; padding: 2px 4px 2px 0; }
+.sidebar-group:not(.is-collapsed) .sidebar-head { padding-top: 8px; }
+.sidebar-items { padding-bottom: 6px; }
 .sidebar-title {
   display: flex; align-items: center; gap: 7px; flex: 1 1 auto; min-width: 0;
   font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
@@ -799,18 +804,19 @@ table.data.data-wide { min-width: 820px; }
 .footer a { color: var(--text-muted); }
 .footer .f-links { display: flex; flex-wrap: wrap; gap: 12px; }
 .footer .footer-note { flex: 1 1 260px; max-width: 58ch; line-height: 1.5; }
-.footer-author { display: flex; align-items: center; gap: 10px; flex: none; }
+.footer-author { display: flex; align-items: center; gap: 12px; flex: none; }
 .author-avatar {
-  width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+  width: 48px; height: 48px; border-radius: 50%; object-fit: cover;
   border: 1.5px solid var(--border-strong); flex: none;
 }
-.author-meta { line-height: 1.35; }
+.author-meta { line-height: 1.4; }
 .author-role {
-  font-size: 0.56rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent);
 }
-.author-name { font-size: 0.85rem; font-weight: 700; color: var(--text); }
-.author-links { display: flex; gap: 6px; margin-top: 3px; }
+.author-nameline { display: flex; align-items: center; gap: 8px; }
+.author-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+.author-links { display: flex; gap: 2px; }
 .author-links a {
   display: inline-flex; width: 22px; height: 22px; border-radius: var(--radius-sm);
   align-items: center; justify-content: center; color: var(--text-faint);

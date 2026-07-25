@@ -503,9 +503,6 @@ ${NAV.filter((g) => g.items.length).map((g) => {
   <div class="sidebar-items">${g.items.map((it) => link(it.url, it.title)).join("\n")}</div>
 </div>`;
   }).join("\n")}
-  <div class="sidebar-group"><div class="sidebar-head"><span class="sidebar-title">${ICONS.github}Source</span></div>
-    <a class="nav-link" href="${REPO_URL}" target="_blank" rel="noopener">The repository</a>
-  </div>
 </nav>`;
 }
 
@@ -565,13 +562,15 @@ ${tocHtml ? `<div class="content-with-toc"><div>${body}</div>${tocHtml}</div>` :
 </div>
 <footer class="footer"><div class="footer-inner">
   <div class="footer-author">
-    <img class="author-avatar" src="${asset(root, "jeremy.webp")}" alt="" width="32" height="32" loading="lazy">
+    <img class="author-avatar" src="${asset(root, "jeremy.webp")}" alt="" width="48" height="48" loading="lazy">
     <div class="author-meta">
       <div class="author-role">Built and maintained by</div>
-      <div class="author-name">Jeremy Fritzhand</div>
-      <div class="author-links">
-        <a href="https://github.com/fritzhand" target="_blank" rel="noopener" aria-label="Jeremy Fritzhand on GitHub" title="GitHub">${ICONS.github}</a>
-        <a href="https://www.linkedin.com/in/fritzhand/" target="_blank" rel="noopener" aria-label="Jeremy Fritzhand on LinkedIn" title="LinkedIn">${ICONS.linkedin}</a>
+      <div class="author-nameline">
+        <span class="author-name">Jeremy Fritzhand</span>
+        <span class="author-links">
+          <a href="https://github.com/fritzhand" target="_blank" rel="noopener" aria-label="Jeremy Fritzhand on GitHub" title="GitHub">${ICONS.github}</a>
+          <a href="https://www.linkedin.com/in/fritzhand/" target="_blank" rel="noopener" aria-label="Jeremy Fritzhand on LinkedIn" title="LinkedIn">${ICONS.linkedin}</a>
+        </span>
       </div>
     </div>
   </div>
@@ -980,7 +979,7 @@ ${loopCards}
 <p>Thirty infographics across four pages — what AI actually is, the tools you will hear named, this method, and the layer a programme runs on top of it. They are free to take for a workshop, a course or an onboarding pack.</p>
 </div>
 <figure class="figure figure-wide">
-  <a href="infographics-method.html" class="figure-zoom"><img src="infographics/the-startup-stack-method.webp" alt="Scattered company files becoming a ten-section knowledge base, and the work that comes out of it — with the three loops: build, enrich, pulse." loading="lazy" decoding="async"></a>
+  <a href="infographics/the-startup-stack-method.webp" class="figure-zoom"><img src="infographics/the-startup-stack-method.webp" alt="Scattered company files becoming a ten-section knowledge base, and the work that comes out of it — with the three loops: build, enrich, pulse." loading="lazy" decoding="async"></a>
   <figcaption class="figure-cap">The method on one page. <b>${counts.infographics - 1} more</b> — <a href="infographics.html">see all of them</a>.</figcaption>
 </figure>
 
