@@ -72,6 +72,23 @@ This field is what makes carving mechanical. When you ask for something shareabl
 
 Set it once, when you are calm. Re-deciding it per document, at 11pm, before a deadline, is how confidential paragraphs end up in investor decks.
 
+### `subject` / `audience` — portfolio layer only
+
+Skip this section if you are a founder building your own stack. These two fields exist only in [`portfolio/`](../portfolio/), and they solve a problem `sensitivity` cannot.
+
+`sensitivity` measures one dimension: how far from the owner a file may travel. That works while the founder is the author and everyone else is a reader. It breaks the moment a coach writes something *about* a founder — because the file was never on the founder's machine, and the people who must read it are the ones who wrote it. `restricted` would say "nowhere", which is wrong; `internal` would say "team and coach", which does not say whether the founder is included.
+
+| Field | Values | Means |
+| --- | --- | --- |
+| `subject` | a company slug, or a person | Who the file is about |
+| `audience` | `founder` · `coach-team` · `programme` | Who may read it |
+
+They compose with `sensitivity` rather than replacing it. A session record is `sensitivity: internal, audience: founder` — the founder gets it, the wider world does not. A coach's read of that same session is `sensitivity: internal, audience: coach-team` — same distance from the outside world, different answer to whether its subject is a reader.
+
+Portfolio files also drop three fields that only mean something inside a stack: `section`, `reads` and `feeds` describe a position in the ten-section router, and a company record has none. The rest of the block is unchanged, which is the point — the same parser, the same index rows, the same habits.
+
+The rule that makes this safe to write down at all: **anything about a person is written as though that person will read it.** In most jurisdictions they can ask to, and a note you would not show them was not worth keeping.
+
 ### `reads` / `feeds`
 The dependency edges. `reads:` lists the sections this file depends on; `feeds:` lists the sections that depend on it.
 

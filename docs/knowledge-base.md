@@ -64,6 +64,8 @@ What to gather into `_inbox/`:
 
 The AI reads a sample of everything in `_inbox/` and proposes a numbered folder structure. Everything has a place; every file is named for what it is; the numbers keep it ordered.
 
+One limit on that proposal, which matters more than it looks. **Let it shape what goes inside a section; do not let it rename or renumber the sections themselves.** The ten are the part that has to look the same across every company for anything to be comparable — your own stack against itself six months from now, or ten companies against each other if you are running a programme. A section named for your business is a section nobody else can route through, including you, later.
+
 `startup-stack` ships with ten sections that fit almost every early company:
 
 | # | Section | Holds |

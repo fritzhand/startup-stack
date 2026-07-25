@@ -43,6 +43,14 @@ Every fact carries one of these, either in front matter (whole file) or inline (
 
 You may never promote something to `[SOURCE OF TRUTH]`. You may only propose it: *"You confirmed X in this session — shall I mark it source-of-truth?"*
 
+**One more tag exists in the portfolio layer, because all four above assume a checkable claim.** "Their pricing is ₹450" can be verified. "They take feedback badly" cannot — it has no source to check, no action that resolves it, and two people disagreeing about it is a difference of judgement rather than a discrepancy.
+
+| Tag | Means |
+| --- | --- |
+| `[ASSESSMENT — name, date]` | Somebody's judgement, attributed and dated. Never promoted, never merged with another person's, never presented as fact. |
+
+Two assessments that disagree both stand, side by side, with their names on them. That is not a `[CONFLICT]` to resolve — it is two people who have met the same founder and read them differently, which is information.
+
 ### 3. Cite where things came from
 
 When you write a fact into the stack, note its origin: `(src: _inbox/pitch-deck-v4.pdf p7)`, `(src: call transcript 2026-03-10)`, `(src: founder, 2026-07-24)`. This is what makes the base auditable later, when the number is being questioned in a room you are not in.
@@ -62,6 +70,17 @@ Every file declares `sensitivity: public | internal | restricted`.
 - `restricted` — never leaves the founder's own machine: personal data, unsigned agreements, anything under a confidentiality obligation
 
 When asked to produce something shareable — a deck, a one-pager, an investor update — **carve it**. Pull from `public` freely, from `internal` only with an explicit instruction, and never from `restricted`. State in your output what you excluded and why.
+
+**In the portfolio layer only,** two further fields appear, because `sensitivity` measures one thing — how far from the owner a file may travel — and a programme needs to answer a second question it cannot: whether the person a file is *about* is among the people who may read it.
+
+| Field | Values | Means |
+| --- | --- | --- |
+| `subject` | a company slug, or a person | Who this file is about |
+| `audience` | `founder` · `coach-team` · `programme` | Who may read it |
+
+A coach's read of a founder is `audience: coach-team`. It never travels to the founder's copy, and never into anything the founder receives. If you are producing something for a founder and a file says `coach-team`, it is not yours to include — say you excluded it, without quoting it.
+
+**One rule governs everything written about a person: write it as though they will read it.** That is the posture the law takes in most places, and it is also the only way the note stays honest enough to be worth keeping. See [`docs/for-portfolios.md`](docs/for-portfolios.md). A founder working on their own company will never need either field.
 
 ### 6. Never delete without asking
 
