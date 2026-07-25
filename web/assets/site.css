@@ -316,6 +316,13 @@ a.sidebar-title[aria-current="page"] { color: var(--accent-strong); }
   /* taking the sidebar out of flow makes main the first grid item, so it has
      to be told to stay in the second column */
   .layout > .content { grid-column: 2; }
+  /* A fixed rail is the full height of the viewport at every scroll position,
+     including the one where the footer is on screen — so the footer has to
+     begin where the rail ends rather than run underneath it. The rail's own
+     background continues the column down past the footer's top border, which
+     is what it looked like when the sidebar was sticky. */
+  .footer { margin-left: 268px; transition: margin-left 240ms var(--ease); }
+  :root.rail-collapsed .footer { margin-left: 0; }
   /* an explicit width so the sidebar slides off intact instead of squashing
      while the grid column animates shut */
   .sidebar { width: 268px; transition: transform 240ms var(--ease), visibility 0s; }
@@ -329,6 +336,8 @@ a.sidebar-title[aria-current="page"] { color: var(--accent-strong); }
 }
 @media (min-width: 1700px) {
   .sidebar { width: 300px; }
+  .footer { margin-left: 300px; }
+  :root.rail-collapsed .footer { margin-left: 0; }
   :root.rail-collapsed .layout { grid-template-columns: 0 minmax(0, 1fr); background: none; }
 }
 
