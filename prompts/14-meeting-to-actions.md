@@ -4,6 +4,8 @@ Transcript in → summary, minutes, owned action items with dates, and stack upd
 
 **Run after every meeting that matters.** Ten minutes. It is the habit that turns a knowledge base from a snapshot into a living thing, and it is the single highest-return process in this repo.
 
+**Requires:** a transcript or notes, and nothing else. This is one of the few prompts that works on an empty stack — it is how a stack starts to fill.
+
 ---
 
 ```
@@ -11,6 +13,12 @@ Read AGENTS.md first, then stack/CONTEXT.md.
 
 I am giving you a transcript or notes from a meeting. Produce a structured
 record and update the stack.
+
+## Step 0 — Check the ground
+
+If I have not given you a transcript or notes, ask for them and stop. If
+CONTEXT.md is still empty, carry on anyway — say so, and write the record
+without assuming anything about the company.
 
 ## Step 1 — Establish the basics
 
@@ -66,6 +74,9 @@ Rules:
 
 ## Step 5 — Extract by meeting type
 
+Only the branch that matches applies. The verbatim instructions are not
+stylistic — a paraphrased objection is a lost objection.
+
 CUSTOMER MEETING
 - Their pain, in their exact words
 - What they use today and what it costs them
@@ -104,15 +115,9 @@ PARTNER OR CHANNEL MEETING
 
 ## Step 6 — Update the stack
 
-Write the new information into the right sections. Follow the rules in
-AGENTS.md:
-
-- Cite: (src: meeting with X, YYYY-MM-DD)
-- Tag [NEEDS VERIFICATION] unless it is a first-hand fact the founder stated
-- Where this contradicts something already in the stack, mark [CONFLICT], show
-  both, and flag it for me — never silently overwrite, and never touch anything
-  marked source-of-truth
-- Update front matter dates and INDEX rows on everything touched
+Write the new information into the right sections, citing each as
+(src: meeting with X, YYYY-MM-DD). Where it contradicts what is already there,
+mark [CONFLICT] and show both — never silently overwrite.
 
 Tell me exactly which files you changed and what you added.
 

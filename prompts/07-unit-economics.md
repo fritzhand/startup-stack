@@ -4,12 +4,21 @@
 
 Founders reach for capital when what they lack is a costed process map. Do this before any fundraising work.
 
+**Requires:** `04-product` and `06-operations` past `tbd`. You cannot cost a process nobody has written down. Run [`00-bootstrap-the-stack`](00-bootstrap-the-stack.md) first if the stack is empty, then [`06-product-and-roadmap`](06-product-and-roadmap.md).
+
 ---
 
 ```
 Read AGENTS.md first, then stack/CONTEXT.md, stack/04-product/product.md,
 stack/06-operations/operations.md and stack/07-money/money.md. Also read any
 financial model, supplier quotes, invoices or rate cards in _inbox/.
+
+## Step 0 — Check the ground
+
+Open those files and check they hold real content rather than [TBD]
+placeholders. If any is still empty, name it, say which prompt fills it, and
+stop. Do not proceed on assumptions, and do not substitute a plausible figure
+for one you cannot find.
 
 ## Step 1 — Can these questions be answered at all?
 

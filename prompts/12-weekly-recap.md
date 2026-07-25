@@ -4,6 +4,8 @@
 
 The only part of this system that compounds. Run it in week one, before anything impressive has happened — the discipline is what you are building, not the report.
 
+**Requires:** `stack/10-pulse/pulse.md` with its metrics defined. Nothing else — this prompt is meant to run on a thin stack, and the first recap has no previous one to read.
+
 ---
 
 ```
@@ -11,6 +13,12 @@ Read AGENTS.md first, then stack/CONTEXT.md, stack/10-pulse/pulse.md and the
 most recent file in stack/10-pulse/recaps/.
 
 You are producing this week's recap. Fixed shape, one page, thirty minutes.
+
+## Step 0 — Check the ground
+
+If pulse.md has no metrics defined yet, stop and ask me to name three to six
+first — a recap without metrics is a diary entry. An empty recaps/ folder is
+fine and means this is the first one; say so and carry on.
 
 ## Step 1 — Set up
 
@@ -107,6 +115,10 @@ Ask whether I want a version to send. If yes:
   TEAM             — everything except individual compensation
   INVESTORS        — numbers, moved, learned, the ask. Trim internal churn.
                      Monthly, as a roll-up of four recaps.
+  PROGRAMME        — for an incubator or accelerator I am a member of. As COACH,
+                     plus what I want help with this week and who I need
+                     introduced to. Save it into the shared folder they gave me,
+                     under from-founder/, as YYYY-MM-DD-recap.md.
 
 Respect the sensitivity rules in AGENTS.md. State what you excluded.
 ```

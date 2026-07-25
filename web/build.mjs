@@ -108,7 +108,12 @@ const DOC_PAGES = [
   { src: "docs/scraping.md", url: "scraping.html", nav: "Tools", short: "Website to inbox" },
   { src: "docs/for-coaches.md", url: "for-coaches.html", nav: "Running it", short: "For coaches" },
   { src: "docs/weekly-recap.md", url: "weekly-recap.html", nav: "Running it", short: "The weekly recap" },
+  { src: "docs/automation.md", url: "automation.html", nav: "Running it", short: "Running it on a schedule" },
   { src: "docs/safety.md", url: "safety.html", nav: "Running it", short: "Safety rules" },
+  { src: "docs/for-portfolios.md", url: "for-portfolios.html", nav: "Run a portfolio", short: "For programmes" },
+  { src: "docs/exchange.md", url: "exchange.html", nav: "Run a portfolio", short: "The exchange folder" },
+  { src: "portfolio/README.md", url: "portfolio.html", nav: "Run a portfolio", short: "The templates" },
+  { src: "portfolio/rubric.md", url: "rubric.html", nav: "Run a portfolio", short: "The maturity rubric" },
 ];
 
 /* ---- prompts: the library, grouped the way prompts/INDEX.md groups them ---- */
@@ -120,8 +125,9 @@ const PROMPT_GROUPS = {
   "10": "Produce something", "11": "Produce something", "12": "Produce something",
   "14": "Produce something", "15": "Produce something",
   "13": "Get told what is wrong",
+  "16": "Run a portfolio", "17": "Run a portfolio", "18": "Run a portfolio",
 };
-const GROUP_ORDER = ["Build and maintain", "Sharpen a section", "Produce something", "Get told what is wrong"];
+const GROUP_ORDER = ["Build and maintain", "Sharpen a section", "Produce something", "Get told what is wrong", "Run a portfolio"];
 
 /* ============================================================
    MARKDOWN → HTML
@@ -398,6 +404,7 @@ const NAV = [
   { group: "Do the work", items: [] },
   { group: "Tools", items: [] },
   { group: "Running it", items: [] },
+  { group: "Run a portfolio", items: [] },
 ];
 const navPush = (group, url, title) => {
   const g = NAV.find((x) => x.group === group);
@@ -808,8 +815,11 @@ ${table}
 <div class="grid grid-2">
 ${card("ai-basics.html", "You have never pointed an AI at your own files", "What actually changed, what the terminal is, what the AI cannot see, and the one rule that never bends. Read this first if the rest of the site assumes something you have not done.")}
 ${card("quickstart.html", "You are ready to build", "The honest first hour: take a copy, fill the inbox, run the bootstrap prompt, and correct the one-pager by hand.")}
-${card("prompts/index.html", "You have a stack and want the work done", "Sixteen prompts — unit economics, the list of 100, competitive intelligence, the deck, the weekly recap, and the adversarial review that tells you what an investor will attack.")}
+${card("prompts/index.html", "You have a stack and want the work done", `${counts.prompts} prompts — unit economics, the list of 100, competitive intelligence, the deck, the weekly recap, and the adversarial review that tells you what an investor will attack.`)}
 ${card("for-coaches.html", "You are running this with a cohort", "How the method works with a group, what to expect in week one, and where founders get stuck.")}
+</div>
+<div class="prose section-gap">
+<p>Running a portfolio rather than a cohort — many companies, several coaches, and an institutional memory that has to survive any one of them leaving? <a href="for-portfolios.html">That is a deeper layer</a>: what the programme keeps for itself, why every session splits into a factual record and an attributed read, and how a maturity level routes a company to the right specialist.</p>
 </div>
 
 <div class="prose section-gap">

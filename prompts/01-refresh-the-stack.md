@@ -4,6 +4,8 @@ Folds new material into an existing stack **without flattening the corrections y
 
 Run monthly, or after anything significant: a batch of customer calls, a new financial model, a pivot, a supplier change, a round of interviews.
 
+**Requires:** a bootstrapped stack, and something in `_inbox/` that was not there last time.
+
 ---
 
 ```
@@ -12,6 +14,18 @@ Read AGENTS.md first.
 You are updating an existing startup knowledge base with new material. The
 critical constraint: THE FOUNDER HAS CORRECTED PARTS OF THIS STACK BY HAND. Your
 job is to add, not to overwrite.
+
+## Step 0 — Check the ground
+
+Two things must hold. If either does not, name it and stop.
+
+- stack/INDEX.md exists and its sections hold real content. If all ten are still
+  status: tbd, there is nothing to refresh — 00-bootstrap-the-stack.md is the
+  prompt that runs first.
+- _inbox/ holds something added since the "Last full review" date in INDEX.md.
+  If it does not, say so and stop rather than re-reading what has already been
+  folded in. A refresh with no new material touches corrected files for no
+  reason, which is the one thing this prompt exists to avoid.
 
 ## Step 1 — Find what is new
 

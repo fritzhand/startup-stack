@@ -63,6 +63,22 @@ Some material should not be in an AI-readable folder at all, regardless of how w
 
 If you need the AI to reason about sensitive material, give it the shape without the substance: *"a customer list of 340 names across 3 cities, average order ₹2,400"* is enough to plan with and contains nobody's phone number.
 
+## Writing about a named person
+
+Skip this if you are a founder working on your own company. It matters to programmes running a portfolio, where the whole point of a coaching note is that it is about a particular person, and the escape hatch above — anonymise, `Customer A` — is not available.
+
+The table says to keep employee files and grievances out, and that stands. A coaching record is a narrower thing, and it is legitimate to keep, but only under conditions:
+
+**Write it as though the subject will read it.** In most jurisdictions they can ask to, and increasingly they do. This is not only compliance — a judgement you would not put in front of the person is usually a judgement you have not thought through.
+
+**Separate what happened from what you concluded.** The record of a session is factual and belongs to both sides. Your read of the person is yours, and it is tagged `[ASSESSMENT — name, date]` so it is never mistaken for fact and never merged with somebody else's read.
+
+**Name an owner, a retention period and a deletion trigger before the first note exists,** not after. Who answers if someone asks what is held about them. How long it is kept once they leave the programme. What is deleted then, and what is not.
+
+**Keep it proportionate.** Notes on how a founder is progressing against their own goals are ordinary programme business. A running commentary on their personality is not, and it is the thing that will be read aloud back to you one day.
+
+Whether any of this is lawful where you operate is not a question this page can answer, and the answer differs across the jurisdictions your coaches sit in. Ask before the first note, not after the hundredth.
+
 ## The account you use matters
 
 **Business, team and enterprise plans, and API access, carry materially stronger data-handling terms than consumer plans** — on most providers including a contractual commitment not to train on your data.

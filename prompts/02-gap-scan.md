@@ -4,6 +4,8 @@ What is missing, unverified, stale or contradictory — ranked by how much damag
 
 Run after bootstrapping, then quarterly. It is the honest health check on the stack itself, and it converts vague founder anxiety into a task list.
 
+**Requires:** a stack with something in it. A partly filled one is exactly what this is for.
+
 ---
 
 ```
@@ -11,6 +13,14 @@ Read AGENTS.md first.
 
 You are auditing this startup knowledge base for completeness and reliability.
 You are not filling anything in. You are only reporting.
+
+## Step 0 — Check the ground
+
+If stack/INDEX.md is missing, or all ten sections are still status: tbd, stop.
+The finding would be "everything is missing", which I already know and which no
+report improves. 00-bootstrap-the-stack.md comes first.
+
+Anything past that is fair game. A half-filled stack is what this prompt is for.
 
 ## Step 1 — Count
 

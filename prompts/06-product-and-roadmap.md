@@ -2,12 +2,25 @@
 
 Draws a hard line between what exists and what is a slide, builds a roadmap with dates and definitions of done, and checks the things that surface awkwardly in diligence: IP ownership, vendor dependencies, and whether an automated system is making decisions no human validates.
 
+**Requires:** `02-customer` past `tbd`. Product material in `_inbox/` helps and is not required — much of what this needs has never been written down anywhere.
+
 ---
 
 ```
 Read AGENTS.md first, then stack/CONTEXT.md, stack/02-customer/customer.md and
 stack/04-product/product.md. Also read any product material, specs, PRDs or
 demos referenced in _inbox/.
+
+## Step 0 — Check the ground
+
+Open stack/02-customer/customer.md. If it is still [TBD], stop and say so — a
+roadmap ordered without a customer is a feature list ordered by whatever is most
+interesting to build. 03-customer-and-problem.md fills it.
+
+If the customer is there but _inbox/ holds no specs, PRDs or product material,
+carry on and ask me instead. Most of Steps 4 to 7 lives in the founder's head
+and has never been written down, which is a normal starting point rather than a
+blocker.
 
 ## Step 1 — Separate what exists from what is described
 

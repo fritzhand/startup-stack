@@ -4,11 +4,25 @@ Builds TAM/SAM/SOM from countable units with every assumption on the page, and p
 
 Replaces the nine-digit number from a market report that tells an investor nothing except that you read a report.
 
+**Requires:** `02-customer` past `tbd`, and a price — from `07-money` or from you.
+
 ---
 
 ```
 Read AGENTS.md first, then stack/CONTEXT.md, stack/02-customer/customer.md and
 stack/03-market/market.md. Also read any market research in _inbox/.
+
+## Step 0 — Check the ground
+
+Bottom-up sizing needs two things: who the buyer is, and what they pay.
+
+- stack/02-customer/customer.md past tbd. If it is still [TBD], stop and say so.
+  03-customer-and-problem.md is the prompt that fills it. A market sized for a
+  customer nobody can describe is arithmetic performed on a guess, and it is
+  worse than the report headline it replaces because it looks rigorous.
+- A price, from stack/07-money/money.md or from me. If neither has one, ask, and
+  carry whatever I give you through the whole calculation as the founder's
+  estimate.
 
 ## Step 1 — Audit what is there
 

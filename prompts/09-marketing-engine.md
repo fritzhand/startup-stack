@@ -2,12 +2,29 @@
 
 A paid-media step-test plan tied to your actual capacity, a creative testing schedule, the brief that holds an agency accountable, and the unglamorous hygiene audit that is quietly costing you customers.
 
+**Requires:** `02-customer`, `06-operations` and `07-money` past `tbd`. This is the prompt where proceeding on assumptions costs money daily rather than producing a bad document.
+
 ---
 
 ```
 Read AGENTS.md first, then stack/CONTEXT.md, stack/02-customer/customer.md,
 stack/05-gtm/gtm.md, stack/06-operations/operations.md and
 stack/07-money/money.md.
+
+## Step 0 — Check the ground
+
+Three files, each load-bearing for a different part of this:
+
+  02-customer     who the advertising is for
+  06-operations   what happens when the leads arrive — a step test that outruns
+                  delivery capacity buys refunds and bad reviews at full price
+  07-money        what a customer is worth, without which no cost per customer
+                  can be called good or bad
+
+Name any that are still [TBD], say which prompt fills it —
+03-customer-and-problem.md, 07-unit-economics.md — and stop. Operations may be
+thin if the founder does everything themselves; in that case ask me for the
+weekly capacity number directly and carry on.
 
 ## Step 1 — Where things stand
 

@@ -4,11 +4,24 @@ Turns "we should try selling to X" into a real list of a hundred named prospects
 
 Run it per channel. It is the single most reliably useful hour a stuck early-stage founder can spend.
 
+**Requires:** `02-customer` past `tbd`. An empty `05-gtm` is expected — filling it is the point.
+
 ---
 
 ```
 Read AGENTS.md first, then stack/CONTEXT.md, stack/02-customer/customer.md,
 stack/03-market/market.md and stack/05-gtm/gtm.md.
+
+## Step 0 — Check the ground
+
+Open stack/02-customer/customer.md. If it is still [TBD], stop.
+
+A hundred names built against a customer nobody has defined is a hundred wasted
+approaches, and the founder will conclude the channel does not work rather than
+that the targeting was invented. 03-customer-and-problem.md fills it.
+
+A thin or empty stack/05-gtm/gtm.md is not a problem here. It is the file this
+prompt writes.
 
 ## Step 1 — Pick the channel
 

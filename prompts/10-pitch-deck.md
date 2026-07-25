@@ -4,6 +4,8 @@ Slide-by-slide content in the order investors expect, drawn only from what is in
 
 **Run [`13-mentor-review.md`](13-mentor-review.md) first and fix what it finds.** A deck built on an uncorrected stack is a very fast way to produce a very confident wrong document.
 
+**Requires:** a stack whose headline sections hold real content — `02-customer`, `03-market`, `04-product`, `07-money`, `08-capital`.
+
 ---
 
 ```
@@ -11,9 +13,14 @@ Read AGENTS.md first, then stack/INDEX.md, stack/CONTEXT.md, and sections
 01-company, 02-customer, 03-market, 04-product, 05-gtm, 07-money, 08-capital and
 09-brand.
 
-## Step 0 — Readiness check
+## Step 0 — Check the ground
 
-Before writing a single slide, report:
+If stack/INDEX.md is missing, or the sections above are all still status: tbd,
+stop. There is nothing to build a deck from, and what you would produce is a
+well-formatted invention — the exact artifact AGENTS.md ends by warning about.
+00-bootstrap-the-stack.md comes first.
+
+Otherwise, before writing a single slide, report:
 
 - Which sections are still status: tbd or needs-verification?
 - Is the market sizing bottom-up with visible arithmetic, or a report headline?

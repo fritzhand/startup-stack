@@ -46,6 +46,14 @@ This costs you ten minutes and does three things at once: it makes the advice du
 
 **Watch section 3 across the cohort.** "What did not move," aggregated over ten companies for four weeks, tells you exactly what your programme should be teaching next month. It is the best cohort-level signal you will get, and it is free.
 
+## If it is a portfolio rather than a cohort
+
+Several companies, several coaches, and an institutional memory that has to survive any one of them leaving — that is a different problem from the one this page solves, and it needs a record the programme keeps for itself.
+
+[for-portfolios.md](for-portfolios.md) is the method: what to hold, why every session splits into a factual record and an attributed read, and how a maturity level routes a company to the right specialist. [`portfolio/`](../portfolio/) is the templates. [exchange.md](exchange.md) is the folder that connects a founder's stack to the programme's record without either side holding the other's master.
+
+Everything on this page still applies. That layer only adds what your own team keeps.
+
 ## The twenty questions
 
 The stack is organised so that these get answered. They are the ones that come up in almost every session, and a founder who can answer all twenty from their own files is meaningfully ahead of one who cannot.

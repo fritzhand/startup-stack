@@ -44,6 +44,16 @@ Numbers in the *Reads* column below are `stack/` sections, not prompt numbers �
 | --- | --- | --- |
 | 13 | [mentor-review](13-mentor-review.md) | An adversarial pass. What an experienced coach or investor would attack, in the order they would attack it. **Uncomfortable on purpose.** |
 
+## Run a portfolio
+
+For a programme running the method across many companies — an incubator, accelerator, studio or university venture programme. **A founder building their own stack will never need these three.** They read and write [`portfolio/`](../portfolio/), never a founder's stack. The method is in [docs/for-portfolios.md](../docs/for-portfolios.md).
+
+| | Prompt | What it does | Reads | Writes |
+| --- | --- | --- | --- | --- |
+| 16 | [session-to-record](16-session-to-record.md) | One session → the factual record the founder gets, your attributed read, and the updated company record. **Run after every session.** | transcript, `record.md` | `sessions/`, `reads/`, `record.md` |
+| 17 | [pre-session-brief](17-pre-session-brief.md) | Half a page before you walk in — including what the last three coaches advised, so you do not contradict them. **The shortest prompt here.** | `record.md`, recent sessions | nothing |
+| 18 | [portfolio-scan](18-portfolio-scan.md) | What is going wrong in enough companies to be worth teaching, who needs attention, and what actually moved. Monthly. | every `record.md` | `themes.md`, `INDEX.md` |
+
 ---
 
 ## Suggested order
@@ -57,6 +67,8 @@ Numbers in the *Reads* column below are `stack/` sections, not prompt numbers �
 **Before you raise or present** — `13` mentor review, then fix what it finds, then `10` and `11`.
 
 **Forever** — `12` every week. `14` after every meeting. `01` monthly. `02` quarterly.
+
+**If you run a programme** — `17` before every session, `16` after every one, `18` monthly. Nothing else on this page changes; the founders still run their own.
 
 ---
 
@@ -81,9 +93,13 @@ git add -A && git commit -m "07-money: unit economics from supplier invoices"
 
 Every prompt in here follows the same shape, and yours should too:
 
-1. **Role and scope** — what the AI is doing, which sections to read, which to leave alone
-2. **Read first** — the specific files, in order
-3. **Ask before assuming** — the questions it must put to the founder rather than guess
-4. **The work** — numbered steps, in the order a practitioner would do them
-5. **Rules** — no invented numbers, tag everything, cite sources, ask before deleting
+1. **A `**Requires:**` line outside the fence** — what must already be true before this is worth pasting. For the human holding the mouse.
+2. **Role and scope** — what the AI is doing, which sections to read, which to leave alone
+3. **`## Step 0 — Check the ground`** — open the named files, check they hold content rather than `[TBD]`, and if they do not: name what is missing, say which prompt fills it, and **stop.** Every prompt here has one, and each states its own tolerances — prompt 14 carries on happily against an empty stack because that is how a stack starts to fill; prompt 09 refuses, because a step test run against unknown capacity spends real money daily.
+4. **Ask before assuming** — the questions it must put to the founder rather than guess
+5. **The work** — numbered steps, in the order a practitioner would do them
 6. **Output** — exactly which files change and what goes in them
+
+**Do not restate `AGENTS.md` inside the fence.** Every prompt opens by loading it, so repeating the tag table, the citation format or the no-invented-numbers rule spends context on something already in the window. Keep what encodes *this* prompt's file paths, output shape, and any judgement a model would get wrong left to itself — `02-gap-scan`'s "rank by damage if left open, not by ease of closing" is exactly the kind of line worth its words.
+
+The shortest thing here is [`17-pre-session-brief`](17-pre-session-brief.md) at 261 words, because it runs two minutes before a meeting. The longest is [`15-scrape-a-site`](15-scrape-a-site.md) at 1,474, because it branches three ways on what your tool can actually do. Length should follow from the job, not from thoroughness.
