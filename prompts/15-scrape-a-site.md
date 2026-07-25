@@ -4,6 +4,8 @@ A website in — yours or a competitor's — and cited, tagged, routed stack mat
 
 Run it on your own site before you raise or present, and on a competitor before you build the competition grid. It gathers evidence; it decides nothing. Everything it produces is unverified until you have read it yourself.
 
+**Requires:** a URL, and the right to fetch it. The stack may be empty — the output lands in `_inbox/` either way and routes when there is somewhere to route it.
+
 ---
 
 ```
@@ -11,6 +13,16 @@ Read AGENTS.md first, then stack/INDEX.md and stack/CONTEXT.md. Do not open the
 rest of the stack yet — Step 1 decides which sections you actually need.
 
 I want a website turned into material this stack can use.
+
+## Step 0 — Check the ground
+
+You need one thing from me: a URL. If I have not given you one, ask and stop.
+
+A missing or empty stack is not a blocker — say so and carry on. Everything
+lands in _inbox/ with its URL and fetch date attached, and routes into sections
+whenever they exist.
+
+Fetch nothing until Step 1 is answered.
 
 ## Step 1 — Ask before anything is fetched
 
@@ -118,13 +130,11 @@ this base is designed to avoid.
 
 ## Step 4 — Extract, with the source attached
 
-For every fact you pull out:
+AGENTS.md already governs how website material is tagged and cited. What is
+specific to this job:
 
-- Tag it [NEEDS VERIFICATION]. Everything from a website is unverified,
-  including our own. You may not promote anything to [SOURCE OF TRUTH].
-- Cite it: (src: https://example.com/pricing, fetched 2026-07-24). The URL of
-  the specific page, not the home page, and the fetch date from the file's front
-  matter.
+- Cite the specific page, not the home page, and take the fetch date from the
+  file's front matter rather than from today.
 - Keep the site's own words for prices, product names and customer descriptions.
   Do not tidy them into better phrasing — how a company describes itself is the
   evidence.
@@ -174,18 +184,12 @@ Rules for this step:
 
 ## Rules — these override anything else
 
-- Never invent. If the page says "from ₹2,000" that is what you write — not a
-  price you reasoned toward from it.
-- Everything scraped is [NEEDS VERIFICATION]. Nothing from a website is ever
-  source-of-truth, ours included.
-- Every fact carries its URL and its fetch date.
 - Do not fetch anything behind a login or a paywall, anything a site's terms
   forbid, anything robots.txt disallows, or any page about an individual person.
   See docs/scraping.md.
-- Do not modify anything in _inbox/. It is read-only evidence.
 - Do not read every page in the folder. Route through index.md.
-- Plain language, no marketing words, no emoji. The site's words for its own
-  products, our words for ours.
+- If the page says "from ₹2,000" that is what you write — not a price you
+  reasoned toward from it. Ranges, "starting at" and "POA" are the finding.
 
 ## Output
 

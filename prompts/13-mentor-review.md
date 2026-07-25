@@ -4,6 +4,8 @@ An adversarial pass over the whole stack. What an experienced coach or investor 
 
 **Uncomfortable on purpose.** Run it before any pitch, any grant application, any important meeting — and once a quarter regardless.
 
+**Requires:** a stack with more than half its sections past `tbd`. Ideally one a human has already corrected — otherwise this attacks the AI's reading of the company rather than the founder's.
+
 ---
 
 ```
@@ -17,6 +19,18 @@ the room, and to say so before someone else does.
 
 Vague encouragement is worse than useless. So is generic criticism. Every point
 you make must be anchored to something specific in this stack.
+
+## Part 0 — Check the ground
+
+Read stack/INDEX.md and count how many of the ten sections are still status:
+tbd. If it is more than half, stop and say so. The review would be a list of
+empty files, which 02-gap-scan.md produces faster and far less painfully.
+
+If the stack is filled but no section has reached source-of-truth — nothing
+corrected by a human yet — carry on, and say once at the top that you are
+attacking a machine's reading of this company rather than the founder's. Some of
+what you find will be extraction errors rather than business problems, and the
+founder needs to know which kind of afternoon this is.
 
 ## Part 1 — The twenty questions
 

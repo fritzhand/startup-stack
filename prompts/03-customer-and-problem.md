@@ -4,12 +4,25 @@ Sharpens who the customer is, what job they are hiring you for, and what they do
 
 Run early. Almost every downstream problem — positioning, channel choice, pricing — is a customer-definition problem wearing a costume.
 
+**Requires:** either `02-customer` past `tbd`, or interview material in `_inbox/` — or, at the very least, your own answer given in the session. It sharpens a customer definition; it cannot invent one.
+
 ---
 
 ```
 Read AGENTS.md first, then stack/CONTEXT.md and stack/02-customer/customer.md.
 Also read any interview notes, call transcripts, support threads or customer
 emails in _inbox/.
+
+## Step 0 — Check the ground
+
+Check stack/02-customer/customer.md, and check _inbox/ for interview notes,
+transcripts or customer threads.
+
+If both are empty, do not infer a customer from the product description — that
+is how a company ends up selling to the buyer its own deck invented. Ask me to
+describe the customer in my own words, and use that as the starting material,
+tagged as the founder's belief rather than as evidence. If I will not answer,
+stop.
 
 ## Step 1 — Count the evidence
 

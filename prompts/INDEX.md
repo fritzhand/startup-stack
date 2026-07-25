@@ -93,9 +93,13 @@ git add -A && git commit -m "07-money: unit economics from supplier invoices"
 
 Every prompt in here follows the same shape, and yours should too:
 
-1. **Role and scope** — what the AI is doing, which sections to read, which to leave alone
-2. **Read first** — the specific files, in order
-3. **Ask before assuming** — the questions it must put to the founder rather than guess
-4. **The work** — numbered steps, in the order a practitioner would do them
-5. **Rules** — no invented numbers, tag everything, cite sources, ask before deleting
+1. **A `**Requires:**` line outside the fence** — what must already be true before this is worth pasting. For the human holding the mouse.
+2. **Role and scope** — what the AI is doing, which sections to read, which to leave alone
+3. **`## Step 0 — Check the ground`** — open the named files, check they hold content rather than `[TBD]`, and if they do not: name what is missing, say which prompt fills it, and **stop.** Every prompt here has one, and each states its own tolerances — prompt 14 carries on happily against an empty stack because that is how a stack starts to fill; prompt 09 refuses, because a step test run against unknown capacity spends real money daily.
+4. **Ask before assuming** — the questions it must put to the founder rather than guess
+5. **The work** — numbered steps, in the order a practitioner would do them
 6. **Output** — exactly which files change and what goes in them
+
+**Do not restate `AGENTS.md` inside the fence.** Every prompt opens by loading it, so repeating the tag table, the citation format or the no-invented-numbers rule spends context on something already in the window. Keep what encodes *this* prompt's file paths, output shape, and any judgement a model would get wrong left to itself — `02-gap-scan`'s "rank by damage if left open, not by ease of closing" is exactly the kind of line worth its words.
+
+The shortest thing here is [`17-pre-session-brief`](17-pre-session-brief.md) at 261 words, because it runs two minutes before a meeting. The longest is [`15-scrape-a-site`](15-scrape-a-site.md) at 1,474, because it branches three ways on what your tool can actually do. Length should follow from the job, not from thoroughness.

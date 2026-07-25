@@ -4,6 +4,8 @@ The staged funding roadmap, the dilution map, the non-dilutive money you may be 
 
 Run after [`07-unit-economics.md`](07-unit-economics.md). A raise built on unknown unit economics is a raise that stalls in diligence.
 
+**Requires:** `07-money` past `tbd`, and a cap table in `01-company`.
+
 ---
 
 ```
@@ -11,9 +13,17 @@ Read AGENTS.md first, then stack/CONTEXT.md, stack/01-company/company.md,
 stack/03-market/market.md, stack/04-product/product.md,
 stack/07-money/money.md and stack/08-capital/capital.md.
 
-## Step 0 — Should they be raising at all?
+## Step 0 — Check the ground
 
-Answer this before anything else, honestly:
+Two files first, and stop if either is missing:
+
+- stack/07-money/money.md past tbd. 07-unit-economics.md fills it. A raise
+  built on unknown unit economics does not fail at the pitch, it fails in
+  diligence, six weeks later, having consumed the six weeks.
+- stack/01-company/company.md holding a cap table. Without it Steps 3 and 4 have
+  nothing to dilute and would be arithmetic on an imagined ownership split.
+
+Then, before anything else, answer this honestly:
 
 - Is the actual constraint capital, or is it customers, product, or focus?
 - What would change with money that cannot change without it?

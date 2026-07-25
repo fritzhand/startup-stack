@@ -4,12 +4,24 @@ Builds the full grid — including the four competitors founders reliably leave 
 
 A competition slide with two obvious names says you have not looked. A competition slide with no losses says nobody should believe it.
 
+**Requires:** `02-customer` and `04-product` past `tbd`.
+
 ---
 
 ```
 Read AGENTS.md first, then stack/CONTEXT.md, stack/02-customer/customer.md,
 stack/03-market/market.md and stack/04-product/product.md. Also read any
 competitive material in _inbox/.
+
+## Step 0 — Check the ground
+
+Open stack/02-customer/customer.md and stack/04-product/product.md. You cannot
+say who a company competes with until you can say who it serves and what it
+does — every competitor is a competitor *for a particular buyer's particular
+job*, and without that the grid is a list of companies in the same industry.
+
+If either is still [TBD], name it, say which prompt fills it —
+03-customer-and-problem.md, 06-product-and-roadmap.md — and stop.
 
 ## Step 1 — Audit the current view
 

@@ -4,6 +4,8 @@
 
 Expect it to take a while and to produce something roughly 40% correct. That is the intended outcome. The tags tell you which 40%.
 
+**Requires:** readable files in `_inbox/`. Nothing else — this is the prompt that creates everything the others depend on, and the only one designed to run against an empty stack.
+
 ---
 
 ```
@@ -16,6 +18,20 @@ Read everything in _inbox/ and use it to fill in stack/. The stack templates are
 already there with [TBD] markers and guidance. You are replacing the [TBD]s with
 real content extracted from the source material, and leaving [TBD] wherever the
 sources do not answer the question.
+
+## Step 0 — Check the ground
+
+Look in _inbox/ before anything else.
+
+If it is empty, stop. There is nothing to build from, and a stack written
+without sources is precisely the failure AGENTS.md describes. Tell me what to put
+in there: the deck, the business plan, the financial model, call transcripts,
+supplier quotes, the website.
+
+If it holds only files you cannot read — scanned PDFs, image-only charts,
+password-protected spreadsheets — list them and stop. Bootstrapping from three
+readable files out of twenty produces a confident stack about a company you have
+mostly not seen, and I will not be able to tell which parts.
 
 ## Step 1 — Survey before you extract
 
