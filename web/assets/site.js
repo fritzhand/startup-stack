@@ -117,15 +117,22 @@
   }
 
   /* ---------- sidebar: collapse and expand a group ----------
-     The build ships every group correct for the page you asked for, so this
-     only handles what someone does afterwards. Choices are remembered per
-     group; the group holding the current page is never remembered as closed,
-     because reopening a page and finding its own section shut is worse than
-     forgetting a preference. */
+     A group title is two things at once: the way into a section and the way
+     to see what is in it. Clicking it while the group is shut opens the group
+     and goes nowhere — that is the common intent, and it costs nothing when
+     it is wrong because the second click does navigate. Clicking it while the
+     group is already open goes to the section page.
+
+     The caret does the same job with one click, for anyone who wants it, and
+     modifier-clicks always navigate so "open in new tab" still means that.
+
+     Groups start shut apart from the one holding the current page, and what
+     you close is remembered — except that group, because reopening a page to
+     find its own section collapsed is worse than forgetting a preference. */
   {
     const KEY = "ss-nav-closed";
-    const read = () => { try { return new Set(JSON.parse(store.get(KEY) || "[]")); } catch { return new Set(); } };
-    const closed = read();
+    const readClosed = () => { try { return new Set(JSON.parse(store.get(KEY) || "[]")); } catch { return new Set(); } };
+    const closed = readClosed();
 
     $$(".sidebar [data-group]").forEach((g) => {
       const btn = $(".sidebar-caret", g);
@@ -134,23 +141,32 @@
       const name = title.textContent.trim();
       const holdsCurrent = !!$('[aria-current="page"]', g);
 
-      if (!holdsCurrent && closed.has(name)) {
-        g.classList.add("is-collapsed");
-        btn.setAttribute("aria-expanded", "false");
-      }
+      if (!holdsCurrent && closed.has(name)) g.classList.add("is-collapsed");
 
       const sync = () => {
         const open = !g.classList.contains("is-collapsed");
         btn.setAttribute("aria-expanded", String(open));
         btn.setAttribute("aria-label", `${open ? "Collapse" : "Expand"} ${name}`);
+        /* the link is a disclosure until it is open, then it is just a link */
+        title.setAttribute("aria-expanded", String(open));
       };
-      sync();
 
-      btn.addEventListener("click", () => {
-        const nowClosed = g.classList.toggle("is-collapsed");
-        nowClosed ? closed.add(name) : closed.delete(name);
+      const setOpen = (open) => {
+        g.classList.toggle("is-collapsed", !open);
+        open ? closed.delete(name) : closed.add(name);
         store.set(KEY, JSON.stringify([...closed]));
         sync();
+      };
+
+      sync();
+
+      btn.addEventListener("click", () => setOpen(g.classList.contains("is-collapsed")));
+
+      title.addEventListener("click", (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+        if (!g.classList.contains("is-collapsed")) return;   // open already: let it navigate
+        e.preventDefault();
+        setOpen(true);
       });
     });
   }

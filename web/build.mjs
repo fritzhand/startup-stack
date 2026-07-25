@@ -16,11 +16,27 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync, readdirSync, statSync } from "node:fs";
 import { join, dirname, relative, resolve, basename } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const WEB = join(ROOT, "web");
 const ASSETS = join(WEB, "assets");
 const OUT = join(ROOT, "_site");
+
+/* Assets are served with a long cache, so a stylesheet or script that changes
+   without its URL changing reaches nobody who has been here before — they keep
+   the copy they already have and the new behaviour simply does not arrive.
+   The URL carries eight characters of the file's own hash, so it changes when
+   and only when the file does. */
+const assetHashes = new Map();
+const asset = (root, name) => {
+  if (!assetHashes.has(name)) {
+    const file = join(ASSETS, name);
+    if (!existsSync(file)) { fail(`missing asset web/assets/${name}`); assetHashes.set(name, "0"); }
+    else assetHashes.set(name, createHash("sha256").update(readFileSync(file)).digest("hex").slice(0, 8));
+  }
+  return `${root}assets/${name}?v=${assetHashes.get(name)}`;
+};
 
 const CONFIG = existsSync(join(ROOT, "site.config.json"))
   ? JSON.parse(readFileSync(join(ROOT, "site.config.json"), "utf8"))
@@ -522,8 +538,8 @@ ${toc.map((t) => `<a href="#${esc(t.id)}" class="l${t.level}">${esc(t.text)}</a>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${root}assets/tokens.css">
-<link rel="stylesheet" href="${root}assets/site.css">
+<link rel="stylesheet" href="${asset(root, "tokens.css")}">
+<link rel="stylesheet" href="${asset(root, "site.css")}">
 <script>try{var d=document.documentElement,t=localStorage.getItem("ss-theme");if(t)d.setAttribute("data-theme",t);else if(matchMedia("(prefers-color-scheme: dark)").matches)d.setAttribute("data-theme","dark");if(localStorage.getItem("ss-rail-collapsed")==="1")d.classList.add("rail-collapsed");}catch(e){}</script>
 <script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org", "@type": "WebSite",
@@ -549,7 +565,7 @@ ${tocHtml ? `<div class="content-with-toc"><div>${body}</div>${tocHtml}</div>` :
 </div>
 <footer class="footer"><div class="footer-inner">
   <div class="footer-author">
-    <img class="author-avatar" src="${root}assets/jeremy.webp" alt="" width="32" height="32" loading="lazy">
+    <img class="author-avatar" src="${asset(root, "jeremy.webp")}" alt="" width="32" height="32" loading="lazy">
     <div class="author-meta">
       <div class="author-role">Built and maintained by</div>
       <div class="author-name">Jeremy Fritzhand</div>
@@ -579,7 +595,7 @@ ${tocHtml ? `<div class="content-with-toc"><div>${body}</div>${tocHtml}</div>` :
   </div>
 </div>
 <script src="${root}assets/search-index.js"></script>
-<script src="${root}assets/site.js"></script>
+<script src="${asset(root, "site.js")}"></script>
 </body>
 </html>`;
 }

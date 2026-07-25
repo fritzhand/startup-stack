@@ -231,11 +231,14 @@ a.sidebar-title[aria-current="page"] { color: var(--accent-strong); }
 .sidebar-title svg { width: 14px; height: 14px; flex: none; opacity: 0.8; }
 .sidebar-caret {
   flex: none; display: flex; align-items: center; justify-content: center;
-  width: 22px; height: 22px; padding: 0; border: 0; background: none; cursor: pointer;
+  width: 28px; height: 28px; padding: 0; border: 0; background: none; cursor: pointer;
   border-radius: var(--radius-sm); color: var(--text-faint);
 }
 .sidebar-caret:hover { background: var(--surface-alt); color: var(--text); }
-.sidebar-caret svg { width: 13px; height: 13px; transform: rotate(90deg); transition: transform 0.15s ease; }
+/* the whole head is one control, so hovering either half lights the caret —
+   otherwise a 13px glyph at the edge of the rail reads as decoration */
+.sidebar-head:hover .sidebar-caret { color: var(--text); }
+.sidebar-caret svg { width: 15px; height: 15px; transform: rotate(90deg); transition: transform 0.15s ease; }
 .sidebar-group.is-collapsed .sidebar-caret svg { transform: rotate(0deg); }
 .sidebar-group.is-collapsed .sidebar-items { display: none; }
 @media (prefers-reduced-motion: reduce) { .sidebar-caret svg { transition: none; } }
