@@ -34,6 +34,17 @@ html:focus-within { scroll-behavior: smooth; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 body {
+  /* Column flex so the footer is pushed to the bottom of the viewport on a
+     page whose content does not fill it. Nothing here set a minimum height
+     before, so a short page left the footer floating wherever the prose
+     happened to stop — invisible while the rail was sticky and ended with the
+     content, obvious once it became fixed and ran to the bottom of the screen
+     regardless. The short section landing pages are where it shows most.
+     The fixed and sticky children sit outside this flow, except .topbar, which
+     is sticky and is meant to be the first row. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
   font-family: var(--font-body);
   font-size: 15.5px;
   line-height: 1.65;
@@ -178,6 +189,7 @@ img, svg, video { max-width: 100%; height: auto; }
 .layout {
   display: grid;
   grid-template-columns: 268px minmax(0, 1fr);
+  flex: 1 0 auto;        /* take the slack, so the footer lands on the fold */
 }
 /* the rail is painted on the grid itself, so it runs unbroken from topbar
    to footer even when the page is taller than the sticky sidebar */
