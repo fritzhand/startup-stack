@@ -1,5 +1,7 @@
 <div align="center">
 
+<a href="https://fritzhand.github.io/startup-stack/"><img src="web/assets/og.png" alt="startup-stack — the documents every startup should have, as a knowledge base an AI can actually read." width="820"></a>
+
 # startup-stack
 
 **The documents every startup should have — compiled into a knowledge base an AI can actually read.**
@@ -66,7 +68,7 @@ There is a second reader, and the repo now serves them too: the **programme** ru
 | [`docs/`](docs/) | **The method, in eighteen pages.** New to any of this: [AI basics](docs/ai-basics.md) and [what the words mean](docs/what-things-are.md) — the terminal, an editor, Git, GitHub, connectors, model tiers — each in plain language with a diagram. The method: [why it works](docs/method.md), [building the knowledge base](docs/knowledge-base.md), [the front-matter schema](docs/front-matter.md), [getting your material in](docs/getting-material-in.md) source by source, and [website to inbox](docs/scraping.md). Running it: [the weekly recap](docs/weekly-recap.md), [for coaches](docs/for-coaches.md), [the safety rules](docs/safety.md) for giving an AI access to your files, and [on a schedule](docs/automation.md) — recipes for Microsoft 365, Google Workspace, Zoom, Slack, and none of them. Two are for programmes only: [for programmes](docs/for-portfolios.md) and [the exchange folder](docs/exchange.md). And [the infographics](docs/infographics.md) — thirty pictures across four pages, covering [what AI is](docs/infographics-ai.md), [the tools](docs/infographics-tools.md), [the method](docs/infographics-method.md) and [running a portfolio](docs/infographics-portfolio.md); take them for a workshop. |
 | [`portfolio/`](portfolio/) | **Optional — for a programme, not a founder.** The templates an incubator, accelerator or studio uses to run this across many companies: a router, a 1-to-5 maturity rubric per function, the cross-company theme scan, and a company folder to copy. Delete it if you are a founder. See [docs/for-portfolios.md](docs/for-portfolios.md). |
 | [`_inbox/`](_inbox/) | Where raw material lands before it is processed. Git-ignored by default. |
-| [`tools/`](tools/) | **Optional.** One script that turns a website into citable markdown in `_inbox/`. You never need it — it saves an hour of copy-and-paste. See [docs/scraping.md](docs/scraping.md). |
+| [`tools/`](tools/) | **Optional.** [`scrape-site.mjs`](tools/scrape-site.mjs) turns a website into citable markdown in `_inbox/` — you never need it, it saves an hour of copy-and-paste ([docs/scraping.md](docs/scraping.md)). [`make-og.mjs`](tools/make-og.mjs) redraws the social card at the top of this page; run it if you fork and rename. |
 | [`web/`](web/) | **This project's own site**, generated from the markdown in this repo, plus [`web/infographics/`](web/infographics) — the thirty images the infographics pages show. Not part of your stack — delete it when you fork, but take the infographics first if you want them. |
 
 ## Quickstart

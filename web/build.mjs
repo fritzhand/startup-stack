@@ -28,6 +28,14 @@ const OUT = join(ROOT, "_site");
    the copy they already have and the new behaviour simply does not arrive.
    The URL carries eight characters of the file's own hash, so it changes when
    and only when the file does. */
+/* The social card is a committed PNG rather than something this build draws,
+   because rasterising needs a browser and the site build should run anywhere.
+   The cost of that is a file that can quietly go stale, so the numbers printed
+   on it are asserted against the repository further down and the build fails
+   if they have drifted. Regenerate with: node tools/make-og.mjs */
+const OG_IMAGE = "og.png";
+const OG_ALT = "startup-stack — the documents every startup should have, as a knowledge base an AI can actually read.";
+
 const assetHashes = new Map();
 const asset = (root, name) => {
   if (!assetHashes.has(name)) {
@@ -528,9 +536,17 @@ ${toc.map((t) => `<a href="#${esc(t.id)}" class="l${t.level}">${esc(t.text)}</a>
 <meta property="og:title" content="${esc(url === "index.html" ? SITE_NAME : title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="${esc(SITE_BASE)}assets/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(OG_ALT)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(url === "index.html" ? SITE_NAME : title)}">
 <meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${esc(SITE_BASE)}assets/og.png">
+<meta name="twitter:image:alt" content="${esc(OG_ALT)}">
 <link rel="icon" href="${root}assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1041,6 +1057,30 @@ cpSync(ASSETS, join(OUT, "assets"), { recursive: true, filter: (src) => !src.inc
 cpSync(INFOGRAPHIC_DIR, join(OUT, "infographics"), { recursive: true });
 for (const f of readdirSync(INFOGRAPHIC_DIR).sort()) {
   if (!DRAWN_INFOGRAPHICS.has(f)) fail(`web/infographics/${f}: no page shows it — add it to a docs/infographics-*.md page, or delete the file`);
+}
+
+/* The social card prints four counts, and it is a raster nobody will look at
+   again once it is committed. og.svg is the source those numbers came from, so
+   compare it against the repository as it stands now — a wrong number on the
+   card is seen by everyone who shares a link and by nobody who works here. */
+{
+  if (!existsSync(join(ASSETS, OG_IMAGE))) fail(`missing web/assets/${OG_IMAGE} — run: node tools/make-og.mjs`);
+  const svgPath = join(ASSETS, "og.svg");
+  if (!existsSync(svgPath)) fail("missing web/assets/og.svg — run: node tools/make-og.mjs");
+  else {
+    const card = readFileSync(svgPath, "utf8");
+    const live = {
+      sections: readdirSync(join(ROOT, "stack")).filter((f) => /^\d\d-/.test(f)).length,
+      prompts: promptFiles.length,
+      worksheets: worksheetFiles.length,
+      infographics: readdirSync(INFOGRAPHIC_DIR).filter((f) => f.endsWith(".webp")).length,
+    };
+    for (const [word, n] of Object.entries(live)) {
+      const printed = card.match(new RegExp(`>(\\d+) ${word}<`));
+      if (!printed) fail(`og.svg does not print a ${word} count — run: node tools/make-og.mjs`);
+      else if (Number(printed[1]) !== n) fail(`og.svg says ${printed[1]} ${word}, the repository has ${n} — run: node tools/make-og.mjs`);
+    }
+  }
 }
 writeFileSync(join(OUT, "assets", "search-index.js"), `window.SEARCH_INDEX=${JSON.stringify(searchIndex)};`);
 /* The favicon IS the header mark: same stack glyph as ICONS.stack, on the same
