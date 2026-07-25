@@ -876,8 +876,27 @@ for (const dir of stackSections) {
 
 cpSync(ASSETS, join(OUT, "assets"), { recursive: true, filter: (src) => !src.includes("diagrams") });
 writeFileSync(join(OUT, "assets", "search-index.js"), `window.SEARCH_INDEX=${JSON.stringify(searchIndex)};`);
+/* The favicon IS the header mark: same stack glyph as ICONS.stack, on the same
+   hero gradient, at the same proportion inside the same rounded square. The
+   values are literal because a standalone SVG document cannot read tokens.css —
+   they are copied from --hero-bg and --hero-text, light stops then dark, and
+   the media query is what the theme toggle does in the page.
+   Stroke is 2.4 rather than the header's 2 so the glyph survives being drawn at
+   16px in a browser tab; everything else is scaled from the header exactly. */
+const FAVICON_GLYPH = ICONS.stack.replace(/^<svg[^>]*>|<\/svg>$/g, "");
 writeFileSync(join(OUT, "assets", "favicon.svg"),
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0b5a86"/><g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"><path d="M18 24h28"/><path d="M18 34h28"/><path d="M18 44h18"/></g></svg>`);
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">`
+  + `<style>@media (prefers-color-scheme: dark){.s0{stop-color:#0a2c40}.s1{stop-color:#0b3d54}.s2{stop-color:#0c4f5a}}</style>`
+  + `<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">`
+  + `<stop class="s0" offset="0" stop-color="#0a3d5c"/>`
+  + `<stop class="s1" offset=".52" stop-color="#0b5a86"/>`
+  + `<stop class="s2" offset="1" stop-color="#0c5f6b"/>`
+  + `</linearGradient>`
+  + `<rect width="64" height="64" rx="14" fill="url(#g)"/>`
+  + `<rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="#eef8fb" stroke-opacity=".18" stroke-width="3"/>`
+  + `<g transform="translate(11.75 11.75) scale(1.6875)" fill="none" stroke="#eef8fb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">`
+  + FAVICON_GLYPH
+  + `</g></svg>`);
 writeFileSync(join(OUT, ".nojekyll"), "");
 writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE_BASE}sitemap.xml\n`);
 writeFileSync(join(OUT, "sitemap.xml"),
