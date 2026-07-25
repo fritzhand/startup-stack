@@ -116,6 +116,45 @@
     current.scrollIntoView({ block: "nearest" });
   }
 
+  /* ---------- sidebar: collapse and expand a group ----------
+     The build ships every group correct for the page you asked for, so this
+     only handles what someone does afterwards. Choices are remembered per
+     group; the group holding the current page is never remembered as closed,
+     because reopening a page and finding its own section shut is worse than
+     forgetting a preference. */
+  {
+    const KEY = "ss-nav-closed";
+    const read = () => { try { return new Set(JSON.parse(store.get(KEY) || "[]")); } catch { return new Set(); } };
+    const closed = read();
+
+    $$(".sidebar [data-group]").forEach((g) => {
+      const btn = $(".sidebar-caret", g);
+      const title = $(".sidebar-title", g);
+      if (!btn || !title) return;
+      const name = title.textContent.trim();
+      const holdsCurrent = !!$('[aria-current="page"]', g);
+
+      if (!holdsCurrent && closed.has(name)) {
+        g.classList.add("is-collapsed");
+        btn.setAttribute("aria-expanded", "false");
+      }
+
+      const sync = () => {
+        const open = !g.classList.contains("is-collapsed");
+        btn.setAttribute("aria-expanded", String(open));
+        btn.setAttribute("aria-label", `${open ? "Collapse" : "Expand"} ${name}`);
+      };
+      sync();
+
+      btn.addEventListener("click", () => {
+        const nowClosed = g.classList.toggle("is-collapsed");
+        nowClosed ? closed.add(name) : closed.delete(name);
+        store.set(KEY, JSON.stringify([...closed]));
+        sync();
+      });
+    });
+  }
+
   /* ---------- back to top ---------- */
   const toTop = $("#to-top");
   if (toTop) {
@@ -392,6 +431,78 @@
 
     apply();
   };
+
+  /* ----------------------------------------------------------
+     lightbox — an infographic opens over the page rather than
+     navigating away from the prose that explains it.
+
+     The markup is a plain <a href="the-image">, so with no
+     JavaScript the click still works and simply opens the file.
+     Everything below is an upgrade on that, never a prerequisite.
+     ---------------------------------------------------------- */
+  (() => {
+    const zooms = $$("a.figure-zoom");
+    if (!zooms.length) return;
+
+    let box, img, cap, opener;
+
+    const build = () => {
+      box = document.createElement("div");
+      box.className = "lightbox";
+      box.setAttribute("role", "dialog");
+      box.setAttribute("aria-modal", "true");
+      box.innerHTML =
+        '<div class="backdrop"></div>' +
+        '<div class="lightbox-inner">' +
+        '<button class="lightbox-close icon-btn" type="button" aria-label="Close">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
+        "</button>" +
+        '<img alt=""><p class="lightbox-cap"></p></div>';
+      document.body.appendChild(box);
+      img = $("img", box);
+      cap = $(".lightbox-cap", box);
+      $(".backdrop", box).addEventListener("click", close);
+      $(".lightbox-close", box).addEventListener("click", close);
+    };
+
+    function close() {
+      if (!box) return;
+      box.classList.remove("open");
+      document.body.style.overflow = "";
+      /* send focus back where it came from, or a keyboard user is
+         dropped at the top of the document with no idea why */
+      if (opener) opener.focus();
+      opener = null;
+    }
+
+    function open(a) {
+      if (!box) build();
+      opener = a;
+      img.src = a.getAttribute("href");
+      const figcap = a.parentElement && $(".figure-cap", a.parentElement);
+      const alt = $("img", a);
+      img.alt = alt ? alt.alt : "";
+      cap.textContent = figcap ? figcap.textContent.trim() : (alt ? alt.alt : "");
+      cap.hidden = !cap.textContent;
+      box.classList.add("open");
+      document.body.style.overflow = "hidden";
+      $(".lightbox-close", box).focus();
+    }
+
+    zooms.forEach((a) => {
+      a.addEventListener("click", (e) => {
+        /* leave the modifier clicks alone — someone asking for a new
+           tab has asked for a new tab */
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+        e.preventDefault();
+        open(a);
+      });
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && box && box.classList.contains("open")) close();
+    });
+  })();
 
   /* the prompt library is the one grid using it today */
   mountFilterGrid({

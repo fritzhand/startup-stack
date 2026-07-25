@@ -4,6 +4,8 @@ Thirty minutes. One file. Same shape every week. Forever.
 
 This is the only part of `startup-stack` that compounds, and it is the part founders skip. It feels like overhead in week one, when nothing has happened. Do it in week one *precisely because* nothing has happened — the discipline is what you are building, not the report.
 
+![The six sections of a weekly recap as a loop, with last week's commitments returning as this week's 'what did not move', and the carve for each audience.](../web/infographics/the-weekly-recap.webp)
+
 ---
 
 ## Why a fixed shape
