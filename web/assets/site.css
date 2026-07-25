@@ -430,12 +430,8 @@ pre:hover > .copy-btn, .codeblock:hover > .copy-btn, .copy-btn:focus-visible { o
   border-radius: var(--radius-lg);
   overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
-.figure > svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
-/* A diagram too detailed to shrink: it scrolls rather than scaling down.
-   The floor is set from legibility, not taste — the smallest label in these
-   drawings is 15px in a 1200-wide viewBox, so at 880px it still paints at
-   about 11px. 620px would have rendered it at under 8px. */
-.figure.figure-wide > svg { max-width: none; min-width: 880px; }
+.figure > svg,
+.figure > .figure-zoom > svg { display: block; margin: 0 auto; width: 100%; max-width: 100%; height: auto; }
 /* A raster infographic behaves the other way round to an inlined SVG: it has a
    fixed pixel size, so it fits the column and the click opens it at full
    resolution. Scrolling a 2000px image sideways inside a 700px column would be

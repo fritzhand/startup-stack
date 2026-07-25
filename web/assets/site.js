@@ -499,10 +499,17 @@
       if (!box) build();
       opener = a;
       img.src = a.getAttribute("href");
+      /* a photographic figure wraps an <img> and carries its alt; an inlined
+         SVG diagram has no <img> at all, so fall back to its <title>, which is
+         also what the caption under it is built from */
       const figcap = a.parentElement && $(".figure-cap", a.parentElement);
-      const alt = $("img", a);
-      img.alt = alt ? alt.alt : "";
-      cap.textContent = figcap ? figcap.textContent.trim() : (alt ? alt.alt : "");
+      const inner = $("img", a);
+      const svgTitle = $("svg > title", a);
+      const text = inner ? inner.alt
+        : svgTitle ? svgTitle.textContent.trim()
+          : figcap ? figcap.textContent.trim() : "";
+      img.alt = text;
+      cap.textContent = figcap ? figcap.textContent.trim() : text;
       cap.hidden = !cap.textContent;
       box.classList.add("open");
       document.body.style.overflow = "hidden";

@@ -443,9 +443,17 @@ function diagram(name, ctx) {
   checkDiagramPalette(name, svg);
   if (/<style[\s>]/i.test(svg)) fail(`diagrams/${name}.svg: contains a <style> block — GitHub strips those, so it must use presentation attributes only`);
   const cap = clean((svg.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || "");
-  /* these are dense enough that shrinking them to phone width makes the
-     labels unreadable — let them keep their size and scroll instead */
-  return `<figure class="figure figure-wide">${svg}${cap ? `<figcaption class="figure-cap">${esc(cap)}</figcaption>` : ""}</figure>`;
+  /* Inlined so it re-skins with the theme, and wrapped in a link to the file
+     itself so it can be opened at full size. It used to hold its width and
+     scroll sideways instead of shrinking, on the grounds that a 15px label in
+     a 1200-wide viewBox stops being readable below about 880px — but the prose
+     column is 765px at a 1400px viewport and 868px even at 1920px, so that
+     floor was never cleared on any screen and every diagram scrolled. Scaling
+     a vector down costs nothing in sharpness, and the click covers the detail. */
+  return `<figure class="figure figure-wide">`
+    + `<a href="${ctx.root}assets/diagrams/${name}.svg" class="figure-zoom">${svg}</a>`
+    + (cap ? `<figcaption class="figure-cap">${esc(cap)}</figcaption>` : "")
+    + `</figure>`;
 }
 
 /* ============================================================
@@ -1077,7 +1085,9 @@ for (const dir of stackSections) {
   });
 }
 
-cpSync(ASSETS, join(OUT, "assets"), { recursive: true, filter: (src) => !src.includes("diagrams") });
+/* The diagrams are inlined into the pages, and also copied, because each figure
+   links to its own file so it can be opened at full size. */
+cpSync(ASSETS, join(OUT, "assets"), { recursive: true });
 cpSync(INFOGRAPHIC_DIR, join(OUT, "infographics"), { recursive: true });
 for (const f of readdirSync(INFOGRAPHIC_DIR).sort()) {
   if (!DRAWN_INFOGRAPHICS.has(f)) fail(`web/infographics/${f}: no page shows it — add it to a docs/infographics-*.md page, or delete the file`);
