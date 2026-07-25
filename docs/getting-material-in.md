@@ -4,6 +4,8 @@ Everything the stack knows starts as a file in `_inbox/`. This page is how thing
 
 There are three routes. The first works for everything and needs no setup; the other two save time once you know what you are doing.
 
+![Export by hand, connectors and website scraping, all converging on one inbox folder, with the material that stays out of all three.](../web/infographics/getting-your-material-in.webp)
+
 ---
 
 ## Route 1 — export by hand

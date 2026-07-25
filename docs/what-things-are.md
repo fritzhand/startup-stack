@@ -8,7 +8,7 @@ For the narrative version — what changed, how to direct an AI, what it cannot 
 
 ## How does all of this fit together?
 
-Four layers, stacked. You at the top, then the AI tool, then the command line, then your own files at the bottom. Your instruction travels down through them, and the result comes back up.
+Five layers, stacked. Your own computer and its files at the bottom; above that the two ways of talking to it, a terminal and an editor; above that the tools you install, like Node and Git; above that the services on the internet that store and publish what you make; and the AI across the top, reaching down into the rest. Your instruction travels down through them, and the result comes back up.
 
 You write the instruction in plain English and point at the folder it may work in. The tool reads what is in that folder, works out what to do and in what order, and writes the commands that would do it. Those commands run in the command line. The files that change are the ordinary files on your computer — the ones you can open in the usual way. Between you and everything below sits an approval gate: the tool proposes, and nothing crosses that line without your yes.
 
@@ -16,7 +16,7 @@ What beginners get wrong is treating what comes back as a preview. It is not. Fi
 
 The whole arrangement fits in one picture.
 
-<!-- DIAGRAM: how-it-fits-together -->
+![Five layers — your computer, ways to talk to it, runtimes you install, services on the internet, and the AI — with arrows showing what talks to what.](../web/infographics/how-all-of-this-fits-together.webp)
 
 ## What is the terminal?
 
@@ -28,7 +28,7 @@ The mistake is assuming you have to learn commands. You will rarely type one. Yo
 
 Seeing one laid out removes most of the discomfort.
 
-<!-- DIAGRAM: what-is-the-terminal -->
+![A terminal window with three example commands and their plain-English translations, and the note that it has no undo — which is why Git matters.](../web/infographics/what-the-terminal-is.webp)
 
 ## What is an editor, and what makes one "agentic"?
 
@@ -40,7 +40,7 @@ The mistake is expecting to be looking at code. In this repo the file you open i
 
 An editor is easier to recognise on sight than to describe.
 
-<!-- DIAGRAM: what-is-an-editor -->
+![A chat window against an agentic editor, with the four capabilities that separate them, and a row of named examples from least to most technical.](../web/infographics/editors-ide-and-what-agentic-means.webp)
 
 ## What is Git?
 
@@ -64,7 +64,7 @@ The mistake is not checking which kind of repository you made. A private one is 
 
 The two-places arrangement is worth one look.
 
-<!-- DIAGRAM: what-is-github -->
+![Git on your computer against GitHub on the internet, with push and pull between them, and the three things people most often confuse.](../web/infographics/git-and-github-are-not-the-same.webp)
 
 ## What is a connector?
 

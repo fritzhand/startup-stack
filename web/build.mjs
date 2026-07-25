@@ -438,16 +438,31 @@ const ICONS = {
   repeat: I('<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>'),
   people: I('<circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M16 3.5a4 4 0 0 1 0 7"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/>'),
   picture: I('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="1.6"/><path d="m21 15-4-4-9 9"/>'),
+  /* the one filled mark here — LinkedIn has no legible stroke-only form at
+     14px, the two letters just close up */
+  linkedin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5.5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0ZM3.3 8.9h3.4V21H3.3V8.9Zm5.53 0h3.26v1.65h.05c.45-.86 1.56-1.77 3.22-1.77 3.44 0 4.08 2.27 4.08 5.22V21h-3.4v-5.32c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.81V21h-3.4V8.9Z"/></svg>',
+  chevron: I('<path d="m9 18 6-6-6-6"/>'),
+  close: I('<path d="M18 6 6 18M6 6l12 12"/>'),
 };
 
+/* Each group's title is a link to a landing page listing what is in it, and a
+   collapse toggle. `landing` names that page; where one already exists as
+   markdown (Infographics) it is reused rather than generated twice, and where
+   the group's landing is the site itself (Start here) it points at the home
+   page. `blurb` is the lede on the generated page. */
 const NAV = [
-  { group: "Start here", icon: "compass", items: [{ url: "index.html", title: "What this is" }] },
-  { group: "The method", icon: "book", items: [] },
-  { group: "Do the work", icon: "checklist", items: [] },
-  { group: "Tools", icon: "wrench", items: [] },
-  { group: "Running it", icon: "repeat", items: [] },
-  { group: "Run a portfolio", icon: "people", items: [] },
-  { group: "Infographics", icon: "picture", items: [] },
+  { group: "Start here", icon: "compass", landing: "index.html", items: [{ url: "index.html", title: "What this is" }] },
+  { group: "The method", icon: "book", landing: "the-method.html", title: "The method, page by page",
+    blurb: "Why a folder of markdown beats a chat window, what makes it cheap to read, and the rules that keep it honest.", items: [] },
+  { group: "Do the work", icon: "checklist", landing: "do-the-work.html", title: "Do the work",
+    blurb: "The prompts and the fill-in worksheets — everything you run on top of a stack once it holds something.", items: [] },
+  { group: "Tools", icon: "wrench", landing: "tools.html", title: "Tools",
+    blurb: "The optional scripts. You never need one of these to build a stack; they save an hour of copy-and-paste.", items: [] },
+  { group: "Running it", icon: "repeat", landing: "running-it.html", title: "Running it",
+    blurb: "The rhythm once the stack exists: the weekly recap, the scheduled pull, running it with a cohort, and the safety rules underneath all of it.", items: [] },
+  { group: "Run a portfolio", icon: "people", landing: "run-a-portfolio.html", title: "Run a portfolio",
+    blurb: "The layer for an incubator, accelerator, studio or university programme running this across many companies at once.", items: [] },
+  { group: "Infographics", icon: "picture", landing: "infographics.html", items: [] },
 ];
 const navPush = (group, url, title) => {
   const g = NAV.find((x) => x.group === group);
@@ -459,9 +474,20 @@ function sidebar(root, active) {
   const link = (url, title) =>
     `<a class="nav-link" href="${root}${url}"${active === url ? ' aria-current="page"' : ""}>${esc(title)}</a>`;
   return `<nav class="sidebar" id="sidebar" aria-label="Site navigation">
-${NAV.filter((g) => g.items.length).map((g) =>
-    `<div class="sidebar-group"><div class="sidebar-title">${ICONS[g.icon] ?? ""}${esc(g.group)}</div>${g.items.map((it) => link(it.url, it.title)).join("\n")}</div>`).join("\n")}
-  <div class="sidebar-group"><div class="sidebar-title">${ICONS.github}Source</div>
+${NAV.filter((g) => g.items.length).map((g) => {
+    /* The group is open when the page you are on is inside it. Everything
+       after that is the runtime's job — this only has to ship a state that
+       is right before any JavaScript runs. */
+    const holdsActive = g.landing === active || g.items.some((it) => it.url === active);
+    return `<div class="sidebar-group${holdsActive ? "" : " is-collapsed"}" data-group>
+  <div class="sidebar-head">
+    <a class="sidebar-title" href="${root}${g.landing}"${g.landing === active ? ' aria-current="page"' : ""}>${ICONS[g.icon] ?? ""}${esc(g.group)}</a>
+    <button class="sidebar-caret" type="button" aria-expanded="${holdsActive}" aria-label="${holdsActive ? "Collapse" : "Expand"} ${esc(g.group)}">${ICONS.chevron}</button>
+  </div>
+  <div class="sidebar-items">${g.items.map((it) => link(it.url, it.title)).join("\n")}</div>
+</div>`;
+  }).join("\n")}
+  <div class="sidebar-group"><div class="sidebar-head"><span class="sidebar-title">${ICONS.github}Source</span></div>
     <a class="nav-link" href="${REPO_URL}" target="_blank" rel="noopener">The repository</a>
   </div>
 </nav>`;
@@ -522,6 +548,17 @@ ${tocHtml ? `<div class="content-with-toc"><div>${body}</div>${tocHtml}</div>` :
 </main>
 </div>
 <footer class="footer"><div class="footer-inner">
+  <div class="footer-author">
+    <img class="author-avatar" src="${root}assets/jeremy.webp" alt="" width="32" height="32" loading="lazy">
+    <div class="author-meta">
+      <div class="author-role">Built and maintained by</div>
+      <div class="author-name">Jeremy Fritzhand</div>
+      <div class="author-links">
+        <a href="https://github.com/fritzhand" target="_blank" rel="noopener" aria-label="Jeremy Fritzhand on GitHub" title="GitHub">${ICONS.github}</a>
+        <a href="https://www.linkedin.com/in/fritzhand/" target="_blank" rel="noopener" aria-label="Jeremy Fritzhand on LinkedIn" title="LinkedIn">${ICONS.linkedin}</a>
+      </div>
+    </div>
+  </div>
   <p class="footer-note">Every company, customer, metric and transcript used as an example in this repository is invented. Nothing here is drawn from any real client engagement.</p>
   <div class="f-links">
     <a href="${root}index.html">Home</a>
@@ -624,6 +661,16 @@ for (const f of worksheetFiles) {
 addPage({ src: "stack/INDEX.md", url: "stack.html", title: "The ten sections", kind: "Page", nav: "The method", lede: "What lives in each section of the stack, and how the router works." });
 navPush("The method", "stack.html", "The ten sections");
 
+/* ---- 2b. one landing page per sidebar group ----------------------
+   The group title in the sidebar is a link, so it needs somewhere to go: a
+   page whose whole job is to say what is in the section and let you pick.
+   Generated from the nav itself, so a page added to a group appears here
+   without anyone remembering to. */
+const GROUP_LANDINGS = NAV.filter((g) => g.title);
+for (const g of GROUP_LANDINGS) {
+  addPage({ url: g.landing, title: g.title, lede: g.blurb, kind: "Page" });
+}
+
 /* ---- 3. render ------------------------------------------------- */
 const written = [];
 const write = (url, html) => {
@@ -672,6 +719,21 @@ for (const page of PAGES) {
       ? `<nav class="crumbs"><a href="../worksheets/index.html">Worksheets</a></nav>` : "";
   const active = page.kind === "Prompt" ? "prompts/index.html" : page.kind === "Worksheet" ? "worksheets/index.html" : page.url;
   write(page.url, renderMarkdownPage(page, { crumbs, active }));
+}
+
+/* ---- 3b. the group landing pages ---------------------------------- */
+for (const g of GROUP_LANDINGS) {
+  const page = PAGES.find((p) => p.url === g.landing);
+  const cards = g.items.map((it) => {
+    const target = PAGES.find((p) => p.url === it.url);
+    const text = truncate(target?.lede || "", 190);
+    return `<a class="card" href="${rootFor(g.landing)}${it.url}"><h3>${esc(it.title)}</h3>${text ? `<p>${esc(text)}</p>` : ""}</a>`;
+  }).join("\n");
+  write(g.landing, shell({
+    url: g.landing, title: page.title, description: truncate(page.lede, 160), active: g.landing,
+    body: `<div class="page-head"><h1>${esc(page.title)}</h1><p class="lede">${esc(page.lede)}</p></div>
+<div class="grid grid-2">${cards}</div>`,
+  }));
 }
 
 /* ---- 4. the three index pages that are more than their markdown ---- */
@@ -841,6 +903,8 @@ function readmeParagraph(prefix, { raw = false } = {}) {
     prompts: promptFiles.length,
     worksheets: worksheetFiles.length,
     docs: DOC_PAGES.length,
+    /* counted, not written down, so the home page cannot drift from the folder */
+    infographics: readdirSync(INFOGRAPHIC_DIR).filter((f) => f.endsWith(".webp")).length,
   };
   const card = (href, title, text) => `<a class="card" href="${href}"><h3>${esc(title)}</h3><p>${esc(text)}</p></a>`;
 
@@ -894,6 +958,15 @@ ${readmeSection("The problem this solves")}
 <div class="grid grid-3">
 ${loopCards}
 </div>
+
+<div class="prose section-gap">
+<h2 id="infographics">The whole thing, drawn</h2>
+<p>Thirty infographics across four pages — what AI actually is, the tools you will hear named, this method, and the layer a programme runs on top of it. They are free to take for a workshop, a course or an onboarding pack.</p>
+</div>
+<figure class="figure figure-wide">
+  <a href="infographics-method.html" class="figure-zoom"><img src="infographics/the-startup-stack-method.webp" alt="Scattered company files becoming a ten-section knowledge base, and the work that comes out of it — with the three loops: build, enrich, pulse." loading="lazy" decoding="async"></a>
+  <figcaption class="figure-cap">The method on one page. <b>${counts.infographics - 1} more</b> — <a href="infographics.html">see all of them</a>.</figcaption>
+</figure>
 
 <div class="prose section-gap"><h2 id="start">Where to start</h2></div>
 <div class="grid grid-2">

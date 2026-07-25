@@ -20,6 +20,8 @@ summary: Unit economics per SKU, costing at 1k/5k/10k volume bands,
 ---
 ```
 
+![A real front-matter block with leader lines out to what each field does and what breaks without it.](../web/infographics/front-matter-line-by-line.webp)
+
 ---
 
 ## The fields

@@ -2,6 +2,8 @@
 
 How raw files become a structured base an AI can read cheaply. Seven parts. None of them require code.
 
+![The ten sections from company to pulse, with dependency arrows, and the distinction between the fixed numbering and the files you put inside each one.](../web/infographics/the-ten-sections.webp)
+
 ---
 
 ## The shape of it

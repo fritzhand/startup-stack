@@ -4,6 +4,8 @@ Ten functions, five levels each. It answers "what stage is this company really a
 
 The functions are the ten sections of [`stack/`](../stack/INDEX.md). They are not a new taxonomy — reusing them is what makes a score mean the same thing in every company's folder.
 
+![Five levels from asserted to managed, with the jump from written to evidenced highlighted, and the list of things a level is not.](../web/infographics/what-stage-are-they-really-at.webp)
+
 ---
 
 ## What a level is, and is not

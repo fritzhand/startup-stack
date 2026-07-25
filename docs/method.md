@@ -4,6 +4,8 @@
 
 The method was not designed in the abstract. It comes from two places that turned out to be the same place: a working incubator knowledge base that produces an organisation's decks, reports and monthly metrics from one structured folder, and a lot of 1:1 founder mentoring in which the same twenty questions kept getting asked because founders could not answer them from their own files.
 
+![Scattered company files becoming a ten-section knowledge base, and the work that comes out of it — with the three loops: build, enrich, pulse.](../web/infographics/the-startup-stack-method.webp)
+
 ---
 
 ## 1. A knowledge base is not software
