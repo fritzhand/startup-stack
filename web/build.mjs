@@ -114,6 +114,11 @@ const DOC_PAGES = [
   { src: "docs/exchange.md", url: "exchange.html", nav: "Run a portfolio", short: "The exchange folder" },
   { src: "portfolio/README.md", url: "portfolio.html", nav: "Run a portfolio", short: "The templates" },
   { src: "portfolio/rubric.md", url: "rubric.html", nav: "Run a portfolio", short: "The maturity rubric" },
+  { src: "docs/infographics.md", url: "infographics.html", nav: "Infographics", short: "All of them" },
+  { src: "docs/infographics-ai.md", url: "infographics-ai.html", nav: "Infographics", short: "What AI is" },
+  { src: "docs/infographics-tools.md", url: "infographics-tools.html", nav: "Infographics", short: "The tools" },
+  { src: "docs/infographics-method.md", url: "infographics-method.html", nav: "Infographics", short: "The method, drawn" },
+  { src: "docs/infographics-portfolio.md", url: "infographics-portfolio.html", nav: "Infographics", short: "Running a portfolio" },
 ];
 
 /* ---- prompts: the library, grouped the way prompts/INDEX.md groups them ---- */
@@ -197,6 +202,15 @@ function linkFor(href, ctx) {
   const page = PAGE_BY_SRC.get(rel);
   if (page) return `${ctx.root}${page}${hash}`;
 
+  /* the infographics are copied into the site, so they resolve to a real file
+     the browser can load — a blob URL would give an <img> a web page, not an
+     image, and it would only fail once someone opened the published site */
+  if (rel.startsWith("web/infographics/")) {
+    const f = rel.slice("web/infographics/".length);
+    DRAWN_INFOGRAPHICS.add(f);
+    return `${ctx.root}infographics/${f}`;
+  }
+
   const isDir = statSync(abs).isDirectory();
   return `${isDir ? TREE : BLOB}${rel}${isDir ? "" : hash}`;
 }
@@ -263,6 +277,21 @@ function mdToHtml(src, ctx) {
     /* diagram marker — inlined so it re-skins with the page theme */
     const dia = line.match(/^<!--\s*DIAGRAM:\s*([a-z0-9-]+)\s*-->\s*$/i);
     if (dia) { out.push(diagram(dia[1], ctx)); i++; continue; }
+
+    /* an image alone on a line is a figure, not a paragraph with a picture in
+       it — the alt text doubles as the caption, so there is one thing to write
+       and no way to caption an image while leaving it unreadable to a screen
+       reader */
+    const fig = line.trim().match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)$/);
+    if (fig) {
+      const [, alt, src] = fig;
+      const url = linkFor(src, ctx);
+      out.push(`<figure class="figure figure-wide"><a href="${esc(url)}" class="figure-zoom">`
+        + `<img src="${esc(url)}" alt="${esc(alt)}" loading="lazy" decoding="async"></a>`
+        + (alt ? `<figcaption class="figure-cap">${inline(alt, ctx)}</figcaption>` : "")
+        + `</figure>`);
+      i++; continue;
+    }
 
     if (!line.trim()) { i++; continue; }
 
@@ -361,6 +390,11 @@ const DG_LIGHT = (() => {
 })();
 
 const DIAGRAM_DIR = join(ASSETS, "diagrams");
+const INFOGRAPHIC_DIR = join(WEB, "infographics");
+/* every infographic a page draws, so the sweep at the end can name the ones no
+   page draws — an unreferenced 200 KB image ships to the site and is seen by
+   nobody, and the only moment anyone would notice is never */
+const DRAWN_INFOGRAPHICS = new Set();
 function checkDiagramPalette(name, svg) {
   for (const [, token, literal] of svg.matchAll(/var\(--(dg-[a-z-]+),\s*(#[0-9a-fA-F]{3,8})\)/g)) {
     const want = DG_LIGHT[token];
@@ -396,15 +430,24 @@ const ICONS = {
   arrow: I('<path d="M5 12h14m-6-6 6 6-6 6"/>'),
   github: I('<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3-.3 6.2-1.5 6.2-6.8A5.3 5.3 0 0 0 19.8 5a4.9 4.9 0 0 0-.1-3.7S18.5.8 16 2.5a13 13 0 0 0-7 0C6.5.8 5.3 1.3 5.3 1.3A4.9 4.9 0 0 0 5.2 5a5.3 5.3 0 0 0-1.4 3.7c0 5.3 3.2 6.5 6.2 6.8a3.4 3.4 0 0 0-1 2.6V22"/>'),
   stack: I('<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/>'),
+  /* one per sidebar group, so the eye can find a section without reading it */
+  compass: I('<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/>'),
+  book: I('<path d="M12 7v13"/><path d="M3 18V4h5a4 4 0 0 1 4 3 4 4 0 0 1 4-3h5v14h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3Z"/>'),
+  checklist: I('<path d="m3 7 2 2 4-4"/><path d="m3 17 2 2 4-4"/><path d="M13 6h8M13 12h8M13 18h8"/>'),
+  wrench: I('<path d="M15 7a4 4 0 0 1 5 5l-1-1-3 1-1-3 1-1a4 4 0 0 0-1-1Z"/><path d="m14 10-9 9a2 2 0 0 0 3 3l9-9"/>'),
+  repeat: I('<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>'),
+  people: I('<circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M16 3.5a4 4 0 0 1 0 7"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/>'),
+  picture: I('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="1.6"/><path d="m21 15-4-4-9 9"/>'),
 };
 
 const NAV = [
-  { group: "Start here", items: [{ url: "index.html", title: "What this is" }] },
-  { group: "The method", items: [] },
-  { group: "Do the work", items: [] },
-  { group: "Tools", items: [] },
-  { group: "Running it", items: [] },
-  { group: "Run a portfolio", items: [] },
+  { group: "Start here", icon: "compass", items: [{ url: "index.html", title: "What this is" }] },
+  { group: "The method", icon: "book", items: [] },
+  { group: "Do the work", icon: "checklist", items: [] },
+  { group: "Tools", icon: "wrench", items: [] },
+  { group: "Running it", icon: "repeat", items: [] },
+  { group: "Run a portfolio", icon: "people", items: [] },
+  { group: "Infographics", icon: "picture", items: [] },
 ];
 const navPush = (group, url, title) => {
   const g = NAV.find((x) => x.group === group);
@@ -417,8 +460,8 @@ function sidebar(root, active) {
     `<a class="nav-link" href="${root}${url}"${active === url ? ' aria-current="page"' : ""}>${esc(title)}</a>`;
   return `<nav class="sidebar" id="sidebar" aria-label="Site navigation">
 ${NAV.filter((g) => g.items.length).map((g) =>
-    `<div class="sidebar-group"><div class="sidebar-title">${esc(g.group)}</div>${g.items.map((it) => link(it.url, it.title)).join("\n")}</div>`).join("\n")}
-  <div class="sidebar-group"><div class="sidebar-title">Source</div>
+    `<div class="sidebar-group"><div class="sidebar-title">${ICONS[g.icon] ?? ""}${esc(g.group)}</div>${g.items.map((it) => link(it.url, it.title)).join("\n")}</div>`).join("\n")}
+  <div class="sidebar-group"><div class="sidebar-title">${ICONS.github}Source</div>
     <a class="nav-link" href="${REPO_URL}" target="_blank" rel="noopener">The repository</a>
   </div>
 </nav>`;
@@ -907,6 +950,10 @@ for (const dir of stackSections) {
 }
 
 cpSync(ASSETS, join(OUT, "assets"), { recursive: true, filter: (src) => !src.includes("diagrams") });
+cpSync(INFOGRAPHIC_DIR, join(OUT, "infographics"), { recursive: true });
+for (const f of readdirSync(INFOGRAPHIC_DIR).sort()) {
+  if (!DRAWN_INFOGRAPHICS.has(f)) fail(`web/infographics/${f}: no page shows it — add it to a docs/infographics-*.md page, or delete the file`);
+}
 writeFileSync(join(OUT, "assets", "search-index.js"), `window.SEARCH_INDEX=${JSON.stringify(searchIndex)};`);
 /* The favicon IS the header mark: same stack glyph as ICONS.stack, on the same
    hero gradient, at the same proportion inside the same rounded square. The
