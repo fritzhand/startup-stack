@@ -8,7 +8,7 @@ Drop your pitch deck, market research, business plan, competitor notes and call 
 
 > Every company, customer, metric and transcript used as an example in this repo is invented. Nothing here is drawn from any real client engagement.
 
-[**New to working with AI**](docs/ai-basics.md) · [**What the words mean**](docs/what-things-are.md) · [**The method**](docs/method.md) · [**Build the knowledge base**](docs/knowledge-base.md) · [**Prompt library**](prompts/INDEX.md) · [**For coaches**](docs/for-coaches.md) · [**Quickstart**](QUICKSTART.md)
+[**New to working with AI**](docs/ai-basics.md) · [**What the words mean**](docs/what-things-are.md) · [**The method**](docs/method.md) · [**Build the knowledge base**](docs/knowledge-base.md) · [**Prompt library**](prompts/INDEX.md) · [**For coaches**](docs/for-coaches.md) · [**For programmes**](docs/for-portfolios.md) · [**Quickstart**](QUICKSTART.md)
 
 [![Read it as a site](https://img.shields.io/badge/read%20it%20as%20a%20site-fritzhand.github.io%2Fstartup--stack-0b5a86?style=flat-square)](https://fritzhand.github.io/startup-stack/)
 ![No code required](https://img.shields.io/badge/code%20required-none-0E6B63?style=flat-square)
@@ -28,6 +28,8 @@ Meanwhile the advice they need is not exotic. It is the same twenty things, aske
 
 `startup-stack` makes those questions answerable from one place.
 
+There is a second reader, and the repo now serves them too: the **programme** running a portfolio of these companies — an incubator, accelerator, studio or university venture programme, whose coaching team meets the same founders in recurring sessions and whose institutional memory currently lives in scattered notes. [The page written for them](docs/for-portfolios.md) is the deeper end of the same method. A founder can ignore it entirely.
+
 ## The three loops
 
 ```
@@ -39,7 +41,7 @@ Meanwhile the advice they need is not exotic. It is the same twenty things, aske
    business plan  ──┼─▶ CONTEXT.md ← the one-pager             ├─▶ list of 100
    market research  │   01-company … 10-pulse                  │   unit economics
    competitor notes │   ↑ one .md per section, front-mattered  │   investor one-pager
-   call transcripts │   ↑ tagged: confirmed / unverified / TBD │   weekly recap
+   call transcripts │   ↑ confirmed / unverified / TBD / clash │   weekly recap
    spreadsheets     │                                          │
    design refs      │                                          │
                     └──────────────────────────────────────────┘
@@ -48,7 +50,7 @@ Meanwhile the advice they need is not exotic. It is the same twenty things, aske
                                  real happens)             every week)
 ```
 
-**Loop 1 — Build.** You put raw material in `_inbox/`. One prompt reads it and writes the stack: ten numbered sections, one markdown file each, every fact tagged as confirmed, unverified or missing. Takes an afternoon. The output is deliberately incomplete — the gaps are the point, because a gap you can see is a task.
+**Loop 1 — Build.** You put raw material in `_inbox/`. One prompt reads it and writes the stack: ten numbered sections, one markdown file each, every fact tagged confirmed, unverified, missing, or in conflict where two of your own documents disagree. Takes an afternoon. The output is deliberately incomplete — the gaps are the point, because a gap you can see is a task.
 
 **Loop 2 — Enrich.** Every real thing that happens — a customer call, a supplier quote, a rejected ad campaign, a new competitor — goes back into the stack. The base is never finished. Each addition makes the next request cheaper and better, because the AI stops guessing about your business.
 
@@ -58,10 +60,10 @@ Meanwhile the advice they need is not exotic. It is the same twenty things, aske
 
 | Folder | What it is |
 | --- | --- |
-| [`stack/`](stack/) | **The templates.** Ten numbered sections — company, customer, market, product, GTM, operations, money, capital, brand, pulse — one markdown file each, with front matter. This *becomes* your knowledge base; you fill it in, you do not copy it out. |
-| [`prompts/`](prompts/INDEX.md) | **The prompt library.** 19 prompts that run on top of a filled-in stack: bootstrap, gap scan, competitive intelligence, unit economics, list of 100, pitch deck, fundraise readiness, weekly recap, and the adversarial review that tells you what an investor will attack. The last three are for programmes rather than founders. |
+| [`stack/`](stack/) | **The templates.** Ten numbered sections — company, customer, market, product, GTM, operations, money, capital, brand, pulse — one markdown file each, with front matter. [`stack/INDEX.md`](stack/INDEX.md) is the router an AI reads first, and [`stack/CONTEXT.md`](stack/CONTEXT.md) is the one-pager it reads next. This *becomes* your knowledge base; you fill it in, you do not copy it out. |
+| [`prompts/`](prompts/INDEX.md) | **The prompt library.** 19 prompts: bootstrap, gap scan, competitive intelligence, unit economics, the list of 100, the pitch deck, fundraise readiness, the weekly recap, meeting-to-actions, and the adversarial review that tells you what an investor will attack. Each opens with a `Requires:` line and stops if what it needs is missing. Most want a filled-in stack; [`00`](prompts/00-bootstrap-the-stack.md), [`14`](prompts/14-meeting-to-actions.md) and [`15`](prompts/15-scrape-a-site.md) run against an empty one, which is how a stack starts to fill. The last three belong to `portfolio/` and never touch a founder's stack. |
 | [`worksheets/`](worksheets/) | **The repeatable artifacts.** Fill-in files you produce over and over: startup-prep, customer interview, competitor profile, two-week experiment, SOP entry, trade/order sheet, advisor scope letter, one-pager, list of 100, weekly recap. |
-| [`docs/`](docs/) | **The method.** Why front matter and an index make the base cheap to run; how to build it in your first hour; how a coach runs this with a cohort; the safety rules for giving an AI access to your files; plus [AI basics](docs/ai-basics.md) for anyone who has only ever used a chat window, [getting your material in](docs/getting-material-in.md) — mail, drive, chat exports and connectors, source by source — and [what the words mean](docs/what-things-are.md) — the terminal, an editor, Git, GitHub, connectors, model tiers — each answered in plain language with a diagram. |
+| [`docs/`](docs/) | **The method, in thirteen pages.** New to any of this: [AI basics](docs/ai-basics.md) and [what the words mean](docs/what-things-are.md) — the terminal, an editor, Git, GitHub, connectors, model tiers — each in plain language with a diagram. The method: [why it works](docs/method.md), [building the knowledge base](docs/knowledge-base.md), [the front-matter schema](docs/front-matter.md), [getting your material in](docs/getting-material-in.md) source by source, and [website to inbox](docs/scraping.md). Running it: [the weekly recap](docs/weekly-recap.md), [for coaches](docs/for-coaches.md), [the safety rules](docs/safety.md) for giving an AI access to your files, and [on a schedule](docs/automation.md) — recipes for Microsoft 365, Google Workspace, Zoom, Slack, and none of them. Two are for programmes only: [for programmes](docs/for-portfolios.md) and [the exchange folder](docs/exchange.md). |
 | [`portfolio/`](portfolio/) | **Optional — for a programme, not a founder.** The templates an incubator, accelerator or studio uses to run this across many companies: a router, a 1-to-5 maturity rubric per function, the cross-company theme scan, and a company folder to copy. Delete it if you are a founder. See [docs/for-portfolios.md](docs/for-portfolios.md). |
 | [`_inbox/`](_inbox/) | Where raw material lands before it is processed. Git-ignored by default. |
 | [`tools/`](tools/) | **Optional.** One script that turns a website into citable markdown in `_inbox/`. You never need it — it saves an hour of copy-and-paste. See [docs/scraping.md](docs/scraping.md). |
@@ -105,21 +107,23 @@ Nobody should tell you this is free. The AI drafts; you validate. A stack you ha
 4. **Enrich, don't perfect.** Ship the skeleton. Add to it forever.
 5. **One index, one summary line per file.** This is what keeps the base cheap: the AI reads a small router and opens one section, instead of re-reading everything you own on every question.
 6. **Private master, shared derived.** Every file declares a sensitivity. What you share with a coach, an investor or a customer is carved from the master — never the master itself.
-7. **Scope the AI to one folder.** Start narrow. Widen only as fast as your confidence. See [docs/safety.md](docs/safety.md).
+7. **Scope the AI to one folder.** Start narrow. Widen only as fast as your confidence. See [the safety rules](docs/safety.md).
 
 ## Reading it as a site
 
-Everything in this repo is also published at **[fritzhand.github.io/startup-stack](https://fritzhand.github.io/startup-stack/)** — the same markdown, with search, a filterable prompt library, and light and dark themes.
+The method is published at **[fritzhand.github.io/startup-stack](https://fritzhand.github.io/startup-stack/)** — every page in `docs/`, every prompt, every worksheet, and this file, with search, a filterable prompt library, and light and dark themes.
 
-The site is generated *from these files*, so it cannot drift from the repo: edit the markdown, and the page changes. There is no second copy of the prose anywhere.
+**Generated from these files, not written twice.** Each page is its markdown rendered; the home page is assembled out of this README's own sections. Edit the markdown and the page changes — and if a heading the home page depends on is renamed, the build fails rather than shipping an empty section.
+
+What is deliberately *not* published: the section templates in `stack/` and the company templates in `portfolio/`. Those are files you fill in with your own business, so the site lists them with their status instead of their contents. That matters if you fork this and publish your own — [`web/build.mjs`](web/build.mjs) withholds the `summary:` of any section that is not `public` once it has been filled in, and prints what it withheld.
 
 ```bash
 node web/build.mjs      # markdown + web/assets → _site/   (zero dependencies, Node 18+)
 ```
 
-`.github/workflows/pages.yml` runs that on every push to `main` and publishes the result. The build fails loudly on a broken internal link or a missing diagram rather than shipping a quietly wrong page.
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs that on every push to every branch and on every pull request, so a broken page is caught before it is merged; only `main` publishes. The build fails loudly on a broken internal link, a missing diagram, a prompt not routed to a group or a page with no title, rather than shipping a quietly wrong page.
 
-**When you fork this as your own company's stack, delete `web/` and `.github/`.** They belong to this project, not to yours.
+**When you fork this as your own company's stack, delete `web/` and `.github/` — and `portfolio/` unless you are a programme.** They belong to this project, not to yours.
 
 ## Where this came from
 

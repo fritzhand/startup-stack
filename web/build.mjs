@@ -758,7 +758,40 @@ ${table}
   }));
 }
 
-/* ---- 5. home --------------------------------------------------- */
+/* ---- 5. home ----------------------------------------------------
+   The prose on this page is lifted out of README.md and rendered through
+   the same renderer as every other page. It used to be typed out here as
+   HTML, which quietly falsified the contract at the top of this file —
+   and the two copies had already drifted: "Enrich, don't perfect." against
+   "Enrich, do not perfect.", and two different endings to rule 7.
+
+   What stays hand-written below is the site's own furniture — the hero
+   buttons, the step cards, the stat block, the "where to start" cards.
+   None of it has a counterpart in the README, so none of it can drift
+   from one. Anything that does have a counterpart is pulled, not copied,
+   and the build fails if the README heading it anchors to is renamed. */
+const README = read("README.md");
+const rctx = () => ({ src: "README.md", dir: ".", root: "", toc: [], ids: new Set(), kind: "Page" });
+
+/* everything under `## <heading>` up to the next `## ` */
+function readmeSection(heading) {
+  const lines = README.split("\n");
+  const start = lines.findIndex((l) => l.trim() === `## ${heading}`);
+  if (start < 0) { fail(`README.md has no "## ${heading}" section, and the home page is built from it`); return ""; }
+  let end = start + 1;
+  while (end < lines.length && !/^##\s/.test(lines[end])) end++;
+  const block = lines.slice(start + 1, end).join("\n").trim();
+  if (!block) { fail(`README.md section "${heading}" is empty`); return ""; }
+  return mdToHtml(block, rctx());
+}
+
+/* one paragraph, found by how it opens — for the bits that sit outside any heading */
+function readmeParagraph(prefix, { raw = false } = {}) {
+  const para = README.split(/\n{2,}/).map((p) => p.trim()).find((p) => p.startsWith(prefix));
+  if (!para) { fail(`README.md has no paragraph starting "${prefix}", and the home page is built from it`); return ""; }
+  return raw ? para : mdToHtml(para, rctx());
+}
+
 {
   const counts = {
     sections: stackSections.length,
@@ -767,11 +800,22 @@ ${table}
     docs: DOC_PAGES.length,
   };
   const card = (href, title, text) => `<a class="card" href="${href}"><h3>${esc(title)}</h3><p>${esc(text)}</p></a>`;
+
+  /* the three loops are cards on the site and paragraphs in the README, so the
+     title is split off the front of each rather than written twice */
+  const LOOP_CLASS = ["loop-build", "loop-enrich", "loop-pulse"];
+  const loopCards = [1, 2, 3].map((n) => {
+    const para = readmeParagraph(`**Loop ${n} — `, { raw: true });
+    const m = para.match(/^\*\*Loop (\d) — ([^.]+)\.\*\*\s*([\s\S]*)$/);
+    if (!m) { fail(`README.md: the "Loop ${n}" paragraph does not open "**Loop N — Name.**", so the card has no title`); return ""; }
+    return `  <div class="card loop ${LOOP_CLASS[n - 1]}"><h3>Loop ${m[1]} · ${esc(m[2])}</h3>${mdToHtml(m[3], rctx())}</div>`;
+  }).join("\n");
+
   const body = `
 <section class="hero">
   <div class="hero-copy">
-    <h1>The documents every startup should have — compiled into a knowledge base an AI can actually read.</h1>
-    <p>Drop your pitch deck, market research, business plan, competitor notes and call transcripts into one folder. An AI turns them into a structured, front-mattered knowledge base. Then a library of prompts runs on top of it to produce the work: the deck, the list of 100, the unit economics, the weekly recap.</p>
+    <h1>${esc(TAGLINE)}</h1>
+    ${readmeParagraph("Drop your pitch deck")}
     <div class="hero-actions">
       <a class="btn btn-primary" href="quickstart.html">Start with your first hour ${ICONS.arrow}</a>
       <a class="btn btn-secondary" href="ai-basics.html">New to working with AI</a>
@@ -786,7 +830,7 @@ ${table}
 <div class="grid grid-3 steps">
   <a class="card step-card" href="quickstart.html"><span class="n">1</span><h3>Take a copy</h3><p>Copy this repository. It becomes your company's folder — ten empty sections, front matter and prompts in place.</p></a>
   <a class="card step-card" href="getting-material-in.html"><span class="n">2</span><h3>Fill the inbox</h3><p>Export what you already have — the deck, the plan, email threads, drive documents, call transcripts — into <code>_inbox/</code>. This page shows how, source by source.</p></a>
-  <a class="card step-card" href="prompts/00-bootstrap-the-stack.html"><span class="n">3</span><h3>Run the bootstrap prompt</h3><p>Point a file-aware AI at the folder and paste one prompt. It reads the inbox and writes the stack, tagging every fact as confirmed, unverified or missing.</p></a>
+  <a class="card step-card" href="prompts/00-bootstrap-the-stack.html"><span class="n">3</span><h3>Run the bootstrap prompt</h3><p>Point a file-aware AI at the folder and paste one prompt. It reads the inbox and writes the stack, tagging every fact confirmed, unverified, missing or in conflict.</p></a>
   <a class="card step-card" href="method.html"><span class="n">4</span><h3>Correct it</h3><p>Read the one-pager it wrote. Fix what is wrong, confirm what is right. The gaps it left visible are your task list — that is the design, not a failure.</p></a>
   <a class="card step-card" href="prompts/index.html"><span class="n">5</span><h3>Run the work</h3><p>The recap every week, meeting-to-actions after every call, and the rest of the library — unit economics, the list of 100, the deck — when you need them.</p></a>
 </div>
@@ -800,15 +844,12 @@ ${table}
 
 <div class="prose section-gap">
 <h2 id="the-problem">The problem this solves</h2>
-<p>Most early founders are carrying their company in their head and in twelve unrelated files. The pitch deck says one number, the projections say another, the market research lives in a PDF nobody has opened since March, and every AI conversation starts from zero — so every answer is generic, and the founder pays for the model to re-read everything, every time.</p>
-<p>Meanwhile the advice they need is not exotic. It is the same twenty things, asked in the same order, by every coach who has ever sat across from an early-stage founder: who exactly is the customer, what does a unit cost you, who else is doing this, how many prospects are on your list, and what happens when the money runs out.</p>
+${readmeSection("The problem this solves")}
 <h2 id="three-loops">The three loops</h2>
 </div>
 
 <div class="grid grid-3">
-  <div class="card loop loop-build"><h3>Loop 1 · Build</h3><p>Raw material goes into <code>_inbox/</code>. One prompt reads it and writes the stack — ten sections, every fact tagged confirmed, unverified or missing. An afternoon. The output is deliberately incomplete, because a gap you can see is a task.</p></div>
-  <div class="card loop loop-enrich"><h3>Loop 2 · Enrich</h3><p>Every real thing that happens — a customer call, a supplier quote, a rejected campaign, a new competitor — goes back in. The base is never finished. Each addition makes the next request cheaper and better.</p></div>
-  <div class="card loop loop-pulse"><h3>Loop 3 · Pulse</h3><p>Once a week, one prompt reads the stack and what changed, and writes the recap: what moved, what did not, what you learned, and how many weeks of money are left. Thirty minutes.</p></div>
+${loopCards}
 </div>
 
 <div class="prose section-gap"><h2 id="start">Where to start</h2></div>
@@ -824,18 +865,9 @@ ${card("for-coaches.html", "You are running this with a cohort", "How the method
 
 <div class="prose section-gap">
 <h2 id="cost">The honest cost</h2>
-<blockquote><p>Skeleton in an hour. A working v1 in a few focused sessions. A stack you actually trust in about a month, because the long pole is you correcting what the AI got wrong — not the AI writing it. Then roughly thirty minutes a week to keep it alive.</p></blockquote>
-<p>Nobody should tell you this is free. The AI drafts; you validate. A stack you have not corrected is a confident-sounding guess about your own company, and that is worse than no stack at all.</p>
+${readmeSection("The honest cost")}
 <h2 id="rules">The rules this runs on</h2>
-<ol>
-<li><strong>The document is the data.</strong> If a metric needs special effort to gather, it is the wrong metric.</li>
-<li><strong>AI drafts, the founder validates.</strong> Nothing is true because the model wrote it.</li>
-<li><strong>Tag honestly.</strong> <code>needs-verification</code> and <code>tbd</code> are the quality system, not failures.</li>
-<li><strong>Enrich, do not perfect.</strong> Ship the skeleton. Add to it forever.</li>
-<li><strong>One index, one summary line per file.</strong> This is what keeps the base cheap to run.</li>
-<li><strong>Private master, shared derived.</strong> Every file declares a sensitivity; what you share is carved from the master.</li>
-<li><strong>Scope the AI to one folder.</strong> Start narrow, widen as fast as your confidence and no faster.</li>
-</ol>
+${readmeSection("The rules this system runs on")}
 <p>The full reasoning is in <a href="method.html">the method</a>; the rules the AI itself must follow are in <a href="rules.html">rules for the AI</a>.</p>
 </div>`;
   write("index.html", shell({
@@ -876,8 +908,27 @@ for (const dir of stackSections) {
 
 cpSync(ASSETS, join(OUT, "assets"), { recursive: true, filter: (src) => !src.includes("diagrams") });
 writeFileSync(join(OUT, "assets", "search-index.js"), `window.SEARCH_INDEX=${JSON.stringify(searchIndex)};`);
+/* The favicon IS the header mark: same stack glyph as ICONS.stack, on the same
+   hero gradient, at the same proportion inside the same rounded square. The
+   values are literal because a standalone SVG document cannot read tokens.css —
+   they are copied from --hero-bg and --hero-text, light stops then dark, and
+   the media query is what the theme toggle does in the page.
+   Stroke is 2.4 rather than the header's 2 so the glyph survives being drawn at
+   16px in a browser tab; everything else is scaled from the header exactly. */
+const FAVICON_GLYPH = ICONS.stack.replace(/^<svg[^>]*>|<\/svg>$/g, "");
 writeFileSync(join(OUT, "assets", "favicon.svg"),
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0b5a86"/><g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"><path d="M18 24h28"/><path d="M18 34h28"/><path d="M18 44h18"/></g></svg>`);
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">`
+  + `<style>@media (prefers-color-scheme: dark){.s0{stop-color:#0a2c40}.s1{stop-color:#0b3d54}.s2{stop-color:#0c4f5a}}</style>`
+  + `<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">`
+  + `<stop class="s0" offset="0" stop-color="#0a3d5c"/>`
+  + `<stop class="s1" offset=".52" stop-color="#0b5a86"/>`
+  + `<stop class="s2" offset="1" stop-color="#0c5f6b"/>`
+  + `</linearGradient>`
+  + `<rect width="64" height="64" rx="14" fill="url(#g)"/>`
+  + `<rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="#eef8fb" stroke-opacity=".18" stroke-width="3"/>`
+  + `<g transform="translate(11.75 11.75) scale(1.6875)" fill="none" stroke="#eef8fb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">`
+  + FAVICON_GLYPH
+  + `</g></svg>`);
 writeFileSync(join(OUT, ".nojekyll"), "");
 writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE_BASE}sitemap.xml\n`);
 writeFileSync(join(OUT, "sitemap.xml"),
