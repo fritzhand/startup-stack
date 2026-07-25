@@ -118,3 +118,13 @@ The tool gathers. It does not think, and it writes nothing into `stack/`.
 
 - [`prompts/15-scrape-a-site.md`](../prompts/15-scrape-a-site.md) — the prompt that runs it, reads the output in the right order, and routes the findings into the right sections with citations and conflicts intact.
 - [`prompts/00-bootstrap-the-stack.md`](../prompts/00-bootstrap-the-stack.md) — if you scrape before your first bootstrap, the pages are simply more material in `_inbox/`, and the bootstrap reads them along with everything else.
+
+## A related tool — site2deck
+
+[**site2deck**](https://github.com/fritzhand/site2deck) is a separate repository that reads a website for a different reason. This one takes the words off a site so an AI can cite them. That one takes the *design* off a site — colours, fonts, logo, iconography — and writes it out as a `tokens.css` skin, then builds a slide deck wearing it: one standalone HTML file that opens from `file://`, travels as an email attachment and prints to PDF.
+
+The two meet at [`prompts/10-pitch-deck.md`](../prompts/10-pitch-deck.md). That prompt produces the deck's *content* from your stack — the narrative, the numbers, the order, with `[TBD]` left visible wherever a figure is missing. site2deck produces the *object* you present. If you have run prompt 10 and want the result to look like your company rather than a template, that is the handover.
+
+It shares this repository's habits, which is why it is worth mentioning here rather than filing under general tooling: zero dependencies, Node only, an unknown marked loudly as `.tbd` rather than quietly filled in, and a `--public` build that strips any slide tagged `data-internal` and refuses to ship if one survives — the same carve this repo asks of every shared document.
+
+You do not need it. A deck exported from the prompt library works perfectly well in whatever presentation tool you already use.

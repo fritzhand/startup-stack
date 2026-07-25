@@ -18,6 +18,10 @@ Drop your pitch deck, market research, business plan, competitor notes and call 
 ![Works with any AI](https://img.shields.io/badge/works%20with-any%20file--aware%20AI-B4562B?style=flat-square)
 ![License: MIT](https://img.shields.io/badge/license-MIT-238636?style=flat-square)
 
+<br>
+
+**10** knowledge-base sections · **19** prompts · **10** worksheets · **30** infographics · **18** pages of method · a portfolio layer for programmes · a published site, generated from these files
+
 </div>
 
 ---
@@ -68,8 +72,8 @@ There is a second reader, and the repo now serves them too: the **programme** ru
 | [`docs/`](docs/) | **The method, in eighteen pages.** New to any of this: [AI basics](docs/ai-basics.md) and [what the words mean](docs/what-things-are.md) — the terminal, an editor, Git, GitHub, connectors, model tiers — each in plain language with a diagram. The method: [why it works](docs/method.md), [building the knowledge base](docs/knowledge-base.md), [the front-matter schema](docs/front-matter.md), [getting your material in](docs/getting-material-in.md) source by source, and [website to inbox](docs/scraping.md). Running it: [the weekly recap](docs/weekly-recap.md), [for coaches](docs/for-coaches.md), [the safety rules](docs/safety.md) for giving an AI access to your files, and [on a schedule](docs/automation.md) — recipes for Microsoft 365, Google Workspace, Zoom, Slack, and none of them. Two are for programmes only: [for programmes](docs/for-portfolios.md) and [the exchange folder](docs/exchange.md). And [the infographics](docs/infographics.md) — thirty pictures across four pages, covering [what AI is](docs/infographics-ai.md), [the tools](docs/infographics-tools.md), [the method](docs/infographics-method.md) and [running a portfolio](docs/infographics-portfolio.md); take them for a workshop. |
 | [`portfolio/`](portfolio/) | **Optional — for a programme, not a founder.** The templates an incubator, accelerator or studio uses to run this across many companies: a router, a 1-to-5 maturity rubric per function, the cross-company theme scan, and a company folder to copy. Delete it if you are a founder. See [docs/for-portfolios.md](docs/for-portfolios.md). |
 | [`_inbox/`](_inbox/) | Where raw material lands before it is processed. Git-ignored by default. |
-| [`tools/`](tools/) | **Optional.** [`scrape-site.mjs`](tools/scrape-site.mjs) turns a website into citable markdown in `_inbox/` — you never need it, it saves an hour of copy-and-paste ([docs/scraping.md](docs/scraping.md)). [`make-og.mjs`](tools/make-og.mjs) redraws the social card at the top of this page; run it if you fork and rename. |
-| [`web/`](web/) | **This project's own site**, generated from the markdown in this repo, plus [`web/infographics/`](web/infographics) — the thirty images the infographics pages show. Not part of your stack — delete it when you fork, but take the infographics first if you want them. |
+| [`tools/`](tools/) | **Optional.** [`scrape-site.mjs`](tools/scrape-site.mjs) turns a website into citable markdown in `_inbox/` — you never need it, it saves an hour of copy-and-paste ([docs/scraping.md](docs/scraping.md)). [`make-og.mjs`](tools/make-og.mjs) redraws the social card at the top of this page; run it if you fork and rename. A third tool lives in its own repository: [**site2deck**](https://github.com/fritzhand/site2deck) samples a company's colours, fonts and logo off its website and builds a branded, offline, single-file slide deck — the object to put in front of a room once [prompt 10](prompts/10-pitch-deck.md) has written what goes in it. Same habits as this repo: zero dependencies, Node only, unknowns marked loudly rather than filled in, and a `--public` build that strips anything tagged internal and refuses to ship if one survives. |
+| [`web/`](web/) | **This project's own site**, generated from the markdown in this repo. Also holds [`web/infographics/`](web/infographics) — the thirty images the gallery shows — the ten hand-built SVG diagrams in `web/assets/diagrams/`, and the social card. Not part of your stack; delete it when you fork, but take the infographics first if you want them. |
 
 ## Quickstart
 
@@ -115,6 +119,8 @@ Nobody should tell you this is free. The AI drafts; you validate. A stack you ha
 
 The method is published at **[fritzhand.github.io/startup-stack](https://fritzhand.github.io/startup-stack/)** — every page in `docs/`, every prompt, every worksheet, and this file, with search, a filterable prompt library, and light and dark themes.
 
+The sidebar groups into seven sections, each with its own overview page listing what is in it. Diagrams drawn as SVG re-skin with the theme; the thirty infographics open full size in a viewer rather than navigating away from the page explaining them.
+
 **Generated from these files, not written twice.** Each page is its markdown rendered; the home page is assembled out of this README's own sections. Edit the markdown and the page changes — and if a heading the home page depends on is renamed, the build fails rather than shipping an empty section.
 
 What is deliberately *not* published: the section templates in `stack/` and the company templates in `portfolio/`. Those are files you fill in with your own business, so the site lists them with their status instead of their contents. That matters if you fork this and publish your own — [`web/build.mjs`](web/build.mjs) withholds the `summary:` of any section that is not `public` once it has been filled in, and prints what it withheld.
@@ -124,6 +130,8 @@ node web/build.mjs      # markdown + web/assets → _site/   (zero dependencies,
 ```
 
 [`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs that on every push to every branch and on every pull request, so a broken page is caught before it is merged; only `main` publishes. The build fails loudly on a broken internal link, a missing diagram, a prompt not routed to a group or a page with no title, rather than shipping a quietly wrong page.
+
+Site-wide settings live in [`site.config.json`](site.config.json) — name, tagline, base URL, repository, and `analyticsId` for a GA4 measurement ID. Leave `analyticsId` empty and no analytics tag is emitted at all; **if you fork this and keep `web/`, change it or clear it**, or your visitors are counted in someone else's property.
 
 **When you fork this as your own company's stack, delete `web/` and `.github/` — and `portfolio/` unless you are a programme.** They belong to this project, not to yours.
 

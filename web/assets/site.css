@@ -304,6 +304,18 @@ a.sidebar-title[aria-current="page"] { color: var(--accent-strong); }
 
 /* desktop rail collapse — the nav toggle doubles as a collapse button */
 @media (min-width: 1024px) {
+  /* Fixed, not sticky. A sticky element cannot leave its containing block, and
+     the sidebar's is .layout — which ends where the footer begins. So at the
+     bottom of a page the rail was dragged up by the height of the footer,
+     taking its first few links under the topbar where nothing could reach
+     them: its own scrollbar was already at zero, and the page had nowhere
+     further to go. Fixed decouples it from page scroll entirely, the way the
+     mobile drawer already is. The grid still reserves the column, so nothing
+     about the content layout changes. */
+  .sidebar { position: fixed; left: 0; top: 58px; height: calc(100dvh - 58px); }
+  /* taking the sidebar out of flow makes main the first grid item, so it has
+     to be told to stay in the second column */
+  .layout > .content { grid-column: 2; }
   /* an explicit width so the sidebar slides off intact instead of squashing
      while the grid column animates shut */
   .sidebar { width: 268px; transition: transform 240ms var(--ease), visibility 0s; }
@@ -543,6 +555,29 @@ a.card:hover .go { transform: translateX(3px); color: var(--accent); }
   background: var(--accent-tint); color: var(--accent);
 }
 .card-icon svg { width: 19px; height: 19px; }
+
+/* ---------- panel: one wide card, for a second audience ---------- */
+.panel {
+  display: flex; align-items: flex-start; gap: 16px;
+  margin-top: 16px; padding: 22px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+a.panel-link { color: inherit; transition: border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease); }
+a.panel-link:hover { text-decoration: none; border-color: var(--border-strong); box-shadow: var(--shadow-2); }
+.panel-icon {
+  flex: none; display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  background: var(--accent-tint); color: var(--accent-strong);
+}
+.panel-icon svg { width: 20px; height: 20px; }
+.panel-body { flex: 1 1 auto; min-width: 0; }
+.panel-body h3 { font-size: 1.02rem; }
+.panel-body p { color: var(--text-muted); font-size: 0.895rem; margin-top: 8px; max-width: 78ch; }
+.panel-go { flex: none; color: var(--text-faint); transition: transform var(--speed) var(--ease); }
+.panel-go svg { width: 18px; height: 18px; }
+a.panel-link:hover .panel-go { transform: translateX(3px); color: var(--accent-strong); }
+@media (max-width: 560px) { .panel-go { display: none; } }
 .card-icon.tone-success { background: var(--success-tint); color: var(--success); }
 .card-icon.tone-warning { background: var(--warning-tint); color: var(--warning); }
 .card-icon.tone-danger { background: color-mix(in srgb, var(--danger) 13%, var(--surface)); color: var(--danger); }

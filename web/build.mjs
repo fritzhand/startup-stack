@@ -52,6 +52,12 @@ const CONFIG = existsSync(join(ROOT, "site.config.json"))
 const SITE_NAME = CONFIG.siteName || "startup-stack";
 const TAGLINE = CONFIG.tagline || "";
 const SITE_BASE = CONFIG.siteBase || "https://fritzhand.github.io/startup-stack/";
+/* Analytics come from the config rather than from this file, because this repo
+   is a template people are told to fork — a hardcoded measurement ID would
+   quietly send every fork's traffic to the original owner's property. Clear
+   `analyticsId` in site.config.json and no tag is emitted at all. */
+const ANALYTICS_ID = /^G-[A-Z0-9]+$/.test(CONFIG.analyticsId || "") ? CONFIG.analyticsId : "";
+if (CONFIG.analyticsId && !ANALYTICS_ID) fail(`site.config.json: analyticsId "${CONFIG.analyticsId}" is not a GA4 measurement ID (G-XXXXXXX)`);
 /* GitHub Pages serves 404.html for /anything/at/any/depth, so that one page
    cannot use the page-relative prefix every other page uses. */
 const PATH_PREFIX = (() => { try { return new URL(SITE_BASE).pathname || "/"; } catch { return "/"; } })();
@@ -551,7 +557,15 @@ ${toc.map((t) => `<a href="#${esc(t.id)}" class="l${t.level}">${esc(t.text)}</a>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${asset(root, "tokens.css")}">
+${ANALYTICS_ID ? `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${ANALYTICS_ID}');
+</script>
+` : ""}<link rel="stylesheet" href="${asset(root, "tokens.css")}">
 <link rel="stylesheet" href="${asset(root, "site.css")}">
 <script>try{var d=document.documentElement,t=localStorage.getItem("ss-theme");if(t)d.setAttribute("data-theme",t);else if(matchMedia("(prefers-color-scheme: dark)").matches)d.setAttribute("data-theme","dark");if(localStorage.getItem("ss-rail-collapsed")==="1")d.classList.add("rail-collapsed");}catch(e){}</script>
 <script type="application/ld+json">${JSON.stringify({
@@ -957,6 +971,7 @@ function readmeParagraph(prefix, { raw = false } = {}) {
     <div class="hero-actions">
       <a class="btn btn-primary" href="quickstart.html">Start with your first hour ${ICONS.arrow}</a>
       <a class="btn btn-secondary" href="ai-basics.html">New to working with AI</a>
+      <a class="btn btn-secondary" href="for-portfolios.html">${ICONS.people} Running a portfolio</a>
     </div>
   </div>
 </section>
@@ -972,6 +987,15 @@ function readmeParagraph(prefix, { raw = false } = {}) {
   <a class="card step-card" href="method.html"><span class="n">4</span><h3>Correct it</h3><p>Read the one-pager it wrote. Fix what is wrong, confirm what is right. The gaps it left visible are your task list — that is the design, not a failure.</p></a>
   <a class="card step-card" href="prompts/index.html"><span class="n">5</span><h3>Run the work</h3><p>The recap every week, meeting-to-actions after every call, and the rest of the library — unit economics, the list of 100, the deck — when you need them.</p></a>
 </div>
+
+<a class="panel panel-link" href="for-portfolios.html">
+  <div class="panel-icon">${ICONS.people}</div>
+  <div class="panel-body">
+    <h3>Running this for many companies, not one</h3>
+    <p>An incubator, accelerator, studio or university programme gets a layer above the five steps: one folder per company, every coaching session split into a factual record and an attributed read, and a 1-to-5 maturity level per function so you can tell which companies are stuck rather than quiet. The founder keeps their stack; you never hold a copy of it.</p>
+  </div>
+  <span class="panel-go">${ICONS.arrow}</span>
+</a>
 
 <div class="stats section-gap">
   <a class="stat" href="stack.html"><div class="n">${counts.sections}</div><div class="l">sections in the stack</div></a>
@@ -1079,6 +1103,15 @@ for (const f of readdirSync(INFOGRAPHIC_DIR).sort()) {
       const printed = card.match(new RegExp(`>(\\d+) ${word}<`));
       if (!printed) fail(`og.svg does not print a ${word} count — run: node tools/make-og.mjs`);
       else if (Number(printed[1]) !== n) fail(`og.svg says ${printed[1]} ${word}, the repository has ${n} — run: node tools/make-og.mjs`);
+    }
+
+    /* The README opens with the same four numbers, in bold, and it is the first
+       thing anyone reads. Hold it to the count the card is held to. */
+    const readme = read("README.md");
+    for (const [word, n] of Object.entries(live)) {
+      const printed = readme.match(new RegExp(`\\*\\*(\\d+)\\*\\*[^·|\\n]*\\b${word}\\b`));
+      if (!printed) fail(`README.md does not state a ${word} count in its summary line`);
+      else if (Number(printed[1]) !== n) fail(`README.md says ${printed[1]} ${word}, the repository has ${n}`);
     }
   }
 }

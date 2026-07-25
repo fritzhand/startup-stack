@@ -2,5 +2,6 @@
   "siteName": "startup-stack",
   "tagline": "The documents every startup should have, compiled into a knowledge base an AI can actually read.",
   "siteBase": "https://fritzhand.github.io/startup-stack/",
-  "repo": "https://github.com/fritzhand/startup-stack"
+  "repo": "https://github.com/fritzhand/startup-stack",
+  "analyticsId": "G-V1HBQC5CRB"
 }
