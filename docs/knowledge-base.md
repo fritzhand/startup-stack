@@ -81,7 +81,21 @@ One limit on that proposal, which matters more than it looks. **Let it shape wha
 | 09 | brand | Name, trademark, positioning, the design system |
 | 10 | pulse | Metrics that matter, the weekly recap, the archive of past recaps |
 
-Adjust the names if your business needs different ones. A deep-tech company might split `04-product` into research and engineering; a services business might not need `06-operations` in that form. The numbers matter more than the names — they force an order and stop the folder becoming a pile.
+### When the ten do not cover your sector
+
+They cover business *functions*, and they cover them for almost every early company. What they do not cover is the handful of things a particular industry lives or dies by — a regulatory pathway, an IP position, a landed cost per component, field evidence, a licence.
+
+The temptation is to add an eleventh section. Do not. **Add the file inside the section it belongs to.** The numbered folder is the address; the file inside it is your business. Ten addresses stay comparable — your own stack against itself six months from now, or ten companies against each other in a programme — and a company that invents an eleventh has left the map.
+
+| If you are | Put it in | The file, roughly |
+| --- | --- | --- |
+| Regulated — health, food, finance | `04-product` | `regulatory-pathway.md` — the approval route, who grants it, what it costs, how long it takes, where you are on it |
+| Deep tech or research-led | `04-product` | `ip-position.md` — what is patentable, what is filed, what has been published, and who actually owns it |
+| Hardware or a physical product | `07-money` | `bill-of-materials.md` — every component, landed, at each volume band |
+| A marketplace or platform | `02-customer` | `supply-side.md` — the other side of the market is a second customer with a second job to be done |
+| Services or consulting | `06-operations` | `utilisation.md` — billable capacity, what it costs when it sits idle, and what breaks when it does not |
+
+Two or three files, not a second taxonomy. If your sector needs more than that, the extra files still go inside sections — `stack/10-pulse/` already holds `recaps/` and `meetings/` that no rule prescribes, and nothing about the router changed to allow it.
 
 ## Part 4 — One summary file per folder
 
