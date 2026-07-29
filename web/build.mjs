@@ -149,6 +149,13 @@ const DOC_PAGES = [
   { src: "docs/infographics-tools.md", url: "infographics-tools.html", nav: "Infographics", short: "The tools" },
   { src: "docs/infographics-method.md", url: "infographics-method.html", nav: "Infographics", short: "The method, drawn" },
   { src: "docs/infographics-portfolio.md", url: "infographics-portfolio.html", nav: "Infographics", short: "Running a portfolio" },
+  { src: "docs/resources.md", url: "resources.html", nav: "Startup resources", short: "All of them" },
+  { src: "docs/resources-starting-out.md", url: "resources-starting-out.html", nav: "Startup resources", short: "Starting out and strategy" },
+  { src: "docs/resources-customers.md", url: "resources-customers.html", nav: "Startup resources", short: "Customers and discovery" },
+  { src: "docs/resources-product-growth.md", url: "resources-product-growth.html", nav: "Startup resources", short: "Product and growth" },
+  { src: "docs/resources-team-legal.md", url: "resources-team-legal.html", nav: "Startup resources", short: "Team and legal" },
+  { src: "docs/resources-money.md", url: "resources-money.html", nav: "Startup resources", short: "Money and fundraising" },
+  { src: "docs/resources-climate.md", url: "resources-climate.html", nav: "Startup resources", short: "Climate and policy" },
 ];
 
 /* ---- prompts: the library, grouped the way prompts/INDEX.md groups them ---- */
@@ -476,6 +483,7 @@ const ICONS = {
   repeat: I('<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>'),
   people: I('<circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M16 3.5a4 4 0 0 1 0 7"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/>'),
   picture: I('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="1.6"/><path d="m21 15-4-4-9 9"/>'),
+  bookmark: I('<path d="M6 3h12v18l-6-4.5L6 21Z"/>'),
   /* the one filled mark here — LinkedIn has no legible stroke-only form at
      14px, the two letters just close up */
   linkedin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5.5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0ZM3.3 8.9h3.4V21H3.3V8.9Zm5.53 0h3.26v1.65h.05c.45-.86 1.56-1.77 3.22-1.77 3.44 0 4.08 2.27 4.08 5.22V21h-3.4v-5.32c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.81V21h-3.4V8.9Z"/></svg>',
@@ -501,6 +509,8 @@ const NAV = [
   { group: "Run a portfolio", icon: "people", landing: "run-a-portfolio.html", title: "Run a portfolio",
     blurb: "The layer for an incubator, accelerator, studio or university programme running this across many companies at once.", items: [] },
   { group: "Infographics", icon: "picture", landing: "infographics.html", items: [] },
+  /* last on purpose: it is other people's material, useful but not the method */
+  { group: "Startup resources", icon: "bookmark", landing: "resources.html", items: [] },
 ];
 const navPush = (group, url, title) => {
   const g = NAV.find((x) => x.group === group);
