@@ -33,6 +33,15 @@ const OUT = join(ROOT, "_site");
    The cost of that is a file that can quietly go stale, so the numbers printed
    on it are asserted against the repository further down and the build fails
    if they have drifted. Regenerate with: node tools/make-og.mjs */
+/* A link on one of these is hosted, not published — the author cannot be read
+   off the domain, so nothing is attributed and the domain is not worth showing. */
+const PLATFORM_DOMAINS = new Set([
+  "youtube.com", "youtu.be", "m.youtube.com", "medium.com", "linkedin.com",
+  "docs.google.com", "drive.google.com", "s3.amazonaws.com", "cdn2.hubspot.net",
+  "vimeo.com", "open.spotify.com", "podcasts.apple.com", "soundcloud.com",
+  "x.com", "twitter.com", "airtable.com", "ecademycourse.teachable.com",
+]);
+
 const OG_IMAGE = "og.png";
 const OG_ALT = "startup-stack — the documents every startup should have, as a knowledge base an AI can actually read.";
 
@@ -644,7 +653,8 @@ ${tocHtml ? `<div class="content-with-toc"><div>${body}</div>${tocHtml}</div>` :
     <div class="search-foot"><span><kbd>↑</kbd><kbd>↓</kbd> to move</span><span><kbd>↵</kbd> to open</span><span><kbd>esc</kbd> to close</span></div>
   </div>
 </div>
-<script src="${root}assets/search-index.js"></script>
+<link rel="prefetch" href="${asset(root, "search-index.js")}" as="script">
+<script>window.SEARCH_INDEX_URL="${asset(root, "search-index.js")}";</script>
 <script src="${asset(root, "site.js")}"></script>
 </body>
 </html>`;
@@ -737,6 +747,83 @@ for (const g of GROUP_LANDINGS) {
   addPage({ url: g.landing, title: g.title, lede: g.blurb, kind: "Page" });
 }
 
+/* ---- 3a. the resource index ----------------------------------------
+   web/resources.json is the source of truth for the startup resources. The nine
+   markdown pages under docs/ are generated from it by tools/make-resources.mjs
+   and committed so they read on GitHub; this build reads the same file to put
+   every resource in the site search and to render the sortable table. Deriving
+   both from one file is what stops the table and the pages disagreeing. */
+const RESOURCES = (() => {
+  const f = join(WEB, "resources.json");
+  if (!existsSync(f)) { fail("missing web/resources.json — run: node tools/make-resources.mjs"); return []; }
+  const rows = JSON.parse(readFileSync(f, "utf8"));
+  for (const r of rows) {
+    for (const k of ["title", "url", "domain", "group", "page", "topic"]) {
+      if (!r[k]) { fail(`web/resources.json: a record is missing "${k}" — ${r.title || r.url || "unknown"}`); break; }
+    }
+  }
+  return rows;
+})();
+
+/* The carve rule, needed here because the search index publishes section
+   summaries and must apply the same test the stack table does. */
+const withheld = new Set();
+const isUntouchedTemplate = (fm) => {
+  const owner = Array.isArray(fm.owner) ? fm.owner.join(",") : String(fm.owner || "");
+  return (fm.status || "").trim() === "tbd" && /^\s*\[?TBD\]?\s*$/.test(owner.trim());
+};
+function publishableSummary(rel, fm) {
+  if ((fm.sensitivity || "").trim() === "public") return fm.summary || "";
+  if (isUntouchedTemplate(fm)) return fm.summary || "";
+  withheld.add(`${rel} (${fm.sensitivity || "no sensitivity"})`);
+  return "";
+}
+
+/* ---- 2c. the search index --------------------------------------
+   Built before rendering, not after, because every page's <head> carries a
+   hashed URL for it and asset() cannot hash a file that does not exist yet.
+   The bytes are written out at the end with the rest of the assets. */
+/* the runtime's contract: { t: title, s: short label, d: description, k: kind, u: url },
+   kinds lowercase — page | prompt | worksheet | section */
+const searchIndex = PAGES.map((p) => ({
+  t: p.title.replace(/^Prompt \d+\s*—\s*/, ""),
+  s: p.kind === "Prompt" ? `Prompt ${p.num}` : "",
+  d: truncate(p.lede || "", 120),
+  k: p.kind.toLowerCase(),
+  u: p.url,
+}));
+/* Every resource is searchable by title. Deliberately lean: no description
+   field, because 653 of them would treble the index every visitor downloads for
+   a line most people never read. The publisher goes in the short label, where it
+   is short enough to earn its bytes and disambiguates near-identical titles. */
+for (const r of RESOURCES) {
+  searchIndex.push({
+    t: r.title,
+    s: PLATFORM_DOMAINS.has(r.domain) ? "" : r.domain,
+    d: "",
+    k: "resource",
+    u: `${r.page}#${slugify(r.topic)}`,
+  });
+}
+
+for (const dir of stackSections) {
+  const files = readdirSync(join(ROOT, "stack", dir)).filter((f) => f.endsWith(".md"));
+  if (!files.length) continue;
+  const rel = `stack/${dir}/${files[0]}`;
+  const [fm] = frontmatter(read(rel));
+  searchIndex.push({
+    t: fm.title || dir, s: dir,
+    d: truncate(publishableSummary(rel, fm), 120),   /* same carve rule as the table */
+    k: "section",
+    u: `stack.html#${slugify(dir)}`,                 /* land on the row, not the page top */
+  });
+}
+
+const SEARCH_INDEX_JS = `window.SEARCH_INDEX=${JSON.stringify(searchIndex)};`;
+/* asset() hashes files on disk under web/assets/; this one is generated, so
+   seed its hash directly from the bytes that will be written. */
+assetHashes.set("search-index.js", createHash("sha256").update(SEARCH_INDEX_JS).digest("hex").slice(0, 8));
+
 /* ---- 3. render ------------------------------------------------- */
 const written = [];
 const write = (url, html) => {
@@ -779,6 +866,7 @@ function renderMarkdownPage(page, extra = {}) {
 for (const page of PAGES) {
   if (!page.src || page.url === "index.html") continue;
   if (page.url === "prompts/index.html" || page.url === "worksheets/index.html" || page.url === "stack.html") continue;
+  if (page.url === "resources.html") continue;   /* rendered below, with its table */
   const crumbs = page.kind === "Prompt"
     ? `<nav class="crumbs"><a href="../prompts/index.html">Prompt library</a> <span>/</span> <span>${esc(page.num)}</span></nav>`
     : page.kind === "Worksheet"
@@ -852,6 +940,70 @@ ${grid}
   }));
 }
 
+/* resources landing — the markdown, then every resource as one filterable table */
+{
+  const page = PAGES.find((p) => p.url === "resources.html");
+  const [, body] = frontmatter(read(page.src));
+  const ctx = { src: page.src, dir: "docs", root: "", toc: [], ids: new Set(), kind: "Page" };
+
+  const GROUPS = [
+    ["", "All"], ["starting-out", "Starting out"], ["customers", "Customers"],
+    ["strategy", "Strategy"], ["product", "Product"], ["growth", "Growth"],
+    ["team", "Team"], ["money", "Money"], ["fundraising", "Fundraising"],
+    ["legal", "Legal"], ["climate", "Climate"],
+  ];
+  const chips = GROUPS.map(([v, label]) =>
+    `<button class="chip" type="button" data-filter-group="group" data-filter-value="${esc(v)}" aria-pressed="${v === ""}">${esc(label)}</button>`).join("");
+
+  const topics = [...new Set(RESOURCES.map((r) => r.topic))].sort((a, b) => a.localeCompare(b));
+  const topicOpts = [`<option value="">Every topic</option>`]
+    .concat(topics.map((t) => `<option value="${esc(slugify(t))}">${esc(t)}</option>`)).join("");
+
+  /* One row per resource. data-search carries everything the filter box should
+     match on, lowercased once here rather than per keystroke in the browser. */
+  const rows = RESOURCES.map((r) => {
+    const pub = PLATFORM_DOMAINS.has(r.domain) ? "" : r.domain;
+    const hay = `${r.title} ${r.domain} ${r.topic} ${r.group} ${r.note}`.toLowerCase();
+    return `<tr data-group="${esc(r.group)}" data-topic="${esc(slugify(r.topic))}" data-search="${esc(hay)}">
+<td data-col="title"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>${r.note ? `<span class="res-note">${esc(r.note)}</span>` : ""}</td>
+<td data-col="publisher" class="res-pub">${esc(pub)}</td>
+<td data-col="topic"><a href="${esc(r.page)}#${esc(slugify(r.topic))}">${esc(r.topic)}</a></td>
+</tr>`;
+  }).join("\n");
+
+  const table = `<div class="toolbar section-gap">
+  <div class="field">${ICONS.search}<input id="res-q" type="search" placeholder="Filter ${RESOURCES.length} resources…" aria-label="Filter resources"></div>
+  <label class="field field-select"><span class="sr-only">Topic</span>
+    <select id="res-topic" data-filter-group="topic" aria-label="Filter by topic">${topicOpts}</select>
+  </label>
+  <button class="btn btn-secondary btn-sm" type="button" data-filter-reset>Reset</button>
+</div>
+<div class="chip-row"><span class="chip-label">Group</span>${chips}</div>
+<div class="result-count" id="res-count"></div>
+<!-- deliberately not wrapped in .table-wrap: that sets overflow-x, which makes
+     it a scroll container and offsets the sticky header inside it instead of
+     against the page. Three columns fold on narrow screens without it. -->
+<table class="res-table" id="res-table" data-sortable>
+<thead><tr>
+  <th aria-sort="ascending"><button type="button" data-sort="title">Resource</button></th>
+  <th><button type="button" data-sort="publisher">Publisher</button></th>
+  <th><button type="button" data-sort="topic">Topic</button></th>
+</tr></thead>
+<tbody id="res-body">${rows}</tbody>
+</table>
+<div class="empty-state" id="res-empty" hidden><div class="big">Nothing matches that filter.</div>Clear the search box, or choose “All”.</div>`;
+
+  write(page.url, shell({
+    url: page.url, title: page.title, description: truncate(page.lede, 160), active: page.url,
+    body: `<div class="page-head"><h1>${esc(page.title)}</h1><p class="lede">${esc(page.lede)}</p></div>
+<div class="prose">${mdToHtml(stripTitleAndLede(body, page.lede), ctx)}</div>
+<div class="prose section-gap"><h2 id="every-resource">Every resource</h2>
+<p>All ${RESOURCES.length} in one table. Filter by words, narrow to a group or a topic, and sort any column. The resource link opens the original; the topic link goes to it in context.</p></div>
+${table}`,
+    toc: ctx.toc,
+  }));
+}
+
 /* worksheets — the markdown, then a card per worksheet */
 {
   const page = PAGES.find((p) => p.url === "worksheets/index.html");
@@ -885,18 +1037,6 @@ ${grid}
    owner named — in which case the line documents the template rather than
    describing anybody's company.
    ============================================================ */
-const withheld = new Set();
-const isUntouchedTemplate = (fm) => {
-  const owner = Array.isArray(fm.owner) ? fm.owner.join(",") : String(fm.owner || "");
-  return (fm.status || "").trim() === "tbd" && /^\s*\[?TBD\]?\s*$/.test(owner.trim());
-};
-function publishableSummary(rel, fm) {
-  if ((fm.sensitivity || "").trim() === "public") return fm.summary || "";
-  if (isUntouchedTemplate(fm)) return fm.summary || "";
-  withheld.add(`${rel} (${fm.sensitivity || "no sensitivity"})`);
-  return "";
-}
-
 /* the ten sections — the router, plus what each template declares about itself */
 {
   const page = PAGES.find((p) => p.url === "stack.html");
@@ -1075,29 +1215,7 @@ write("404.html", shell({
 <div class="prose"><p>Try the <a href="${PATH_PREFIX}index.html">home page</a>, the <a href="${PATH_PREFIX}prompts/index.html">prompt library</a>, or press <kbd>⌘K</kbd> to search.</p></div>`,
 }));
 
-/* ---- 7. search index, assets, sitemap -------------------------- */
-/* the runtime's contract: { t: title, s: short label, d: description, k: kind, u: url },
-   kinds lowercase — page | prompt | worksheet | section */
-const searchIndex = PAGES.map((p) => ({
-  t: p.title.replace(/^Prompt \d+\s*—\s*/, ""),
-  s: p.kind === "Prompt" ? `Prompt ${p.num}` : "",
-  d: truncate(p.lede || "", 120),
-  k: p.kind.toLowerCase(),
-  u: p.url,
-}));
-for (const dir of stackSections) {
-  const files = readdirSync(join(ROOT, "stack", dir)).filter((f) => f.endsWith(".md"));
-  if (!files.length) continue;
-  const rel = `stack/${dir}/${files[0]}`;
-  const [fm] = frontmatter(read(rel));
-  searchIndex.push({
-    t: fm.title || dir, s: dir,
-    d: truncate(publishableSummary(rel, fm), 120),   /* same carve rule as the table */
-    k: "section",
-    u: `stack.html#${slugify(dir)}`,                 /* land on the row, not the page top */
-  });
-}
-
+/* ---- 7. assets, sitemap ---------------------------------------- */
 /* The diagrams are inlined into the pages, and also copied, because each figure
    links to its own file so it can be opened at full size. */
 cpSync(ASSETS, join(OUT, "assets"), { recursive: true });
@@ -1138,7 +1256,9 @@ for (const f of readdirSync(INFOGRAPHIC_DIR).sort()) {
     }
   }
 }
-writeFileSync(join(OUT, "assets", "search-index.js"), `window.SEARCH_INDEX=${JSON.stringify(searchIndex)};`);
+
+
+writeFileSync(join(OUT, "assets", "search-index.js"), SEARCH_INDEX_JS);
 /* The favicon IS the header mark: same stack glyph as ICONS.stack, on the same
    hero gradient, at the same proportion inside the same rounded square. The
    values are literal because a standalone SVG document cannot read tokens.css —

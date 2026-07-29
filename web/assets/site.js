@@ -279,6 +279,7 @@
       modal.classList.add("open");
       document.body.style.overflow = "hidden";
       input.value = ""; render(""); input.focus();
+      loadIndex().then(() => { if (modal.classList.contains("open")) render(input.value); });
     };
     const close = () => {
       modal.classList.remove("open"); sel = -1;
@@ -315,6 +316,27 @@
       if (item.k === "page") sc += 8;
       if (item.k === "prompt" || item.k === "section") sc += 6;
       return sc;
+    };
+
+    /* The index holds every page, prompt, worksheet, section and resource --
+       around 22 KB gzipped once the 653 resources are in it. Every page used to
+       block on that whether or not anyone searched. It is fetched on the first
+       time the dialog opens instead, and the page carries a prefetch hint so the
+       browser can pull it while idle. Falls back silently: if the fetch fails
+       there is simply nothing to search rather than a broken dialog. */
+    let indexPromise = null;
+    const loadIndex = () => {
+      if (window.SEARCH_INDEX) return Promise.resolve();
+      if (indexPromise) return indexPromise;
+      const src = window.SEARCH_INDEX_URL;
+      if (!src) return Promise.resolve();
+      indexPromise = new Promise((resolve) => {
+        const s = document.createElement("script");
+        s.src = src;
+        s.onload = s.onerror = () => resolve();
+        document.head.appendChild(s);
+      });
+      return indexPromise;
     };
 
     const mark = (text, q) => {
@@ -384,7 +406,13 @@
     if (!cards.length) return;
 
     const input = $(opts.input);
-    const chips = $$(opts.chips, grid.closest(opts.scope || "body") || document);
+    const scope = grid.closest(opts.scope || "body") || document;
+    const all = $$(opts.chips, scope);
+    /* a filter group is driven either by a row of chips or by one select --
+       the select earns its place when the group has fifty values and a chip row
+       would be longer than the table it filters */
+    const chips = all.filter((el) => el.tagName !== "SELECT");
+    const selects = all.filter((el) => el.tagName === "SELECT");
     const countEl = $(opts.count);
     const emptyEl = $(opts.empty);
     const one = opts.one || "item";
@@ -392,6 +420,7 @@
 
     const groups = {};
     chips.forEach((c) => { groups[c.dataset.filterGroup] = ""; });
+    selects.forEach((c) => { groups[c.dataset.filterGroup] = ""; });
     let q = "";
 
     // data-filter-group="time-cost" reads data-time-cost off the card
@@ -417,6 +446,7 @@
         const on = (c.dataset.filterValue || "") === groups[c.dataset.filterGroup];
         c.setAttribute("aria-pressed", String(on));
       });
+      selects.forEach((c) => { c.value = groups[c.dataset.filterGroup] || ""; });
       if (countEl) countEl.innerHTML = `Showing <b>${shown}</b> of ${cards.length} ${cards.length === 1 ? one : many}`;
       if (emptyEl) emptyEl.hidden = shown > 0;
     };
@@ -425,6 +455,7 @@
       Object.keys(groups).forEach((g) => { groups[g] = ""; });
       q = "";
       if (input) input.value = "";
+      selects.forEach((c) => { c.value = ""; });
       apply();
     };
 
@@ -435,13 +466,20 @@
       groups[g] = groups[g] === v ? "" : v;   // clicking the live chip clears its group
       apply();
     }));
+    selects.forEach((c) => c.addEventListener("change", () => {
+      groups[c.dataset.filterGroup] = c.value;
+      apply();
+    }));
     $$("[data-filter-reset]").forEach((b) => b.addEventListener("click", reset));
 
     // deep link, e.g. library.html?q=recap&stage=build
     const params = new URLSearchParams(location.search);
     Object.keys(groups).forEach((g) => {
       const v = params.get(g);
-      if (v && chips.some((c) => c.dataset.filterGroup === g && c.dataset.filterValue === v)) groups[g] = v;
+      if (!v) return;
+      const okChip = chips.some((c) => c.dataset.filterGroup === g && c.dataset.filterValue === v);
+      const okOpt = selects.some((c) => c.dataset.filterGroup === g && [...c.options].some((o) => o.value === v));
+      if (okChip || okOpt) groups[g] = v;
     });
     if (params.get("q")) { q = params.get("q").trim().toLowerCase(); if (input) input.value = params.get("q"); }
 
@@ -530,6 +568,67 @@
       if (e.key === "Escape" && box && box.classList.contains("open")) close();
     });
   })();
+
+  /* ---------- sortable tables ----------
+     Any table[data-sortable] whose header cells contain a button[data-sort].
+     Sorts on the matching td[data-col], comparing the cell's text. Rows hidden
+     by a filter keep their place in the sort, so clearing the filter does not
+     reveal an order that never made sense. */
+  $$("table[data-sortable]").forEach((table) => {
+    const body = $("tbody", table);
+    if (!body) return;
+    const buttons = $$("th button[data-sort]", table);
+    /* Adopt the order the markup already declares. Without this the first click
+       on the pre-sorted column re-applies the same direction and looks broken. */
+    const preset = $("th[aria-sort] button[data-sort]", table);
+    let col = preset ? preset.dataset.sort : null;
+    let dir = preset && preset.closest("th").getAttribute("aria-sort") === "descending" ? -1 : 1;
+
+    const key = (row, name) => {
+      const cell = $(`td[data-col="${name}"]`, row);
+      return (cell ? cell.textContent : "").trim().toLowerCase();
+    };
+
+    const sort = (name) => {
+      dir = col === name ? -dir : 1;
+      col = name;
+      const rows = [...body.rows];
+      /* Intl collation so accented titles land where a reader expects, and a
+         numeric pass so "10 Ways" does not sort before "2 Ways". */
+      const cmp = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+      rows.sort((a, b) => {
+        const ka = key(a, name), kb = key(b, name);
+        /* An empty cell is absent data, not a value that sorts first. Reversing
+           the direction should not float a block of blanks to the top. */
+        if (!ka !== !kb) return ka ? -1 : 1;
+        return dir * cmp.compare(ka, kb);
+      });
+      const frag = document.createDocumentFragment();
+      rows.forEach((r) => frag.appendChild(r));
+      body.appendChild(frag);
+      buttons.forEach((b) => {
+        const th = b.closest("th");
+        if (!th) return;
+        if (b.dataset.sort === name) th.setAttribute("aria-sort", dir === 1 ? "ascending" : "descending");
+        else th.removeAttribute("aria-sort");
+      });
+    };
+
+    buttons.forEach((b) => b.addEventListener("click", () => sort(b.dataset.sort)));
+  });
+
+  /* the resource index: same filter engine as the prompt library, over rows */
+  mountFilterGrid({
+    grid: "#res-body",
+    cards: "#res-body > tr",
+    input: "#res-q",
+    chips: "[data-filter-group]",
+    scope: "main",
+    count: "#res-count",
+    empty: "#res-empty",
+    one: "resource",
+    many: "resources",
+  });
 
   /* the prompt library is the one grid using it today */
   mountFilterGrid({

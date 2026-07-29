@@ -790,6 +790,54 @@ table.data.data-wide { min-width: 820px; }
 }
 
 /* ---------- search modal ---------- */
+/* ---------- resource table ---------- */
+/* the topic filter is a select rather than a chip row, so it needs the same
+   height and border as the search field beside it without the icon inset */
+.toolbar .field-select { flex: 0 1 auto; min-width: 0; }
+.toolbar .field-select select {
+  height: 40px; border: 1px solid var(--border); border-radius: var(--radius-md);
+  background-color: var(--surface); color: var(--text);
+}
+.field-select select {
+  appearance: none; -webkit-appearance: none;
+  border: 0; background: transparent; color: inherit;
+  font: inherit; padding: 9px 30px 9px 12px; max-width: 15rem;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: right 14px center, right 9px center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+.res-table {
+  width: 100%; border-collapse: collapse; font-size: 0.9rem;
+  margin-top: 18px; border: 1px solid var(--border); border-radius: var(--radius-lg);
+  background: var(--surface);
+  /* no overflow property here: any value other than visible makes this a scroll
+     container, and a sticky thead then offsets inside the table instead of
+     against the page, leaving a 58px void above the header */
+}
+.res-table th, .res-table td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--border); }
+.res-table thead th { position: sticky; top: 58px; z-index: 1; background: var(--surface-alt); border-bottom: 1px solid var(--border-strong); }
+.res-table thead th button {
+  display: inline-flex; align-items: center; gap: 5px;
+  border: 0; background: none; padding: 0; cursor: pointer;
+  font: inherit; font-weight: 700; color: var(--text);
+}
+.res-table thead th button::after { content: "↕"; opacity: 0.35; font-size: 0.85em; }
+.res-table thead th[aria-sort="ascending"] button::after { content: "↑"; opacity: 1; color: var(--accent-strong); }
+.res-table thead th[aria-sort="descending"] button::after { content: "↓"; opacity: 1; color: var(--accent-strong); }
+.res-table tbody tr:hover { background: var(--surface-alt); }
+.res-table td[data-col="title"] { width: 52%; }
+.res-table td[data-col="publisher"], .res-table td[data-col="topic"] { white-space: nowrap; }
+.res-pub { color: var(--text-faint); font-size: 0.85em; }
+.res-note { display: block; margin-top: 2px; color: var(--text-faint); font-size: 0.85em; line-height: 1.45; }
+@media (max-width: 720px) {
+  /* the publisher is the first thing to go: it is the least load-bearing
+     column and the title already carries the link */
+  .res-table td[data-col="publisher"], .res-table th:nth-child(2) { display: none; }
+  .res-table td[data-col="title"] { width: auto; }
+  .res-table td[data-col="topic"] { white-space: normal; }
+}
+
 /* ---------- lightbox ---------- */
 .lightbox { position: fixed; inset: 0; z-index: 110; display: none; }
 .lightbox.open { display: block; }
