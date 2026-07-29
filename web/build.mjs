@@ -150,12 +150,15 @@ const DOC_PAGES = [
   { src: "docs/infographics-method.md", url: "infographics-method.html", nav: "Infographics", short: "The method, drawn" },
   { src: "docs/infographics-portfolio.md", url: "infographics-portfolio.html", nav: "Infographics", short: "Running a portfolio" },
   { src: "docs/resources.md", url: "resources.html", nav: "Startup resources", short: "All of them" },
-  { src: "docs/resources-starting-out.md", url: "resources-starting-out.html", nav: "Startup resources", short: "Starting out and strategy" },
+  { src: "docs/resources-starting-out.md", url: "resources-starting-out.html", nav: "Startup resources", short: "Starting out" },
   { src: "docs/resources-customers.md", url: "resources-customers.html", nav: "Startup resources", short: "Customers and discovery" },
-  { src: "docs/resources-product-growth.md", url: "resources-product-growth.html", nav: "Startup resources", short: "Product and growth" },
-  { src: "docs/resources-team-legal.md", url: "resources-team-legal.html", nav: "Startup resources", short: "Team and legal" },
+  { src: "docs/resources-strategy.md", url: "resources-strategy.html", nav: "Startup resources", short: "Strategy and business models" },
+  { src: "docs/resources-product-growth.md", url: "resources-product-growth.html", nav: "Startup resources", short: "Product and building" },
+  { src: "docs/resources-growth.md", url: "resources-growth.html", nav: "Startup resources", short: "Sales, marketing and growth" },
+  { src: "docs/resources-team-legal.md", url: "resources-team-legal.html", nav: "Startup resources", short: "Team and running it" },
   { src: "docs/resources-money.md", url: "resources-money.html", nav: "Startup resources", short: "Money and fundraising" },
-  { src: "docs/resources-climate.md", url: "resources-climate.html", nav: "Startup resources", short: "Climate and policy" },
+  { src: "docs/resources-legal.md", url: "resources-legal.html", nav: "Startup resources", short: "Legal, IP and compliance" },
+  { src: "docs/resources-climate.md", url: "resources-climate.html", nav: "Startup resources", short: "Climate and impact" },
 ];
 
 /* ---- prompts: the library, grouped the way prompts/INDEX.md groups them ---- */
