@@ -486,6 +486,9 @@ pre:hover > .copy-btn, .codeblock:hover > .copy-btn, .copy-btn:focus-visible { o
 .hero h1 { color: var(--hero-text); font-size: clamp(1.9rem, 4.6vw, 3rem); font-weight: 800; max-width: 21ch; }
 .hero p { color: var(--hero-muted); font-size: clamp(0.98rem, 2vw, 1.12rem); max-width: 58ch; margin-top: 14px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+/* the same button row outside the hero, where the surrounding text is prose and
+   the buttons need a little more air above them than a lede gives */
+.cta-inline { margin-top: 20px; }
 .hero-search {
   display: flex; align-items: center; gap: 10px; width: min(520px, 100%);
   background: color-mix(in srgb, var(--hero-text) 10%, transparent);
