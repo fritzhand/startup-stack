@@ -993,9 +993,17 @@ ${grid}
 </table>
 <div class="empty-state" id="res-empty" hidden><div class="big">Nothing matches that filter.</div>Clear the search box, or choose “All”.</div>`;
 
+  /* The table is the fastest way into 653 things, and it was below a page of
+     prose explaining where they came from. The prose still matters, but it is
+     not what someone arrives wanting. */
+  const jump = `<div class="hero-actions cta-inline">
+  <a class="btn btn-primary" href="#every-resource">Search and filter all ${RESOURCES.length} ${ICONS.arrow}</a>
+  <a class="btn btn-secondary" href="resources-starting-out.html">Browse by topic instead</a>
+</div>`;
+
   write(page.url, shell({
     url: page.url, title: page.title, description: truncate(page.lede, 160), active: page.url,
-    body: `<div class="page-head"><h1>${esc(page.title)}</h1><p class="lede">${esc(page.lede)}</p></div>
+    body: `<div class="page-head"><h1>${esc(page.title)}</h1><p class="lede">${esc(page.lede)}</p>${jump}</div>
 <div class="prose">${mdToHtml(stripTitleAndLede(body, page.lede), ctx)}</div>
 <div class="prose section-gap"><h2 id="every-resource">Every resource</h2>
 <p>All ${RESOURCES.length} in one table. Filter by words, narrow to a group or a topic, and sort any column. The resource link opens the original; the topic link goes to it in context.</p></div>
@@ -1111,6 +1119,17 @@ function readmeParagraph(prefix, { raw = false } = {}) {
     docs: DOC_PAGES.length,
     /* counted, not written down, so the home page cannot drift from the folder */
     infographics: readdirSync(INFOGRAPHIC_DIR).filter((f) => f.endsWith(".webp")).length,
+    resources: RESOURCES.length,
+    /* Counted, not estimated, and counted as the sentence on the home page
+       actually reads: distinct publishers, so the platforms that host rather
+       than publish are excluded, and the four named in that sentence are taken
+       off the total -- First Round counts once despite having two domains. */
+    publishers: (() => {
+      const named = new Set(["ycombinator.com", "toolkit.techstars.com", "firstround.com", "review.firstround.com", "paulgraham.com"]);
+      const rest = new Set(RESOURCES.map((r) => r.domain)
+        .filter((d) => !PLATFORM_DOMAINS.has(d) && !d.endsWith(".medium.com") && !named.has(d)));
+      return rest.size;
+    })(),
   };
   const card = (href, title, text) => `<a class="card" href="${href}"><h3>${esc(title)}</h3><p>${esc(text)}</p></a>`;
 
@@ -1183,6 +1202,15 @@ ${loopCards}
   <a href="infographics/the-startup-stack-method.webp" class="figure-zoom"><img src="infographics/the-startup-stack-method.webp" alt="Scattered company files becoming a ten-section knowledge base, and the work that comes out of it — with the three loops: build, enrich, pulse." loading="lazy" decoding="async"></a>
   <figcaption class="figure-cap">The method on one page. <b>${counts.infographics - 1} more</b> — <a href="infographics.html">see all of them</a>.</figcaption>
 </figure>
+
+<a class="panel panel-link" href="resources.html#every-resource">
+  <div class="panel-icon">${ICONS.bookmark}</div>
+  <div class="panel-body">
+    <h3>${counts.resources} startup resources, in one searchable table</h3>
+    <p>Articles, videos, templates and tools from Y Combinator, Techstars, First Round, Paul Graham and ${counts.publishers} other publishers, merged from two curated collections and checked for dead links. Filter by words, narrow to a topic, sort any column. Everything is credited to whoever published it, and none of it was written here.</p>
+  </div>
+  <span class="panel-go">${ICONS.arrow}</span>
+</a>
 
 <div class="prose section-gap"><h2 id="start">Where to start</h2></div>
 <div class="grid grid-2">
