@@ -33,7 +33,8 @@ jobs:
 
       # web/build.mjs exits non-zero on a broken internal link, a missing
       # diagram, a page with no title, a prompt that is not routed to a group,
-      # or a diagram whose colours have drifted from the design tokens.
+      # a diagram whose colours have drifted from the design tokens, or a
+      # stack reads:/feeds: edge written on one end only.
       - name: Build the site
         run: node web/build.mjs
 

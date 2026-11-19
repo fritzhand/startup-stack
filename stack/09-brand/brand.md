@@ -7,7 +7,7 @@ updated: "[TBD]"
 status: tbd
 confidence: low
 sensitivity: public
-reads: [02-customer, 03-market]
+reads: [01-company, 02-customer, 03-market]
 feeds: [05-gtm, 08-capital]
 summary: Name and trademark position, positioning statement and messaging, tone
   of voice, and the design system — fonts, colours, spacing — that every deck,

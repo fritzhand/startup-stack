@@ -110,7 +110,7 @@ Use the front-matter schema in [`docs/front-matter.md`](docs/front-matter.md). E
 
 - the full front-matter block, including a one-sentence `summary:` written for routing
 - a row added to `stack/INDEX.md`
-- correct `reads:` / `feeds:` edges to its neighbours
+- correct `reads:` / `feeds:` edges to its neighbours, written on both ends — if the new file reads a section, add the new file to that section's `feeds:`, and the reverse
 
 ## The failure mode to avoid
 

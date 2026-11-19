@@ -7,7 +7,7 @@ updated: "[TBD]"
 status: tbd
 confidence: low
 sensitivity: internal
-reads: [01-company, 03-market, 04-product, 07-money]
+reads: [01-company, 03-market, 04-product, 07-money, 09-brand]
 feeds: []
 summary: What is being raised, at what milestone, from whom and on what terms —
   the staged funding roadmap, non-dilutive options, the pitch deck structure, the

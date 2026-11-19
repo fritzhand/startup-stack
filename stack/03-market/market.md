@@ -8,7 +8,7 @@ status: tbd
 confidence: low
 sensitivity: internal
 reads: [02-customer]
-feeds: [04-product, 05-gtm, 08-capital]
+feeds: [04-product, 05-gtm, 08-capital, 09-brand]
 summary: Market sizing with every assumption named and sourced, the beachhead to
   land first, the competitor grid including the ones founders forget, and how the
   industry actually works.

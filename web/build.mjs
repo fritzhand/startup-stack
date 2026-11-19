@@ -10,8 +10,9 @@
      the prose anywhere, so the site cannot drift from the repo.
    - _site/ is GENERATED — never hand-edit it, and never commit it.
    - The build FAILS LOUDLY on a broken internal link, a missing
-     diagram, a prompt that is not routed to a group, or a page whose
-     title cannot be found. A silently wrong site is worse than none.
+     diagram, a prompt that is not routed to a group, a page whose
+     title cannot be found, or a stack reads:/feeds: edge written on
+     one end only. A silently wrong site is worse than none.
    ============================================================ */
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync, readdirSync, statSync } from "node:fs";
 import { join, dirname, relative, resolve, basename } from "node:path";
@@ -1064,6 +1065,29 @@ ${table}`,
       <td class="cell-wide">${summary ? esc(summary) : `<span class="muted">Not published — this section is marked <code>${esc(fm.sensitivity || "internal")}</code> and has been filled in.</span>`}</td>
     </tr>`;
   }).join("\n");
+  /* reads: and feeds: are the same edge seen from its two ends — B reads A
+     exactly when A feeds B. The AI picks neighbours to open from reads:, the
+     founder learns what has gone stale from feeds:, so an edge written on one
+     end only quietly breaks one of those two jobs. Hold every edge to both
+     ends, and to a section that exists. */
+  {
+    const edges = new Map();
+    for (const dir of stackSections) {
+      const files = readdirSync(join(ROOT, "stack", dir)).filter((f) => f.endsWith(".md"));
+      if (!files.length) continue;
+      const [fm] = frontmatter(read(`stack/${dir}/${files[0]}`));
+      const list = (v) => (Array.isArray(v) ? v : []);
+      edges.set(dir, { rel: `stack/${dir}/${files[0]}`, reads: list(fm.reads), feeds: list(fm.feeds) });
+    }
+    for (const [dir, { rel, reads, feeds }] of edges) {
+      for (const [field, other, mirror] of [["reads", reads, "feeds"], ["feeds", feeds, "reads"]]) {
+        for (const peer of other) {
+          if (!edges.has(peer)) fail(`${rel}: ${field} names ${peer}, which is not a section in stack/`);
+          else if (!edges.get(peer)[mirror].includes(dir)) fail(`${rel} ${field} ${peer}, but ${edges.get(peer).rel} does not list ${dir} in ${mirror}: — write the edge on both ends`);
+        }
+      }
+    }
+  }
   const table = `<div class="table-wrap"><table class="data">
 <thead><tr><th class="cell-tight">Section</th><th>Title</th><th class="cell-tight">Sensitivity</th><th class="cell-wide">What it holds</th></tr></thead>
 <tbody>${rows}</tbody></table></div>`;
