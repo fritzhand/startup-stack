@@ -96,6 +96,8 @@ The dependency edges. `reads:` lists the sections this file depends on; `feeds:`
 
 They do two useful things. They let the AI open the right neighbours without being told — ask for a fundraising narrative and it knows to pull `07-money` because `08-capital` declares it. And they tell you what breaks when something changes: if your COGS moves, `feeds: [08-capital, 10-pulse]` says the pitch deck and the weekly metrics are now stale.
 
+**Write every edge on both ends.** If `07-money` feeds `08-capital`, then `08-capital` reads `07-money`. An edge on one end only breaks one of the two jobs: the AI misses a neighbour it should open, or a change goes stale without anything saying so. This repo's site build checks it and fails on a one-sided edge.
+
 ### `summary`
 **One or two sentences. This is the most important field in the block.**
 

@@ -7,7 +7,7 @@ updated: "[TBD]"
 status: tbd
 confidence: low
 sensitivity: internal
-reads: [02-customer]
+reads: [02-customer, 03-market]
 feeds: [05-gtm, 06-operations, 07-money, 08-capital]
 summary: What a customer can actually use today versus what is still a slide, the
   roadmap, technical approach and dependencies, IP position, and the safety

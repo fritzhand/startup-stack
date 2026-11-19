@@ -7,7 +7,7 @@ updated: "[TBD]"
 status: tbd
 confidence: low
 sensitivity: internal
-reads: [02-customer, 03-market, 04-product, 09-brand]
+reads: [02-customer, 03-market, 04-product, 06-operations, 09-brand]
 feeds: [07-money, 10-pulse]
 summary: Which channels have been tested and with what result, the prospect
   pipeline and its size, the paid marketing engine and how it is held
